@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePasswordResetsTable extends Migration
+class AddRolIdToTableUser extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class CreatePasswordResetsTable extends Migration
      */
     public function up()
     {
-        Schema::create('password_resets', function (Blueprint $table) {
+        Schema::table('users', function (Blueprint $table) {
 
-            $table->string('email')->index();
-            $table->string('token');
-            $table->timestamp('created_at')->nullable();
+            $table->bigInteger('rol_id')->unsigned()->nullable();
+            $table->foreign('rol_id')->references('id')->on('rols')->onDelete('cascade');
 
         });
     }
@@ -29,6 +28,8 @@ class CreatePasswordResetsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('password_resets');
+        Schema::table('users', function (Blueprint $table) {
+            //
+        });
     }
 }

@@ -2,9 +2,12 @@
 
 namespace App;
 
-use Illuminate\Notifications\Notifiable;
+use App\Notificacion;
+use App\Rol;
+use App\Solicitud;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
@@ -16,7 +19,15 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+
+        'name',
+        'apellido',
+        'usuario',
+        'avatar',
+        'email',
+        'password',
+        'rol_id',
+
     ];
 
     /**
@@ -36,4 +47,18 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    // MUCHOS A uno con rol
+    public function rol(){
+
+      return $this->belongsTo(Rol::class);
+    }
+
+     //muchos a muchos con solicitudes
+    public function solicitudes(){
+
+        return $this->belongsToMany(Solicitud::class);
+    }
+
+
 }
