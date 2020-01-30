@@ -16,6 +16,7 @@ class CreateSolicitudsTable extends Migration
         Schema::create('solicituds', function (Blueprint $table) {
 
             $table->bigIncrements('id');
+            $table->string('solicitud');
             $table->date('fecha');
             $table->string('respuesta');
             $table->string('descripcion');

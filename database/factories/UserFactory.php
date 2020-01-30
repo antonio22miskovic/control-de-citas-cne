@@ -5,6 +5,7 @@ use App\User;
 use Illuminate\Support\Str;
 use Faker\Generator as Faker;
 
+
 /*
 |--------------------------------------------------------------------------
 | Model Factories
@@ -22,7 +23,7 @@ $factory->define(User::class, function (Faker $faker) {
         'name' => $faker->name,
         'apellido' => $faker->name,
         'usuario' => $faker->unique()->userName,
-        'avatar' => 'defect.jpg',
+        'ci' => $faker->unique()->bankRoutingNumber,
         'email' => $faker->unique()->safeEmail,
         'email_verified_at' => now(),
         'password' => bcrypt(1234),

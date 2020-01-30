@@ -14,6 +14,7 @@ class Solicitud extends Model
 	protected $fillable = [
 
 		'fecha',
+		'solicitud',
 		'respuesta',
 		'descripcion',
 		'tramite_id',

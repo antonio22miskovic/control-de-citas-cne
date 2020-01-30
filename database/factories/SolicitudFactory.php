@@ -12,6 +12,7 @@ $factory->define(Solicitud::class, function (Faker $faker) {
     return [
 
        	'fecha' => Carbon::now(),
+       	'solicitud' => $faker->name,
 		'respuesta' => $faker->name,
 		'descripcion' => $faker->name,
 		'tramite_id' => Tramite::all()->random()->id,
