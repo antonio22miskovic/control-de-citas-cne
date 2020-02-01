@@ -41,7 +41,11 @@
 
             <div class="container-fluid">
 
-
+            	<!-- MONTANDO LOS COMPONENTES -->
+            	<RegistroSolicitud></RegistroSolicitud>
+            	<ListadoSolicitud></ListadoSolicitud>
+            	<Perfil></Perfil>
+            	<Estadisticas></Estadisticas>
 
             </div>
         </div>
@@ -53,9 +57,27 @@
 
 <script>
 
+	// importando los componentes
+	import RegistroSolicitud from '../components/RegistroSolicitud.vue'
+	import ListadoSolicitud from '../components/ListadoSolicitud.vue'
+	import Perfil from '../components/Perfil.vue'
+	import Estadisticas from '../components/Estadisticas.vue'
+
+	//IPORTAMOS LAS ALERTAS POR SI LAS NECESITAMOS
+	import Swal from 'sweetalert2'
+
     export default{
 
         name:'Home',
+
+        components:{
+        	// incluyendo componentes
+        RegistroSolicitud,
+        ListadoSolicitud,
+        Perfil,
+        Estadisticas,
+
+        },
 
         mounted () {
 
