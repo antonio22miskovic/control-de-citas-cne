@@ -2056,10 +2056,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
 // importando los componentes
 
 
@@ -40645,8 +40641,8 @@ var render = function() {
       _c(
         "nav",
         {
-          staticClass:
-            "navbar navbar-expand-lg navbar-light bg-light border-bottom"
+          staticClass: "navbar navbar-expand-lg navbar-light bg-coco",
+          staticStyle: { height: "3.65rem !important" }
         },
         [
           _c(
@@ -40706,43 +40702,55 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c(
       "div",
-      {
-        staticClass: "bg-light border-right",
-        attrs: { id: "sidebar-wrapper" }
-      },
+      { staticClass: "bg-coco", attrs: { id: "sidebar-wrapper" } },
       [
-        _c("div", { staticClass: "sidebar-heading text-center" }, [
+        _c("div", { staticClass: "sidebar-heading text-center bg-light" }, [
           _vm._v(" CNE ")
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "list-group list-group-flush" }, [
           _c(
             "a",
-            { staticClass: "list-group-item list-group-item-action bg-dark" },
+            {
+              staticClass:
+                "list-group-item list-group-item-action bg-light bg-coco"
+            },
             [_vm._v("Solicitudes")]
           ),
           _vm._v(" "),
           _c(
             "a",
-            { staticClass: "list-group-item list-group-item-action bg-light" },
+            {
+              staticClass:
+                "list-group-item list-group-item-action bg-light bg-coco"
+            },
             [_vm._v("Notificaciones")]
           ),
           _vm._v(" "),
           _c(
             "a",
-            { staticClass: "list-group-item list-group-item-action bg-light" },
+            {
+              staticClass:
+                "list-group-item list-group-item-action bg-light bg-coco"
+            },
             [_vm._v("Estadisticas")]
           ),
           _vm._v(" "),
           _c(
             "a",
-            { staticClass: "list-group-item list-group-item-action bg-light" },
+            {
+              staticClass:
+                "list-group-item list-group-item-action bg-light bg-coco"
+            },
             [_vm._v("Perfil")]
           ),
           _vm._v(" "),
           _c(
             "a",
-            { staticClass: "list-group-item list-group-item-action bg-light" },
+            {
+              staticClass:
+                "list-group-item list-group-item-action bg-light bg-coco"
+            },
             [_vm._v("Usuarios")]
           )
         ])

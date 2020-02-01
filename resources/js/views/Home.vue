@@ -1,14 +1,14 @@
 <template>
     <div class="d-flex" id="wrapper">
         <!-- Sidebar -->
-        <div class="bg-light border-right" id="sidebar-wrapper">
-            <div class="sidebar-heading text-center"> CNE </div>
+        <div class="bg-coco" id="sidebar-wrapper">
+            <div class="sidebar-heading text-center bg-light"> CNE </div>
             <div class="list-group list-group-flush">
-                <a  class="list-group-item list-group-item-action bg-dark">Solicitudes</a>
-                <a  class="list-group-item list-group-item-action bg-light">Notificaciones</a>
-                <a  class="list-group-item list-group-item-action bg-light">Estadisticas</a>
-                <a  class="list-group-item list-group-item-action bg-light">Perfil</a>
-                <a  class="list-group-item list-group-item-action bg-light">Usuarios</a>
+                <a  class="list-group-item list-group-item-action bg-light bg-coco">Solicitudes</a>
+                <a  class="list-group-item list-group-item-action bg-light bg-coco">Notificaciones</a>
+                <a  class="list-group-item list-group-item-action bg-light bg-coco">Estadisticas</a>
+                <a  class="list-group-item list-group-item-action bg-light bg-coco">Perfil</a>
+                <a  class="list-group-item list-group-item-action bg-light bg-coco">Usuarios</a>
                 <!-- <a href="#" class="list-group-item list-group-item-action bg-light">Status</a> -->
             </div>
         </div>
@@ -17,7 +17,7 @@
         <!-- Page Content -->
         <div id="page-content-wrapper">
 
-            <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+            <nav class="navbar navbar-expand-lg navbar-light bg-coco" style="height: 3.65rem !important;">
                 <button class="btn btn-primary" id="menu-toggle">Menu</button>
 
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
