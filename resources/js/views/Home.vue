@@ -1,9 +1,5 @@
 <template>
-
-
-
     <div class="d-flex" id="wrapper">
-
         <!-- Sidebar -->
         <div class="bg-light border-right" id="sidebar-wrapper">
             <div class="sidebar-heading text-center"> CNE </div>
