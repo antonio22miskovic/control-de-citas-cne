@@ -13,6 +13,6 @@ class SolicitudUserTableSeeder extends Seeder
      */
     public function run()
     {
-    	factory(Solicitud_User::class,200)->create();
+    	factory(Solicitud_User::class,50)->create();
     }
 }
