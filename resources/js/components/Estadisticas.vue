@@ -8,7 +8,7 @@
 
 	export default{
 
-		name:'estadisticas',
+		name:'Estadisticas',
 	}
 
 </script>
