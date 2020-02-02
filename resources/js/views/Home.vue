@@ -16,7 +16,7 @@
 
                 <a @click="Notificacionescomponent()" class="list-group-item list-group-item-action bg-light bg-coco">Notificaciones</a>
 
-                <!-- <a href="#" class="list-group-item list-group-item-action bg-light">Status</a> -->
+
             </div>
         </div>
         <!-- /#sidebar-wrapper -->
