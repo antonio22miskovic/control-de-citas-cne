@@ -11754,6 +11754,29 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {},
   name: 'RegistroSolicitud'
@@ -50513,7 +50536,49 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "container" }, [
-      _c("p", [_vm._v(" registro de solicitud")])
+      _c("div", { staticClass: "card mt-4" }, [
+        _c("div", { staticClass: "card-header" }, [
+          _c("h3", { staticClass: "card-title" }, [
+            _vm._v("Registro de solicitud")
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "card-body" }, [
+          _c("form", [
+            _c("div", { staticClass: "row" }, [
+              _c("div", { staticClass: "col" }, [
+                _c("input", {
+                  staticClass: "form-control",
+                  attrs: { type: "text", placeholder: "First name" }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col" }, [
+                _c("input", {
+                  staticClass: "form-control",
+                  attrs: { type: "text", placeholder: "Last name" }
+                })
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "row mt-4" }, [
+              _c("div", { staticClass: "col" }, [
+                _c("input", {
+                  staticClass: "form-control",
+                  attrs: { type: "text", placeholder: "First name" }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col" }, [
+                _c("input", {
+                  staticClass: "form-control",
+                  attrs: { type: "text", placeholder: "Last name" }
+                })
+              ])
+            ])
+          ])
+        ])
+      ])
     ])
   }
 ]
@@ -50605,7 +50670,7 @@ var render = function() {
           "a",
           {
             staticClass:
-              "list-group-item list-group-item-action bg-light bg-coco",
+              "list-group-item list-group-item-action bg-lighrtt bg-coco",
             on: {
               click: function($event) {
                 return _vm.Notificacionescomponent()
@@ -63384,8 +63449,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/heavy/app/pasantia/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/heavy/app/pasantia/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/deyker/Escritorio/pasantia/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/deyker/Escritorio/pasantia/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

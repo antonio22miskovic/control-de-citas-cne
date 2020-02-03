@@ -14,7 +14,7 @@
 
                 <a @click="perfilcomponent()"  class="list-group-item list-group-item-action bg-light bg-coco">Perfil</a>
 
-                <a @click="Notificacionescomponent()" class="list-group-item list-group-item-action bg-light bg-coco">Notificaciones</a>
+                <a @click="Notificacionescomponent()" class="list-group-item list-group-item-action bg-lighrtt bg-coco">Notificaciones</a>
 
 
             </div>
