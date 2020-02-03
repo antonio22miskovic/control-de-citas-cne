@@ -52,6 +52,7 @@
             	<Perfil v-if="perfil === true"></Perfil>
             	<Estadisticas v-if=" estadistica === true"></Estadisticas>
             	<Notificaciones v-if="notificacion === true"></Notificaciones>
+
             </div>
         </div>
         <!-- /#page-content-wrapper -->

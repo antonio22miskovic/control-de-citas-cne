@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Cliente;
 use App\Notificacion;
 use App\Rol;
 use App\Solicitud;
@@ -55,11 +56,15 @@ class User extends Authenticatable
       return $this->belongsTo(Rol::class);
     }
 
-     //muchos a muchos con solicitudes
+     // de uno a muchos con solicitudes
     public function solicitudes(){
 
-        return $this->belongsToMany(Solicitud::class);
+        return $this->hasMany(Solicitud::class);
     }
 
+    public function cliente(){
+
+        return $this->hasOne(Cliente::class);
+    }
 
 }

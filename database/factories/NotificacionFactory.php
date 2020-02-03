@@ -11,7 +11,7 @@ $factory->define(Notificacion::class, function (Faker $faker) {
 
        	'asunto' => $faker->name,
 		'descripcion' => $faker->name,
-		'estado_id' => Estado::all()->random()->id,
+		// 'estado_id' => Estado::all()->random()->id,
 
     ];
 });
