@@ -50,7 +50,6 @@
 
             <tr>
 
-
                 <th  scope="col">solicitud</th>
                 <th  scope="col">respuesta</th>
                 <th scope="col" class="text-center">ver</th>
