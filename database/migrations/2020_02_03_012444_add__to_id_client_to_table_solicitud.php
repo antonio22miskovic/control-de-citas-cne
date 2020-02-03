@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddEstadoIdToTableSolicitid extends Migration
+class AddToIdClientToTableSolicitud extends Migration
 {
     /**
      * Run the migrations.
@@ -15,8 +15,8 @@ class AddEstadoIdToTableSolicitid extends Migration
     {
         Schema::table('solicituds', function (Blueprint $table) {
 
-            $table->bigInteger('estado_id')->unsigned()->nullable();
-            $table->foreign('estado_id')->references('id')->on('estados')->onDelete('cascade');
+            $table->bigInteger('cliente_id')->unsigned()->nullable();
+            $table->foreign('cliente_id')->references('id')->on('clientes')->onDelete('cascade');
 
         });
     }

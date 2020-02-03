@@ -1,10 +1,9 @@
 <?php
 
-
-use App\Solicitud_User;
+use App\Cliente;
 use Illuminate\Database\Seeder;
 
-class SolicitudUserTableSeeder extends Seeder
+class ClienteTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -13,6 +12,6 @@ class SolicitudUserTableSeeder extends Seeder
      */
     public function run()
     {
-    	factory(Solicitud_User::class,50)->create();
+        factory(Cliente::class,20)->create();
     }
 }

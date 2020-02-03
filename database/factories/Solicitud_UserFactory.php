@@ -9,9 +9,7 @@ use Faker\Generator as Faker;
 
 $factory->define(Solicitud_User::class, function (Faker $faker) {
     return [
-
-    	'user_id' => User::all()->random()->id,
-		'solicitud_id' => Solicitud::all()->random()->id,
-
+        'user_id' => User::all()->random()->id,
+        'solicitud_id' => Solicitud::all()->random()->id,
     ];
 });

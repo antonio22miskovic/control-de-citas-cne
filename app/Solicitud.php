@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Cliente;
 use App\Estado;
 use App\Tramite;
 use App\User;
@@ -18,14 +19,15 @@ class Solicitud extends Model
 		'respuesta',
 		'descripcion',
 		'tramite_id',
-		'estado_id',
+		'user_id',
+
 
 	];
 
-	//muchos a muchos
-    public function usuarios(){
+	//muchos a uno con user
+    public function user(){
 
-    return $this->belongsToMany(User::class);
+    return $this->belongsTo(User::class);
 
 	}
 
@@ -39,6 +41,11 @@ class Solicitud extends Model
     public function estado(){
 
       return $this->belongsTo(Estado::class);
+    }
+
+    public function cliente(){
+
+      return $this->belongsTo(Cliente::class);
     }
 
 

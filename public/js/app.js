@@ -11691,8 +11691,176 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'ListadoSolicitud'
+  name: 'ListadoSolicitud',
+  mounted: function mounted() {
+    this.listado(1);
+  },
+  data: function data() {
+    return {
+      solicitudes: [],
+      paginate: {
+        'tota': 0,
+        'current_page': 0,
+        'per_page': 0,
+        'last_page': 0,
+        'from': 0,
+        'to': 0
+      }
+    };
+  },
+  methods: {
+    Chagepage: function Chagepage(page) {
+      this.paginate.current_page = page;
+      this.listado(page);
+    },
+    listado: function listado(page) {
+      var _this = this;
+
+      var url = 'solicitud?page=' + page;
+      axios.get(url).then(function (res) {
+        _this.solicitudes = res.data.solicitud.data;
+        _this.paginate = res.data.paginate;
+      });
+    },
+    detalles: function detalles(solicitud) {
+      axios.get('solicitud/' + solicitud.id).then(function (res) {
+        console.log(res.data);
+      });
+    }
+  },
+  computed: {
+    esActivo: function esActivo() {
+      return this.paginate.current_page;
+    },
+    nuPages: function nuPages() {
+      if (!this.paginate.to) {
+        return [];
+      }
+
+      var from = this.paginate.current_page - 5; //todo
+
+      if (from < 1) {
+        from = 1;
+      }
+
+      var to = from + 5 * 5;
+
+      if (to >= this.paginate.last_page) {
+        to = this.paginate.last_page;
+      }
+
+      var pageArray = [];
+
+      while (from <= to) {
+        pageArray.push(from);
+        from++;
+      }
+
+      return pageArray;
+    }
+  }
 });
 
 /***/ }),
@@ -11777,6 +11945,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_Notificaciones_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/Notificaciones.vue */ "./resources/js/components/Notificaciones.vue");
 /* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
 /* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_5__);
+//
 //
 //
 //
@@ -50412,14 +50581,249 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "container" }, [
+    _c("div", [
+      _c(
+        "div",
+        {
+          staticClass: "modal fade",
+          attrs: {
+            id: "detallesmodalcenter",
+            tabindex: "-1",
+            role: "dialog",
+            "aria-labelledby": "exampleModalCenterTitle",
+            "aria-hidden": "true"
+          }
+        },
+        [
+          _c(
+            "div",
+            {
+              staticClass: "modal-dialog modal-dialog-centered",
+              attrs: { role: "document" }
+            },
+            [
+              _c("div", { staticClass: "modal-content" }, [
+                _vm._m(0),
+                _vm._v(" "),
+                _c("div", { staticClass: "modal-body" }, [
+                  _c("div", [
+                    _c("p", [_vm._v(" fecha:" + _vm._s())]),
+                    _vm._v(" "),
+                    _c("p", [_vm._v(" respuesta:" + _vm._s())]),
+                    _vm._v(" "),
+                    _c("p", [_vm._v(" tramite:" + _vm._s())]),
+                    _vm._v(" "),
+                    _c("p", [_vm._v(" estatus:" + _vm._s())]),
+                    _vm._v(" "),
+                    _c("h5", [_vm._v(" datos del solicitante ")]),
+                    _vm._v(" "),
+                    _c("p", [_vm._v(" nombre:  " + _vm._s())]),
+                    _vm._v(" "),
+                    _c("p", [_vm._v(" apellido:  " + _vm._s())]),
+                    _vm._v(" "),
+                    _c("p", [_vm._v(" ci:  " + _vm._s())]),
+                    _vm._v(" "),
+                    _c("p", [_vm._v(" correo:  " + _vm._s())])
+                  ])
+                ]),
+                _vm._v(" "),
+                _vm._m(1)
+              ])
+            ]
+          )
+        ]
+      )
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "row justify-content-center" }, [
+      _c("table", { staticClass: "table" }, [
+        _vm._m(2),
+        _vm._v(" "),
+        _c(
+          "tbody",
+          [
+            _vm.solicitudes.length === 0
+              ? _c("h4", { staticClass: "text-center" }, [
+                  _vm._v(" no tiene solicitudes ")
+                ])
+              : _vm._e(),
+            _vm._v(" "),
+            _vm._l(_vm.solicitudes, function(solicitud) {
+              return _c("tr", { key: solicitud.id }, [
+                _c("td", [_vm._v("t" + _vm._s(solicitud.solicitud))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(solicitud.respuesta))]),
+                _vm._v(" "),
+                _c("td", { staticClass: "text-center" }, [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-outline-primary text-center",
+                      attrs: {
+                        "data-toggle": "modal",
+                        "data-target": "#detallesmodalcenter"
+                      },
+                      on: {
+                        click: function($event) {
+                          $event.preventDefault()
+                          return _vm.detalles(solicitud)
+                        }
+                      }
+                    },
+                    [_c("font-awesome-icon", { attrs: { icon: "eye" } })],
+                    1
+                  )
+                ])
+              ])
+            })
+          ],
+          2
+        )
+      ]),
+      _vm._v(" "),
+      _c("nav", { attrs: { "aria-label": "Page navigation example" } }, [
+        _c(
+          "ul",
+          { staticClass: "pagination " },
+          [
+            _vm.paginate.current_page > 1
+              ? _c("li", { staticClass: "page-item" }, [
+                  _c(
+                    "a",
+                    {
+                      staticClass: "page-link",
+                      attrs: { href: "#", "aria-label": "Previous" },
+                      on: {
+                        click: function($event) {
+                          $event.preventDefault()
+                          return _vm.Chagepage(_vm.paginate.current_page - 1)
+                        }
+                      }
+                    },
+                    [
+                      _c("span", { attrs: { "aria-hidden": "true" } }, [
+                        _vm._v("«")
+                      ])
+                    ]
+                  )
+                ])
+              : _vm._e(),
+            _vm._v(" "),
+            _vm._l(_vm.nuPages, function(page) {
+              return _c(
+                "li",
+                {
+                  staticClass: "page-item",
+                  class: [page == _vm.esActivo ? "active" : ""]
+                },
+                [
+                  _c(
+                    "a",
+                    {
+                      staticClass: "page-link",
+                      attrs: { href: "#" },
+                      on: {
+                        click: function($event) {
+                          $event.preventDefault()
+                          return _vm.Chagepage(page)
+                        }
+                      }
+                    },
+                    [_vm._v(_vm._s(page))]
+                  )
+                ]
+              )
+            }),
+            _vm._v(" "),
+            _vm.paginate.current_page < _vm.paginate.last_page
+              ? _c("li", { staticClass: "page-item" }, [
+                  _c(
+                    "a",
+                    {
+                      staticClass: "page-link",
+                      attrs: { href: "#", "aria-label": "Previous" },
+                      on: {
+                        click: function($event) {
+                          $event.preventDefault()
+                          return _vm.Chagepage(_vm.paginate.current_page + 1)
+                        }
+                      }
+                    },
+                    [
+                      _c("span", { attrs: { "aria-hidden": "true" } }, [
+                        _vm._v("»")
+                      ])
+                    ]
+                  )
+                ])
+              : _vm._e()
+          ],
+          2
+        )
+      ])
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", [_c("p", [_vm._v("listado de solicitudes")])])
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "h5",
+        {
+          staticClass: "modal-title ",
+          attrs: { id: "exampleModalCenterTitle" }
+        },
+        [_vm._v("solicitud: {{}}")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-footer" }, [
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-secondary",
+          attrs: { type: "button", "data-dismiss": "modal" }
+        },
+        [_vm._v("Close")]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", { staticClass: "thead-dark" }, [
+      _c("tr", [
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("solicitud")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("respuesta")]),
+        _vm._v(" "),
+        _c("th", { staticClass: "text-center", attrs: { scope: "col" } }, [
+          _vm._v("ver")
+        ])
+      ])
+    ])
   }
 ]
 render._withStripped = true

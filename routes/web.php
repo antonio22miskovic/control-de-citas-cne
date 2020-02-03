@@ -11,4 +11,5 @@ Route::resource('user', 'UserController');
 Route::resource('tramite', 'TramiteController');
 Route::resource('rol', 'RolController');
 Route::resource('notificacion', 'NotificacionController');
+Route::resource('solicitud', 'SolicitudController');
 
