@@ -11779,7 +11779,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {},
   name: 'RegistroSolicitud'
@@ -11803,10 +11802,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_Notificaciones_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/Notificaciones.vue */ "./resources/js/components/Notificaciones.vue");
 /* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
 /* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_5__);
-//
-//
-//
-//
 //
 //
 //
@@ -50539,7 +50534,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "container" }, [
-      _c("div", { staticClass: "card mt-4" }, [
+      _c("div", { staticClass: "card mt-4 rounded-sm" }, [
         _c("div", { staticClass: "card-header" }, [
           _c("h5", { staticClass: "card-title mt-1 p-0" }, [
             _vm._v("Registro de solicitud")
@@ -50644,7 +50639,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "d-flex", attrs: { id: "wrapper" } }, [
     _c("div", { staticClass: "bg-coco", attrs: { id: "sidebar-wrapper" } }, [
-      _c("div", { staticClass: "sidebar-heading text-center bg-light" }, [
+      _c("div", { staticClass: "sidebar-heading text-center bg-coco" }, [
         _vm._v(" CNE ")
       ]),
       _vm._v(" "),
@@ -50652,8 +50647,7 @@ var render = function() {
         _c(
           "a",
           {
-            staticClass:
-              "list-group-item list-group-item-action bg-light bg-coco",
+            staticClass: "list-group-item list-group-item-action bg-coco",
             on: {
               click: function($event) {
                 return _vm.registrocomponent()
@@ -50666,8 +50660,7 @@ var render = function() {
         _c(
           "a",
           {
-            staticClass:
-              "list-group-item list-group-item-action bg-light bg-coco",
+            staticClass: "list-group-item list-group-item-action bg-coco",
             on: {
               click: function($event) {
                 return _vm.listadocomponent()
@@ -50680,8 +50673,7 @@ var render = function() {
         _c(
           "a",
           {
-            staticClass:
-              "list-group-item list-group-item-action bg-light bg-coco",
+            staticClass: "list-group-item list-group-item-action bg-coco",
             on: {
               click: function($event) {
                 return _vm.estadisticacomponent()
@@ -50694,8 +50686,7 @@ var render = function() {
         _c(
           "a",
           {
-            staticClass:
-              "list-group-item list-group-item-action bg-light bg-coco",
+            staticClass: "list-group-item list-group-item-action bg-coco",
             on: {
               click: function($event) {
                 return _vm.perfilcomponent()
@@ -50708,8 +50699,7 @@ var render = function() {
         _c(
           "a",
           {
-            staticClass:
-              "list-group-item list-group-item-action bg-lighrtt bg-coco",
+            staticClass: "list-group-item list-group-item-action bg-coco",
             on: {
               click: function($event) {
                 return _vm.Notificacionescomponent()
@@ -50725,7 +50715,7 @@ var render = function() {
       _c(
         "nav",
         {
-          staticClass: "navbar navbar-expand-lg navbar-light bg-coco",
+          staticClass: "navbar navbar-expand-lg navbar-light bg-secondary",
           staticStyle: { height: "3.65rem !important" }
         },
         [

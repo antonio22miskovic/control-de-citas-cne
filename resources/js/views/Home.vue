@@ -2,19 +2,15 @@
     <div class="d-flex" id="wrapper">
         <!-- Sidebar -->
         <div class="bg-coco" id="sidebar-wrapper">
-            <div class="sidebar-heading text-center bg-light"> CNE </div>
+            <div class="sidebar-heading text-center bg-coco"> CNE </div>
             <div class="list-group list-group-flush">
 
 
-                <a @click="registrocomponent()" class="list-group-item list-group-item-action bg-light bg-coco">Solicitudes</a>
-
-                <a @click="listadocomponent()" class="list-group-item list-group-item-action bg-light bg-coco">listado de solicitudes</a>
-
-                <a @click="estadisticacomponent()" class="list-group-item list-group-item-action bg-light bg-coco">Estadisticas</a>
-
-                <a @click="perfilcomponent()"  class="list-group-item list-group-item-action bg-light bg-coco">Perfil</a>
-
-                <a @click="Notificacionescomponent()" class="list-group-item list-group-item-action bg-lighrtt bg-coco">Notificaciones</a>
+                <a @click="registrocomponent()" class="list-group-item list-group-item-action bg-coco">Solicitudes</a>
+                <a @click="listadocomponent()" class="list-group-item list-group-item-action bg-coco">listado de solicitudes</a>
+                <a @click="estadisticacomponent()" class="list-group-item list-group-item-action bg-coco">Estadisticas</a>
+                <a @click="perfilcomponent()"  class="list-group-item list-group-item-action bg-coco">Perfil</a>
+                <a @click="Notificacionescomponent()" class="list-group-item list-group-item-action bg-coco">Notificaciones</a>
 
 
             </div>
@@ -27,7 +23,7 @@
 
 
 
-            <nav class="navbar navbar-expand-lg navbar-light bg-coco" style="height: 3.65rem !important;">
+            <nav class="navbar navbar-expand-lg navbar-light bg-secondary" style="height: 3.65rem !important;">
                 <button class="btn btn-primary" id="menu-toggle"><font-awesome-icon icon="server"/></button>
 
 

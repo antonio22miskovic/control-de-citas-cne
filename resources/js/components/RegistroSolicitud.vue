@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-		<div class="card mt-4">
+		<div class="card mt-4 rounded-sm">
   			<div class="card-header">
     			<h5 class="card-title mt-1 p-0">Registro de solicitud</h5>	
   			</div>
@@ -28,7 +28,6 @@
 		  		</form>
 		  	</div>
 		</div>
-
     </div>
 </template>
 
