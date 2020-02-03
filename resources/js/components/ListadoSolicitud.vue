@@ -7,7 +7,7 @@
             <div class="modal-dialog modal-dialog-centered" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                   <h5 class="modal-title " id="exampleModalCenterTitle">solicitud: {{}}</h5>
+                   <h5 class="modal-title " id="exampleModalCenterTitle">solicitud: {{this.detallesolicitud.solicitud}}</h5>
                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                               <span aria-hidden="true">&times;</span>
                       </button>
@@ -17,16 +17,16 @@
 
                 <div>
 
-                  <p> fecha:{{ }}</p>
-                  <p> respuesta:{{  }}</p>
-                  <p> tramite:{{ }}</p>
-                  <p> estatus:{{ }}</p>
+                  <p> fecha:{{ this.detallesolicitud.fecha }}</p>
+                  <p> respuesta:{{ this.detallesolicitud.respuesta }}</p>
+                  <p> tramite:{{ this.tramite.tramite }}</p>
+                  <p> estatus:{{this.detallesolicitud.status }}</p>
 
                   <h5> datos del solicitante </h5>
-                  <p> nombre:  {{ }}</p>
-                  <p> apellido:  {{ }}</p>
-                  <p> ci:  {{ }}</p>
-                  <p> correo:  {{ }}</p>
+                  <p> nombre:  {{ this.cliente.name }}</p>
+                  <p> apellido:  {{ this.cliente.apellido}}</p>
+                  <p> cedula: {{ this.cliente.ci }}</p>
+                  <p> correo:{{ this.cliente.email}}</p>
 
                 </div>
 
@@ -121,6 +121,10 @@
 			return{
 
 				solicitudes:[],
+        detallesolicitud:'',
+        user:'',
+        cliente:'',
+        tramite:'',
 
             paginate:{
 
@@ -163,8 +167,10 @@
 
           axios.get('solicitud/'+solicitud.id).
           then(res =>{
-
-            console.log(res.data);
+            this.detallesolicitud = res.data.solicitud;
+            this.tramite = res.data.solicitud.tramite;
+            this.cliente = res.data.cliente;
+            this.user = res.data.solicitud.user;
 
           });
 

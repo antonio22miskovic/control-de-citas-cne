@@ -11800,6 +11800,10 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       solicitudes: [],
+      detallesolicitud: '',
+      user: '',
+      cliente: '',
+      tramite: '',
       paginate: {
         'tota': 0,
         'current_page': 0,
@@ -11825,8 +11829,13 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     detalles: function detalles(solicitud) {
+      var _this2 = this;
+
       axios.get('solicitud/' + solicitud.id).then(function (res) {
-        console.log(res.data);
+        _this2.detallesolicitud = res.data.solicitud;
+        _this2.tramite = res.data.solicitud.tramite;
+        _this2.cliente = res.data.cliente;
+        _this2.user = res.data.solicitud.user;
       });
     }
   },
@@ -50604,27 +50613,54 @@ var render = function() {
             },
             [
               _c("div", { staticClass: "modal-content" }, [
-                _vm._m(0),
+                _c("div", { staticClass: "modal-header" }, [
+                  _c(
+                    "h5",
+                    {
+                      staticClass: "modal-title ",
+                      attrs: { id: "exampleModalCenterTitle" }
+                    },
+                    [
+                      _vm._v(
+                        "solicitud: " + _vm._s(this.detallesolicitud.solicitud)
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _vm._m(0)
+                ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "modal-body" }, [
                   _c("div", [
-                    _c("p", [_vm._v(" fecha:" + _vm._s())]),
+                    _c("p", [
+                      _vm._v(" fecha:" + _vm._s(this.detallesolicitud.fecha))
+                    ]),
                     _vm._v(" "),
-                    _c("p", [_vm._v(" respuesta:" + _vm._s())]),
+                    _c("p", [
+                      _vm._v(
+                        " respuesta:" + _vm._s(this.detallesolicitud.respuesta)
+                      )
+                    ]),
                     _vm._v(" "),
-                    _c("p", [_vm._v(" tramite:" + _vm._s())]),
+                    _c("p", [
+                      _vm._v(" tramite:" + _vm._s(this.tramite.tramite))
+                    ]),
                     _vm._v(" "),
-                    _c("p", [_vm._v(" estatus:" + _vm._s())]),
+                    _c("p", [
+                      _vm._v(" estatus:" + _vm._s(this.detallesolicitud.status))
+                    ]),
                     _vm._v(" "),
                     _c("h5", [_vm._v(" datos del solicitante ")]),
                     _vm._v(" "),
-                    _c("p", [_vm._v(" nombre:  " + _vm._s())]),
+                    _c("p", [_vm._v(" nombre:  " + _vm._s(this.cliente.name))]),
                     _vm._v(" "),
-                    _c("p", [_vm._v(" apellido:  " + _vm._s())]),
+                    _c("p", [
+                      _vm._v(" apellido:  " + _vm._s(this.cliente.apellido))
+                    ]),
                     _vm._v(" "),
-                    _c("p", [_vm._v(" ci:  " + _vm._s())]),
+                    _c("p", [_vm._v(" cedula: " + _vm._s(this.cliente.ci))]),
                     _vm._v(" "),
-                    _c("p", [_vm._v(" correo:  " + _vm._s())])
+                    _c("p", [_vm._v(" correo:" + _vm._s(this.cliente.email))])
                   ])
                 ]),
                 _vm._v(" "),
@@ -50770,29 +50806,18 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "modal-header" }, [
-      _c(
-        "h5",
-        {
-          staticClass: "modal-title ",
-          attrs: { id: "exampleModalCenterTitle" }
-        },
-        [_vm._v("solicitud: {{}}")]
-      ),
-      _vm._v(" "),
-      _c(
-        "button",
-        {
-          staticClass: "close",
-          attrs: {
-            type: "button",
-            "data-dismiss": "modal",
-            "aria-label": "Close"
-          }
-        },
-        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
-      )
-    ])
+    return _c(
+      "button",
+      {
+        staticClass: "close",
+        attrs: {
+          type: "button",
+          "data-dismiss": "modal",
+          "aria-label": "Close"
+        }
+      },
+      [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+    )
   },
   function() {
     var _vm = this

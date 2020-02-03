@@ -62,7 +62,7 @@ class SolicitudController extends Controller
                $cliente =  $solicitud->cliente;
                 $clien =  $cliente->user;
                 $solicitud->user;
-                 $solicitud->tramite;
+                     $solicitud->tramite;
 
         return response()->json(['solicitud'=> $solicitud, 'cliente' => $clien],200);
 
