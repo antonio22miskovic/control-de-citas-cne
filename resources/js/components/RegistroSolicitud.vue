@@ -2,26 +2,38 @@
     <div class="container">
 		<div class="card mt-4">
   			<div class="card-header">
-    			<h3 class="card-title">Registro de solicitud</h3>	
+    			<h5 class="card-title mt-1 p-0">Registro de solicitud</h5>	
   			</div>
 		  	<div class="card-body">
 		  		<form>
-		  			<div class="row">
-		  				<div class="col">
-		  					<input type="text" class="form-control" placeholder="First name">
+		  			<div class="form-row">
+		  				<div class="form-group col-md-6">
+		  					<label for="inputEmail4">Solicitud</label>
+		  					<input type="text" class="form-control" id="inputEmail4" placeholder="Solicitud" name="solicitud">
 		  				</div>
-		  				<div class="col">
-		  					<input type="text" class="form-control" placeholder="Last name">
-		  				</div>
-		  			</div>
-		  			<div class="row mt-4">
-		  				<div class="col">
-		  					<input type="text" class="form-control" placeholder="First name">
-		  				</div>
-		  				<div class="col">
-		  					<input type="text" class="form-control" placeholder="Last name">
+		  				<div class="form-group col-md-6">
+		  					<label for="inputPassword4">Fecha</label>
+		  					<input type="date" class="form-control" id="inputPassword4" name="fecha">
 		  				</div>
 		  			</div>
+		  			<div class="form-group">
+		  				<label for="inputAddress">Respuesta</label>
+						<input class="form-control" type="text" placeholder="Aqui va la respuesta a la solicitud SI o NO" readonly>
+		  			</div>
+		  			<div class="form-group">
+		  				<label for="descripcionTextarea">Descripcion de solicitud.</label>
+		  				<textarea class="form-control" id="descripcionTextarea" rows="3" name="descripcion"></textarea>
+		  			</div>
+		  			<div class="form-row">
+<!-- 		  				<div class="form-group col-md-4">
+		  					<label for="inputState">State</label>
+		  					<select id="inputState" class="form-control">
+		  						<option selected>Choose...</option>
+		  						<option>...</option>
+		  					</select>
+		  				</div> -->
+		  			</div>
+		  			<button type="submit" class="btn btn-primary" name="registrar-solicitud">Registrar</button>
 		  		</form>
 		  	</div>
 		</div>
