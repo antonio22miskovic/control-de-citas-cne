@@ -11780,15 +11780,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {},
   name: 'RegistroSolicitud'
@@ -50615,8 +50606,6 @@ var staticRenderFns = [
                 }
               })
             ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "form-row" }),
             _vm._v(" "),
             _c(
               "button",

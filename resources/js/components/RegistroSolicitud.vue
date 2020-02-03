@@ -24,15 +24,6 @@
 		  				<label for="descripcionTextarea">Descripcion de solicitud.</label>
 		  				<textarea class="form-control" id="descripcionTextarea" rows="3" name="descripcion"></textarea>
 		  			</div>
-		  			<div class="form-row">
-<!-- 		  				<div class="form-group col-md-4">
-		  					<label for="inputState">State</label>
-		  					<select id="inputState" class="form-control">
-		  						<option selected>Choose...</option>
-		  						<option>...</option>
-		  					</select>
-		  				</div> -->
-		  			</div>
 		  			<button type="submit" class="btn btn-primary" name="registrar-solicitud">Registrar</button>
 		  		</form>
 		  	</div>
