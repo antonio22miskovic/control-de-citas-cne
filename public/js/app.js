@@ -11777,21 +11777,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'ListadoSolicitud',
   mounted: function mounted() {
@@ -50643,7 +50628,7 @@ var render = function() {
                     },
                     [
                       _vm._v(
-                        "solicitud: " + _vm._s(this.detallesolicitud.solicitud)
+                        "Solicitud: " + _vm._s(this.detallesolicitud.solicitud)
                       )
                     ]
                   ),
@@ -50694,7 +50679,7 @@ var render = function() {
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "row justify-content-center" }, [
-      _c("table", { staticClass: "table" }, [
+      _c("table", { staticClass: "table mt-4 p-4" }, [
         _vm._m(2),
         _vm._v(" "),
         _c(
@@ -50702,7 +50687,7 @@ var render = function() {
           [
             _vm.solicitudes.length === 0
               ? _c("h4", { staticClass: "text-center" }, [
-                  _vm._v(" no tiene solicitudes ")
+                  _vm._v("No tiene solicitudes.")
                 ])
               : _vm._e(),
             _vm._v(" "),
@@ -50848,10 +50833,10 @@ var staticRenderFns = [
       _c(
         "button",
         {
-          staticClass: "btn btn-secondary",
+          staticClass: "btn btn-primary btn-lg btn-block",
           attrs: { type: "button", "data-dismiss": "modal" }
         },
-        [_vm._v("Close")]
+        [_vm._v("Cerrar")]
       )
     ])
   },
@@ -50861,12 +50846,12 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("thead", { staticClass: "thead-dark" }, [
       _c("tr", [
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("solicitud")]),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Solicitud")]),
         _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("respuesta")]),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Respuesta")]),
         _vm._v(" "),
         _c("th", { staticClass: "text-center", attrs: { scope: "col" } }, [
-          _vm._v("ver")
+          _vm._v("Ver Solicitud")
         ])
       ])
     ])
