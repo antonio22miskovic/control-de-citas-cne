@@ -7,11 +7,6 @@ body {
     overflow-x: hidden;
 }
 
-.bg-coco
-{
-    background: #c0c0c0 !important;
-}
-
 #sidebar-wrapper {
     min-height: 100vh;
     margin-left: -15rem;
@@ -55,4 +50,14 @@ body {
 
 a{
     cursor: pointer;
+}
+/* Estilos Deyker */
+.bg-coco
+{
+    background: #c0c0c0 !important;
+}
+
+.img-sidebar-top
+{
+    width: 11rem;
 }
