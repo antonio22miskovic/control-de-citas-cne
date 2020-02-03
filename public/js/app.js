@@ -11777,6 +11777,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {},
   name: 'RegistroSolicitud'
@@ -50538,44 +50550,82 @@ var staticRenderFns = [
     return _c("div", { staticClass: "container" }, [
       _c("div", { staticClass: "card mt-4" }, [
         _c("div", { staticClass: "card-header" }, [
-          _c("h3", { staticClass: "card-title" }, [
+          _c("h5", { staticClass: "card-title mt-1 p-0" }, [
             _vm._v("Registro de solicitud")
           ])
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "card-body" }, [
           _c("form", [
-            _c("div", { staticClass: "row" }, [
-              _c("div", { staticClass: "col" }, [
+            _c("div", { staticClass: "form-row" }, [
+              _c("div", { staticClass: "form-group col-md-6" }, [
+                _c("label", { attrs: { for: "inputEmail4" } }, [
+                  _vm._v("Solicitud")
+                ]),
+                _vm._v(" "),
                 _c("input", {
                   staticClass: "form-control",
-                  attrs: { type: "text", placeholder: "First name" }
+                  attrs: {
+                    type: "text",
+                    id: "inputEmail4",
+                    placeholder: "Solicitud",
+                    name: "solicitud"
+                  }
                 })
               ]),
               _vm._v(" "),
-              _c("div", { staticClass: "col" }, [
+              _c("div", { staticClass: "form-group col-md-6" }, [
+                _c("label", { attrs: { for: "inputPassword4" } }, [
+                  _vm._v("Fecha")
+                ]),
+                _vm._v(" "),
                 _c("input", {
                   staticClass: "form-control",
-                  attrs: { type: "text", placeholder: "Last name" }
+                  attrs: { type: "date", id: "inputPassword4", name: "fecha" }
                 })
               ])
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "row mt-4" }, [
-              _c("div", { staticClass: "col" }, [
-                _c("input", {
-                  staticClass: "form-control",
-                  attrs: { type: "text", placeholder: "First name" }
-                })
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", { attrs: { for: "inputAddress" } }, [
+                _vm._v("Respuesta")
               ]),
               _vm._v(" "),
-              _c("div", { staticClass: "col" }, [
-                _c("input", {
-                  staticClass: "form-control",
-                  attrs: { type: "text", placeholder: "Last name" }
-                })
-              ])
-            ])
+              _c("input", {
+                staticClass: "form-control",
+                attrs: {
+                  type: "text",
+                  placeholder: "Aqui va la respuesta a la solicitud SI o NO",
+                  readonly: ""
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", { attrs: { for: "descripcionTextarea" } }, [
+                _vm._v("Descripcion de solicitud.")
+              ]),
+              _vm._v(" "),
+              _c("textarea", {
+                staticClass: "form-control",
+                attrs: {
+                  id: "descripcionTextarea",
+                  rows: "3",
+                  name: "descripcion"
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-row" }),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-primary",
+                attrs: { type: "submit", name: "registrar-solicitud" }
+              },
+              [_vm._v("Registrar")]
+            )
           ])
         ])
       ])
