@@ -11969,6 +11969,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'RegistroSolicitud',
   mounted: function mounted() {
@@ -11976,48 +11978,127 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      usuario: [{
-        'name': '',
-        'apellido': '',
-        'cedula': '',
-        'email': ''
-      }],
-      solicitud: [{
-        'solicitud': '',
-        'respuesta': '',
-        'descripcion': '',
-        'tramite': '',
-        'user': '',
-        'cliente': ''
-      }],
+      idparacliente: '',
+      name: '',
+      apellido: '',
+      cedula: '',
+      email: '',
+      validarregistro: false,
+      mensajebusqueda: false,
+      mensajenulo: false,
+      solicitud: '',
+      respuesta: '',
+      descripcion: '',
+      tramite: '',
+      user: '',
+      cliente: '',
       tramites: [],
       resultadobuscar: [],
-      buscar: ''
+      buscar: '',
+      iddelinsert: []
     };
   },
   methods: {
     registrar: function registrar() {
-      console.log(this.usuario);
-      console.log(this.solicitud);
-    },
-    listadotramites: function listadotramites() {
       var _this = this;
 
+      if (this.validarregistro === true) {
+        axios.get('cliente/' + this.idparacliente).then(function (response) {
+          var e = response.data;
+
+          if (e === 1) {
+            var clien = {
+              'user_id': _this.idparacliente
+            };
+            axios.post('cliente', clien).then(function (response) {
+              _this.cliente = response.data;
+              console.log(_this.cliente);
+
+              if (_this.cliente.length === 0) {
+                console.log('se produjo un error al registrarlo como cliente');
+              } else {
+                _this.registrarsolicitud();
+              }
+            });
+          } else {
+            console.log('2');
+
+            _this.registrarsolicitud();
+          }
+        });
+      } else {
+        var data = {
+          'name': this.name,
+          'apellido': this.apellido,
+          'ci': this.cedula,
+          'email': this.email
+        };
+        axios.post('user', data).then(function (response) {
+          _this.iddelinsert = response.data;
+          _this.validarregistro = true;
+          _this.iddelinsert.id = _this.idparacliente;
+          axios.get('id/' + _this.iddelinsert.ci).then(function (response) {
+            var valor = response.data;
+            _this.idparacliente = valor.id;
+          });
+
+          _this.registrar();
+        })["catch"](function (error) {
+          if (error.response) {
+            // The request was made and the server responded with a status code
+            // that falls out of the range of 2xx
+            console.log(error.response.data);
+            console.log(error.response.status);
+            console.log(error.response.headers);
+          } else if (error.request) {
+            // The request was made but no response was received
+            // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
+            // http.ClientRequest in node.js
+            console.log(error.request);
+          } else {
+            // Something happened in setting up the request that triggered an Error
+            console.log('Error', error.message);
+          }
+        });
+      }
+    },
+    registrarsolicitud: function registrarsolicitud() {
+      console.log('llege a la solicitud');
+    },
+    listadotramites: function listadotramites() {
+      var _this2 = this;
+
       axios.get('tramite').then(function (response) {
-        _this.tramites = response.data;
+        _this2.tramites = response.data;
       });
     },
     busqueda: function busqueda() {
-      var _this2 = this;
+      var _this3 = this;
 
-      axios.get('buscar/' + this.buscar).then(function (response) {
-        _this2.resultadobuscar = response.data;
-        console.log(_this2.resultadobuscar);
-        _this2.usuario.name = _this2.resultadobuscar.name;
-        _this2.usuario.apellido = _this2.resultadobuscar.apellido;
-        _this2.usuario.cedula = _this2.resultadobuscar.cedula;
-        _this2.usuario.email = _this2.resultadobuscar.email;
-      });
+      if (this.buscar.length === 0) {
+        this.mensajenulo = true;
+        this.mensajebusqueda = false;
+      } else {
+        this.mensajenulo = false;
+        axios.get('buscar/' + this.buscar).then(function (response) {
+          var r = response.data;
+
+          if (r === 1) {
+            _this3.mensajebusqueda = true;
+          } else {
+            _this3.resultadobuscar = response.data;
+            _this3.name = _this3.resultadobuscar.name;
+            _this3.apellido = _this3.resultadobuscar.apellido;
+            _this3.cedula = _this3.resultadobuscar.ci;
+            _this3.email = _this3.resultadobuscar.email;
+            _this3.idparacliente = _this3.resultadobuscar.id;
+            _this3.validarregistro = true;
+            _this3.mensajebusqueda = false;
+            _this3.mensajenulo = false;
+            _this3.buscar = null;
+          }
+        });
+      }
     }
   }
 });
@@ -51057,7 +51138,17 @@ var render = function() {
             _vm._v(" "),
             _c("input", { attrs: { type: "submit" } })
           ]
-        )
+        ),
+        _vm._v(" "),
+        _vm.mensajebusqueda === true
+          ? _c("p", [
+              _vm._v(" no se encuentra registrado por favor ingrese sus datos")
+            ])
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.mensajenulo === true
+          ? _c("p", [_vm._v(" debe introcir un numero de cedula ")])
+          : _vm._e()
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "card-body" }, [
@@ -51081,8 +51172,8 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.usuario.nombre,
-                      expression: "usuario.nombre"
+                      value: _vm.name,
+                      expression: "name"
                     }
                   ],
                   staticClass: "form-control",
@@ -51092,13 +51183,13 @@ var render = function() {
                     placeholder: "nombre",
                     name: "nombre"
                   },
-                  domProps: { value: _vm.usuario.nombre },
+                  domProps: { value: _vm.name },
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
                         return
                       }
-                      _vm.$set(_vm.usuario, "nombre", $event.target.value)
+                      _vm.name = $event.target.value
                     }
                   }
                 })
@@ -51114,8 +51205,8 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.usuario.apellido,
-                      expression: "usuario.apellido"
+                      value: _vm.apellido,
+                      expression: "apellido"
                     }
                   ],
                   staticClass: "form-control",
@@ -51125,13 +51216,13 @@ var render = function() {
                     placeholder: "apellido",
                     name: "apellido"
                   },
-                  domProps: { value: _vm.usuario.apellido },
+                  domProps: { value: _vm.apellido },
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
                         return
                       }
-                      _vm.$set(_vm.usuario, "apellido", $event.target.value)
+                      _vm.apellido = $event.target.value
                     }
                   }
                 })
@@ -51145,8 +51236,8 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.usuario.cedula,
-                      expression: "usuario.cedula"
+                      value: _vm.cedula,
+                      expression: "cedula"
                     }
                   ],
                   staticClass: "form-control",
@@ -51156,13 +51247,13 @@ var render = function() {
                     placeholder: "cedula",
                     name: "cedula"
                   },
-                  domProps: { value: _vm.usuario.cedula },
+                  domProps: { value: _vm.cedula },
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
                         return
                       }
-                      _vm.$set(_vm.usuario, "cedula", $event.target.value)
+                      _vm.cedula = $event.target.value
                     }
                   }
                 })
@@ -51176,8 +51267,8 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.usuario.email,
-                      expression: "usuario.email"
+                      value: _vm.email,
+                      expression: "email"
                     }
                   ],
                   staticClass: "form-control",
@@ -51187,13 +51278,13 @@ var render = function() {
                     placeholder: "email",
                     name: "email"
                   },
-                  domProps: { value: _vm.usuario.email },
+                  domProps: { value: _vm.email },
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
                         return
                       }
-                      _vm.$set(_vm.usuario, "email", $event.target.value)
+                      _vm.email = $event.target.value
                     }
                   }
                 })
@@ -51212,19 +51303,19 @@ var render = function() {
                   {
                     name: "model",
                     rawName: "v-model",
-                    value: _vm.solicitud.solicitud,
-                    expression: "solicitud.solicitud"
+                    value: _vm.solicitud,
+                    expression: "solicitud"
                   }
                 ],
                 staticClass: "form-control",
                 attrs: { type: "text", placeholder: "solicitud" },
-                domProps: { value: _vm.solicitud.solicitud },
+                domProps: { value: _vm.solicitud },
                 on: {
                   input: function($event) {
                     if ($event.target.composing) {
                       return
                     }
-                    _vm.$set(_vm.solicitud, "solicitud", $event.target.value)
+                    _vm.solicitud = $event.target.value
                   }
                 }
               })
@@ -51240,19 +51331,19 @@ var render = function() {
                   {
                     name: "model",
                     rawName: "v-model",
-                    value: _vm.solicitud.respuesta,
-                    expression: "solicitud.respuesta"
+                    value: _vm.respuesta,
+                    expression: "respuesta"
                   }
                 ],
                 staticClass: "form-control",
                 attrs: { type: "text", placeholder: " respuesta" },
-                domProps: { value: _vm.solicitud.respuesta },
+                domProps: { value: _vm.respuesta },
                 on: {
                   input: function($event) {
                     if ($event.target.composing) {
                       return
                     }
-                    _vm.$set(_vm.solicitud, "respuesta", $event.target.value)
+                    _vm.respuesta = $event.target.value
                   }
                 }
               })
@@ -51270,8 +51361,8 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.solicitud.tramite,
-                      expression: "solicitud.tramite"
+                      value: _vm.tramite,
+                      expression: "tramite"
                     }
                   ],
                   staticClass: "form-control ",
@@ -51286,13 +51377,9 @@ var render = function() {
                           var val = "_value" in o ? o._value : o.value
                           return val
                         })
-                      _vm.$set(
-                        _vm.solicitud,
-                        "tramite",
-                        $event.target.multiple
-                          ? $$selectedVal
-                          : $$selectedVal[0]
-                      )
+                      _vm.tramite = $event.target.multiple
+                        ? $$selectedVal
+                        : $$selectedVal[0]
                     }
                   }
                 },
@@ -51317,19 +51404,19 @@ var render = function() {
                   {
                     name: "model",
                     rawName: "v-model",
-                    value: _vm.solicitud.descripcion,
-                    expression: "solicitud.descripcion"
+                    value: _vm.descripcion,
+                    expression: "descripcion"
                   }
                 ],
                 staticClass: "form-control",
                 attrs: { id: "descripcion", rows: "3", name: "descripcion" },
-                domProps: { value: _vm.solicitud.descripcion },
+                domProps: { value: _vm.descripcion },
                 on: {
                   input: function($event) {
                     if ($event.target.composing) {
                       return
                     }
-                    _vm.$set(_vm.solicitud, "descripcion", $event.target.value)
+                    _vm.descripcion = $event.target.value
                   }
                 }
               })

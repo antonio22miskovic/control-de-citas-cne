@@ -31,6 +31,18 @@ class HomeController extends Controller
 
         $user  = User::where('ci',$ci)->where('rol_id',3)->first();
 
+        if (is_null($user)) {
+
+           return response()->json(1);
+        }
+
         return $user;
+    }
+
+    public function id($ci){
+
+        $id = User::where('ci',$ci)->first();
+
+        return $id;
     }
 }

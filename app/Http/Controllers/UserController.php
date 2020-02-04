@@ -68,21 +68,16 @@ class UserController extends Controller
         // que pasa si es administrador
         //significa que solo pude registrar a los encargados
         if ($user->rol_id === 1) {
-                // si el admin registra al encargado sin foto
-                if ($request['avatar'] === null) {
-                        // se asigna una foto por defecto
-                        $avatar = 'defect.jpg';
-
-                }
 
                 $avatar = $request['avatar'];
-
+                $usuario = $request['usuario'];
                 $rol = 2;
 
         }else{
 
              //si no es el admin es un usuario encargado registrando a un usuario por una cita
             $avatar = null;
+            $usuario = null;
             $rol = 3;
 
         }
@@ -91,7 +86,7 @@ class UserController extends Controller
 
         'name' => $request['name'] ,
         'apellido' => $request['apellido'] ,
-        'usuario' => $request['usuario'] ,
+        'usuario' => $usuario ,
         'ci' => $request['ci'] ,
         'avatar' => $avatar,
         'email' => $request['email'] ,
@@ -105,14 +100,8 @@ class UserController extends Controller
          return response()->json(['mensaje' => 'se ah registrado con exito'],201);
 
      }
-      $cliente =  Cliente::create([
 
-           'user_id' => $usuario->id,
-
-        ]);
-
-
-        return response()->json(['cliente' => $cliente , 'user' => '$usuario'],201);
+        return response()->json($usuario,201);
 
     }
 
