@@ -3,14 +3,15 @@
 		<div class="card mt-4 rounded-sm">
 
   			<div class="card-header">
-    			<h5 class="card-title mt-1 p-0">Registro de solicitud</h5>
+    			<h5 class="card-title mt-1 p-0 text-center">Registro de solicitud</h5>
 
     			<form @submit.prevent="busqueda()">
+    				<label> si ah realizado una solicitud previa por favor introdusza  su cedula de identidad : </label>
     				<input type="text" v-model="buscar">
-    				<input type="submit">
+    				<input type="submit" class="btn-primary" value="buscar">
     			</form>
-    			<p v-if="mensajebusqueda === true"> no se encuentra registrado por favor ingrese sus datos</p>
-    			<p v-if="mensajenulo === true"> debe introcir un numero de cedula </p>
+    			<p v-if="mensajebusqueda === true" class="text-center text-danger"> verifique sus datos</p>
+    			<p v-if="mensajenulo === true" class="text-center text-danger"> debe introcir un numero de cedula </p>
 
   			</div>
 
@@ -28,11 +29,14 @@
 		  				<div class="form-group col-md-6">
 		  					<label for="cedula">cedula</label>
 		  					<input type="text" class="form-control" id="cedula" placeholder="cedula" name="cedula" v-model="cedula">
+
 		  				</div>
 		  				<div class="form-group col-md-6">
 		  					<label for="email">email</label>
 		  					<input type="email" class="form-control" id="email" placeholder="email" name="email" v-model="email">
+
 		  				</div>
+		  					<h3 class="text-center text-danger" v-if="validacion === true"> debe introducir todos los datos requeridos</h3>
 		  											<h5> datos para la solicitud </h5>
 		  			</div>
 		  			<div class="form-group">
@@ -51,10 +55,22 @@
 		  			</div>
 
 		  			<div class="form-group">
+		  				<label for="inputAddress">estatus</label>
+		  				<select class="form-control" placeholder="estutus" v-model="status">
+		  					<option value="activo"> activio </option>
+		  					<option value="inactivo"> inactivo </option>
+		  				</select>
+
+		  			</div>
+
+		  			<div class="form-group">
 		  				<label for="descripcion">Descripcion de solicitud.</label>
 		  				<textarea class="form-control" id="descripcion" rows="3" name="descripcion" v-model="descripcion"></textarea>
 		  			</div>
-		  			<button type="submit" class="btn btn-primary" name="registrar-solicitud">Registrar</button>
+		  			<div class="text-center">
+		  				<button type="submit" class="btn btn-primary" name="registrar-solicitud">Registrar</button>
+		  			</div>
+
 		  		</form>
 		  	</div>
 		</div>
@@ -62,7 +78,7 @@
 </template>
 
 <script>
-
+	import Swal from 'sweetalert2'
     export default {
 
     	 name:'RegistroSolicitud',
@@ -84,7 +100,7 @@
         			mensajebusqueda: false,
         			mensajenulo:false,
 
-
+        			status:'',
         			solicitud:'',
         			respuesta:'',
         			descripcion:'',
@@ -97,6 +113,7 @@
         		resultadobuscar:[],
         		buscar:'',
         		iddelinsert:[],
+        		validacion: false,
 
 
         	}
@@ -105,14 +122,22 @@
 
         	registrar(){
 
+        		if (this.name.length === 0 || this.apellido.length === 0 || this.cedula.length === 0 || this.email.length === 0 ||
+        			this.solicitud.length === 0 || this.status.length === 0 || this.respuesta.length === 0 || this.descripcion === 0 ||
+        			this.tramite.length === 0 ) {
+
+        			this.validacion = true
+
+        		}else{
+
         		if (this.validarregistro === true) {
 
         			axios.get('cliente/'+this.idparacliente)
         			.then((response) => {
 
-        			var e = response.data;
+        			this.cliente = response.data;
 
-        			if (e === 1) {
+        			if (this.cliente.length === 0) {
 
         				let clien = {
 
@@ -125,7 +150,7 @@
 
         					this.cliente = response.data
 
-        					console.log(this.cliente)
+
 
         					if (this.cliente.length === 0) {
 
@@ -140,7 +165,7 @@
         				});
 
         			}else{
-        					console.log('2')
+
         				this.registrarsolicitud();
         			}
 
@@ -175,31 +200,49 @@
         				this.registrar();
 
         			})
-        			.catch((error) => {
-      				  if (error.response) {
-             				 // The request was made and the server responded with a status code
-              				// that falls out of the range of 2xx
-             		 		 console.log(error.response.data);
-             				 console.log(error.response.status);
-             				 console.log(error.response.headers);
 
-           			 } else if (error.request) {
-              				// The request was made but no response was received
-              				// `error.request` is an instance of XMLHttpRequest in the browser and an instance of
-              				// http.ClientRequest in node.js
-              				console.log(error.request);
-           			 } else {
-              				// Something happened in setting up the request that triggered an Error
-             		 		console.log('Error', error.message);
-            		 }
-  				 })
         		}
-
+        	  }
         	},
 
         	registrarsolicitud(){
 
-        		console.log('llege a la solicitud')
+        		let solici = {
+
+					'solicitud': this.solicitud,
+					'respuesta': this.respuesta,
+					'descripcion': this.descripcion,
+					'status': this.status,
+					'tramite': this.tramite,
+					'cliente': this.cliente.id
+				}
+					axios.post('solicitud',solici).then(res =>{
+
+                 			Swal.fire({
+
+                				position: 'center',
+                				 icon: 'success',
+                				title: 'solicitud registrada con exito',
+                				showConfirmButton: false,
+
+                			})
+									this.name = null
+									this.apellido = null
+									this.cedula = null
+									this.email = null
+									this.solicitud  = null
+									this.respuesta = null
+									this.descripcion = null
+									this.status = null
+									this.tramite = null
+									this.cliente.id = null
+									this.validarregistro = false
+									this.mensajebusqueda = false
+        							this.mensajenulo = false
+        							this.buscar = null
+        							this.validacion = false
+
+					});
 
         	},
 
@@ -219,6 +262,7 @@
 
         			this.mensajenulo = true
         			this.mensajebusqueda = false;
+        			this.validacion = false
 
         		}else{
 
@@ -245,7 +289,7 @@
         			this.mensajebusqueda = false;
         			this.mensajenulo = false;
         			this.buscar = null;
-
+        			this.validacion = false
         		}
 
         	});
@@ -254,7 +298,11 @@
 
         },
 
-    }
+    },
+     computed:{
+
+
+     },
 
     }
 </script>

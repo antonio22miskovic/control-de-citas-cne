@@ -45,4 +45,16 @@ class HomeController extends Controller
 
         return $id;
     }
+
+    public function validarci($ci){
+
+        $validacion = User::where('ci',$ci)->first();
+
+        if (is_null($validacion)) {
+            $var = null;
+            return response()->json($var);
+        }
+
+        return response()->json($validacion);
+    }
 }

@@ -36,7 +36,7 @@ class SolicitudController extends Controller
 
     public function store(Request $request)
     {
-
+        $user = Auth::user();
         Solicitud::create([
 
         'fecha' => Carbon::now(),
@@ -44,7 +44,8 @@ class SolicitudController extends Controller
         'respuesta' => $request['respuesta'],
         'descripcion' => $request['descripcion'],
         'tramite_id' => $request['tramite'],
-        'user_id' => $request['user_id'],
+        'status' => $request['status'],
+        'user_id' => $user->id,
         'cliente_id' => $request['cliente'],
 
         ]);

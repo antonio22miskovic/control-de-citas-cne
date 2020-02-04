@@ -11777,6 +11777,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'ListadoSolicitud',
   mounted: function mounted() {
@@ -11908,6 +11909,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_0__);
 //
 //
 //
@@ -11971,6 +11974,23 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'RegistroSolicitud',
   mounted: function mounted() {
@@ -11986,6 +12006,7 @@ __webpack_require__.r(__webpack_exports__);
       validarregistro: false,
       mensajebusqueda: false,
       mensajenulo: false,
+      status: '',
       solicitud: '',
       respuesta: '',
       descripcion: '',
@@ -11995,112 +12016,133 @@ __webpack_require__.r(__webpack_exports__);
       tramites: [],
       resultadobuscar: [],
       buscar: '',
-      iddelinsert: []
+      iddelinsert: [],
+      validacion: false
     };
   },
   methods: {
     registrar: function registrar() {
       var _this = this;
 
-      if (this.validarregistro === true) {
-        axios.get('cliente/' + this.idparacliente).then(function (response) {
-          var e = response.data;
-
-          if (e === 1) {
-            var clien = {
-              'user_id': _this.idparacliente
-            };
-            axios.post('cliente', clien).then(function (response) {
-              _this.cliente = response.data;
-              console.log(_this.cliente);
-
-              if (_this.cliente.length === 0) {
-                console.log('se produjo un error al registrarlo como cliente');
-              } else {
-                _this.registrarsolicitud();
-              }
-            });
-          } else {
-            console.log('2');
-
-            _this.registrarsolicitud();
-          }
-        });
+      if (this.name.length === 0 || this.apellido.length === 0 || this.cedula.length === 0 || this.email.length === 0 || this.solicitud.length === 0 || this.status.length === 0 || this.respuesta.length === 0 || this.descripcion === 0 || this.tramite.length === 0) {
+        this.validacion = true;
       } else {
-        var data = {
-          'name': this.name,
-          'apellido': this.apellido,
-          'ci': this.cedula,
-          'email': this.email
-        };
-        axios.post('user', data).then(function (response) {
-          _this.iddelinsert = response.data;
-          _this.validarregistro = true;
-          _this.iddelinsert.id = _this.idparacliente;
-          axios.get('id/' + _this.iddelinsert.ci).then(function (response) {
-            var valor = response.data;
-            _this.idparacliente = valor.id;
-          });
+        if (this.validarregistro === true) {
+          axios.get('cliente/' + this.idparacliente).then(function (response) {
+            _this.cliente = response.data;
 
-          _this.registrar();
-        })["catch"](function (error) {
-          if (error.response) {
-            // The request was made and the server responded with a status code
-            // that falls out of the range of 2xx
-            console.log(error.response.data);
-            console.log(error.response.status);
-            console.log(error.response.headers);
-          } else if (error.request) {
-            // The request was made but no response was received
-            // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
-            // http.ClientRequest in node.js
-            console.log(error.request);
-          } else {
-            // Something happened in setting up the request that triggered an Error
-            console.log('Error', error.message);
-          }
-        });
+            if (_this.cliente.length === 0) {
+              var clien = {
+                'user_id': _this.idparacliente
+              };
+              axios.post('cliente', clien).then(function (response) {
+                _this.cliente = response.data;
+
+                if (_this.cliente.length === 0) {
+                  console.log('se produjo un error al registrarlo como cliente');
+                } else {
+                  _this.registrarsolicitud();
+                }
+              });
+            } else {
+              _this.registrarsolicitud();
+            }
+          });
+        } else {
+          var data = {
+            'name': this.name,
+            'apellido': this.apellido,
+            'ci': this.cedula,
+            'email': this.email
+          };
+          axios.post('user', data).then(function (response) {
+            _this.iddelinsert = response.data;
+            _this.validarregistro = true;
+            _this.iddelinsert.id = _this.idparacliente;
+            axios.get('id/' + _this.iddelinsert.ci).then(function (response) {
+              var valor = response.data;
+              _this.idparacliente = valor.id;
+            });
+
+            _this.registrar();
+          });
+        }
       }
     },
     registrarsolicitud: function registrarsolicitud() {
-      console.log('llege a la solicitud');
-    },
-    listadotramites: function listadotramites() {
       var _this2 = this;
 
+      var solici = {
+        'solicitud': this.solicitud,
+        'respuesta': this.respuesta,
+        'descripcion': this.descripcion,
+        'status': this.status,
+        'tramite': this.tramite,
+        'cliente': this.cliente.id
+      };
+      axios.post('solicitud', solici).then(function (res) {
+        sweetalert2__WEBPACK_IMPORTED_MODULE_0___default.a.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'solicitud registrada con exito',
+          showConfirmButton: false
+        });
+        _this2.name = null;
+        _this2.apellido = null;
+        _this2.cedula = null;
+        _this2.email = null;
+        _this2.solicitud = null;
+        _this2.respuesta = null;
+        _this2.descripcion = null;
+        _this2.status = null;
+        _this2.tramite = null;
+        _this2.cliente.id = null;
+        _this2.validarregistro = false;
+        _this2.mensajebusqueda = false;
+        _this2.mensajenulo = false;
+        _this2.buscar = null;
+        _this2.validacion = false;
+      });
+    },
+    listadotramites: function listadotramites() {
+      var _this3 = this;
+
       axios.get('tramite').then(function (response) {
-        _this2.tramites = response.data;
+        _this3.tramites = response.data;
       });
     },
     busqueda: function busqueda() {
-      var _this3 = this;
+      var _this4 = this;
 
       if (this.buscar.length === 0) {
         this.mensajenulo = true;
         this.mensajebusqueda = false;
+        this.validacion = false;
       } else {
         this.mensajenulo = false;
         axios.get('buscar/' + this.buscar).then(function (response) {
           var r = response.data;
 
           if (r === 1) {
-            _this3.mensajebusqueda = true;
+            _this4.mensajebusqueda = true;
           } else {
-            _this3.resultadobuscar = response.data;
-            _this3.name = _this3.resultadobuscar.name;
-            _this3.apellido = _this3.resultadobuscar.apellido;
-            _this3.cedula = _this3.resultadobuscar.ci;
-            _this3.email = _this3.resultadobuscar.email;
-            _this3.idparacliente = _this3.resultadobuscar.id;
-            _this3.validarregistro = true;
-            _this3.mensajebusqueda = false;
-            _this3.mensajenulo = false;
-            _this3.buscar = null;
+            _this4.resultadobuscar = response.data;
+            _this4.name = _this4.resultadobuscar.name;
+            _this4.apellido = _this4.resultadobuscar.apellido;
+            _this4.cedula = _this4.resultadobuscar.ci;
+            _this4.email = _this4.resultadobuscar.email;
+            _this4.idparacliente = _this4.resultadobuscar.id;
+            _this4.validarregistro = true;
+            _this4.mensajebusqueda = false;
+            _this4.mensajenulo = false;
+            _this4.buscar = null;
+            _this4.validacion = false;
           }
         });
       }
     }
-  }
+  },
+  computed: {}
 });
 
 /***/ }),
@@ -50785,7 +50827,8 @@ var render = function() {
                     },
                     [
                       _vm._v(
-                        "Solicitud: " + _vm._s(this.detallesolicitud.solicitud)
+                        "Solicitud:     " +
+                          _vm._s(this.detallesolicitud.solicitud)
                       )
                     ]
                   ),
@@ -50796,34 +50839,46 @@ var render = function() {
                 _c("div", { staticClass: "modal-body" }, [
                   _c("div", [
                     _c("p", [
-                      _vm._v(" fecha:" + _vm._s(this.detallesolicitud.fecha))
+                      _vm._v(" fecha:  " + _vm._s(this.detallesolicitud.fecha))
                     ]),
                     _vm._v(" "),
                     _c("p", [
                       _vm._v(
-                        " respuesta:" + _vm._s(this.detallesolicitud.respuesta)
+                        " respuesta:  " +
+                          _vm._s(this.detallesolicitud.respuesta)
                       )
                     ]),
                     _vm._v(" "),
                     _c("p", [
-                      _vm._v(" tramite:" + _vm._s(this.tramite.tramite))
+                      _vm._v(" tramite:  " + _vm._s(this.tramite.tramite))
                     ]),
                     _vm._v(" "),
                     _c("p", [
-                      _vm._v(" estatus:" + _vm._s(this.detallesolicitud.status))
+                      _vm._v(
+                        " estatus:  " + _vm._s(this.detallesolicitud.status)
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("p", [
+                      _vm._v(
+                        " descripcion:  " +
+                          _vm._s(this.detallesolicitud.descripcion)
+                      )
                     ]),
                     _vm._v(" "),
                     _c("h5", [_vm._v(" datos del solicitante ")]),
                     _vm._v(" "),
-                    _c("p", [_vm._v(" nombre:  " + _vm._s(this.cliente.name))]),
-                    _vm._v(" "),
                     _c("p", [
-                      _vm._v(" apellido:  " + _vm._s(this.cliente.apellido))
+                      _vm._v(" nombre:   " + _vm._s(this.cliente.name))
                     ]),
                     _vm._v(" "),
-                    _c("p", [_vm._v(" cedula: " + _vm._s(this.cliente.ci))]),
+                    _c("p", [
+                      _vm._v(" apellido:   " + _vm._s(this.cliente.apellido))
+                    ]),
                     _vm._v(" "),
-                    _c("p", [_vm._v(" correo:" + _vm._s(this.cliente.email))])
+                    _c("p", [_vm._v(" cedula:  " + _vm._s(this.cliente.ci))]),
+                    _vm._v(" "),
+                    _c("p", [_vm._v(" correo:  " + _vm._s(this.cliente.email))])
                   ])
                 ]),
                 _vm._v(" "),
@@ -51100,7 +51155,7 @@ var render = function() {
   return _c("div", { staticClass: "container" }, [
     _c("div", { staticClass: "card mt-4 rounded-sm" }, [
       _c("div", { staticClass: "card-header" }, [
-        _c("h5", { staticClass: "card-title mt-1 p-0" }, [
+        _c("h5", { staticClass: "card-title mt-1 p-0 text-center" }, [
           _vm._v("Registro de solicitud")
         ]),
         _vm._v(" "),
@@ -51115,6 +51170,12 @@ var render = function() {
             }
           },
           [
+            _c("label", [
+              _vm._v(
+                " si ah realizado una solicitud previa por favor introdusza  su cedula de identidad : "
+              )
+            ]),
+            _vm._v(" "),
             _c("input", {
               directives: [
                 {
@@ -51136,18 +51197,23 @@ var render = function() {
               }
             }),
             _vm._v(" "),
-            _c("input", { attrs: { type: "submit" } })
+            _c("input", {
+              staticClass: "btn-primary",
+              attrs: { type: "submit", value: "buscar" }
+            })
           ]
         ),
         _vm._v(" "),
         _vm.mensajebusqueda === true
-          ? _c("p", [
-              _vm._v(" no se encuentra registrado por favor ingrese sus datos")
+          ? _c("p", { staticClass: "text-center text-danger" }, [
+              _vm._v(" verifique sus datos")
             ])
           : _vm._e(),
         _vm._v(" "),
         _vm.mensajenulo === true
-          ? _c("p", [_vm._v(" debe introcir un numero de cedula ")])
+          ? _c("p", { staticClass: "text-center text-danger" }, [
+              _vm._v(" debe introcir un numero de cedula ")
+            ])
           : _vm._e()
       ]),
       _vm._v(" "),
@@ -51290,6 +51356,12 @@ var render = function() {
                 })
               ]),
               _vm._v(" "),
+              _vm.validacion === true
+                ? _c("h3", { staticClass: "text-center text-danger" }, [
+                    _vm._v(" debe introducir todos los datos requeridos")
+                  ])
+                : _vm._e(),
+              _vm._v(" "),
               _c("h5", [_vm._v(" datos para la solicitud ")])
             ]),
             _vm._v(" "),
@@ -51395,6 +51467,52 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "form-group" }, [
+              _c("label", { attrs: { for: "inputAddress" } }, [
+                _vm._v("estatus")
+              ]),
+              _vm._v(" "),
+              _c(
+                "select",
+                {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.status,
+                      expression: "status"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { placeholder: "estutus" },
+                  on: {
+                    change: function($event) {
+                      var $$selectedVal = Array.prototype.filter
+                        .call($event.target.options, function(o) {
+                          return o.selected
+                        })
+                        .map(function(o) {
+                          var val = "_value" in o ? o._value : o.value
+                          return val
+                        })
+                      _vm.status = $event.target.multiple
+                        ? $$selectedVal
+                        : $$selectedVal[0]
+                    }
+                  }
+                },
+                [
+                  _c("option", { attrs: { value: "activo" } }, [
+                    _vm._v(" activio ")
+                  ]),
+                  _vm._v(" "),
+                  _c("option", { attrs: { value: "inactivo" } }, [
+                    _vm._v(" inactivo ")
+                  ])
+                ]
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group" }, [
               _c("label", { attrs: { for: "descripcion" } }, [
                 _vm._v("Descripcion de solicitud.")
               ]),
@@ -51422,21 +51540,30 @@ var render = function() {
               })
             ]),
             _vm._v(" "),
-            _c(
-              "button",
-              {
-                staticClass: "btn btn-primary",
-                attrs: { type: "submit", name: "registrar-solicitud" }
-              },
-              [_vm._v("Registrar")]
-            )
+            _vm._m(0)
           ]
         )
       ])
     ])
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "text-center" }, [
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-primary",
+          attrs: { type: "submit", name: "registrar-solicitud" }
+        },
+        [_vm._v("Registrar")]
+      )
+    ])
+  }
+]
 render._withStripped = true
 
 

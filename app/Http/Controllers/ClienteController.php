@@ -55,7 +55,7 @@ class ClienteController extends Controller
         $cliente = Cliente::where('user_id',$id)->first();
 
         if (is_null($cliente)) {
-            $var = 1;
+            $var = 0;
              return response()->json($var);
 
         }
