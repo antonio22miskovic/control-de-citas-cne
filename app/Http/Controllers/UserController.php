@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Cliente;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -86,7 +87,7 @@ class UserController extends Controller
 
         }
 
-        User::create([
+     $usuario =  User::create([
 
         'name' => $request['name'] ,
         'apellido' => $request['apellido'] ,
@@ -99,7 +100,19 @@ class UserController extends Controller
 
         ]);
 
-        return response()->json(['mensaje' => 'se ah registrado con exito'],201);
+     if ($user->rol_id === 1) {
+
+         return response()->json(['mensaje' => 'se ah registrado con exito'],201);
+
+     }
+      $cliente =  Cliente::create([
+
+           'user_id' => $usuario->id,
+
+        ]);
+
+
+        return response()->json(['cliente' => $cliente , 'user' => '$usuario'],201);
 
     }
 

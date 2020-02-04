@@ -20,6 +20,7 @@ class Solicitud extends Model
 		'descripcion',
 		'tramite_id',
 		'user_id',
+		'cliente_id'
 
 
 	];

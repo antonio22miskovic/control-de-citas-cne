@@ -10,11 +10,7 @@ use Illuminate\Support\Facades\Auth;
 
 class SolicitudController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index(Request $request)
     {
         $user = Auth::user();
@@ -38,18 +34,25 @@ class SolicitudController extends Controller
 
     }
 
-
     public function store(Request $request)
     {
-        //
+
+        Solicitud::create([
+
+        'fecha' => Carbon::now(),
+        'solicitud' => $request['solicitud'],
+        'respuesta' => $request['respuesta'],
+        'descripcion' => $request['descripcion'],
+        'tramite_id' => $request['tramite'],
+        'user_id' => $request['user_id'],
+        'cliente_id' => $request['cliente'],
+
+        ]);
+
+         return response()->json(['mensaje' => 'solicitud registrada con exito '],201);
+
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         $solicitud = Solicitud::find($id);
@@ -68,37 +71,15 @@ class SolicitudController extends Controller
 
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function update(Request $request, $id)
     {
-        //
+
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
-        //
+
     }
 }

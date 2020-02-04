@@ -175,29 +175,29 @@
                     return [];
                 }
 
-var from = this.paginate.current_page - 5 //todo
-if (from < 1) {
-    from = 1;
-}
+               var from = this.paginate.current_page - 5 //todo
+                if (from < 1) {
+                   from = 1;
+                }
 
-var to = from + (5 * 5);
-if (to >= this.paginate.last_page) {
-    to = this.paginate.last_page;
-}
+                 var to = from + (5 * 5);
+                  if (to >= this.paginate.last_page) {
+                      to = this.paginate.last_page;
+                  }
 
-var pageArray = [];
+                  var pageArray = [];
 
-while(from <= to){
+                   while(from <= to){
 
-    pageArray.push(from);
-    from++;
-}
+                      pageArray.push(from);
+                        from++;
+                  }
 
-return pageArray;
+                     return pageArray;
 
-}
+            }
 
-},
+        },
 
 
 }

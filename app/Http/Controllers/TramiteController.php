@@ -9,27 +9,10 @@ use Illuminate\Http\Request;
 class TramiteController extends Controller
 {
 
-    public function index(Request $request)
+    public function index()
     {
 
-         $tramite = Tramite::orderBy('id', 'desc')->paginate(5);
-
-        return [
-
-            'paginate' => [
-
-                'total' => $tramite->total(),
-                'current_page' => $tramite->currentPage(),
-                'per_page' => $tramite->perPage(),
-                'last_page' => $tramite->lastPage(),
-                'from' => $tramite->firstItem(),
-                'to' => $tramite->lastPage(),
-
-            ],
-
-           'tramite' => $tramite
-
-        ];
+        return Tramite::all();
 
     }
 

@@ -11941,9 +11941,85 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  mounted: function mounted() {},
-  name: 'RegistroSolicitud'
+  name: 'RegistroSolicitud',
+  mounted: function mounted() {
+    this.listadotramites();
+  },
+  data: function data() {
+    return {
+      usuario: [{
+        'name': '',
+        'apellido': '',
+        'cedula': '',
+        'email': ''
+      }],
+      solicitud: [{
+        'solicitud': '',
+        'respuesta': '',
+        'descripcion': '',
+        'tramite': '',
+        'user': '',
+        'cliente': ''
+      }],
+      tramites: [],
+      resultadobuscar: [],
+      buscar: ''
+    };
+  },
+  methods: {
+    registrar: function registrar() {
+      console.log(this.usuario);
+      console.log(this.solicitud);
+    },
+    listadotramites: function listadotramites() {
+      var _this = this;
+
+      axios.get('tramite').then(function (response) {
+        _this.tramites = response.data;
+      });
+    },
+    busqueda: function busqueda() {
+      var _this2 = this;
+
+      axios.get('buscar/' + this.buscar).then(function (response) {
+        _this2.resultadobuscar = response.data;
+        console.log(_this2.resultadobuscar);
+        _this2.usuario.name = _this2.resultadobuscar.name;
+        _this2.usuario.apellido = _this2.resultadobuscar.apellido;
+        _this2.usuario.cedula = _this2.resultadobuscar.cedula;
+        _this2.usuario.email = _this2.resultadobuscar.email;
+      });
+    }
+  }
 });
 
 /***/ }),
@@ -50940,78 +51016,321 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container" }, [
-      _c("div", { staticClass: "card mt-4 rounded-sm" }, [
-        _c("div", { staticClass: "card-header" }, [
-          _c("h5", { staticClass: "card-title mt-1 p-0" }, [
-            _vm._v("Registro de solicitud")
-          ])
+  return _c("div", { staticClass: "container" }, [
+    _c("div", { staticClass: "card mt-4 rounded-sm" }, [
+      _c("div", { staticClass: "card-header" }, [
+        _c("h5", { staticClass: "card-title mt-1 p-0" }, [
+          _vm._v("Registro de solicitud")
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "card-body" }, [
-          _c("form", [
+        _c(
+          "form",
+          {
+            on: {
+              submit: function($event) {
+                $event.preventDefault()
+                return _vm.busqueda()
+              }
+            }
+          },
+          [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.buscar,
+                  expression: "buscar"
+                }
+              ],
+              attrs: { type: "text" },
+              domProps: { value: _vm.buscar },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.buscar = $event.target.value
+                }
+              }
+            }),
+            _vm._v(" "),
+            _c("input", { attrs: { type: "submit" } })
+          ]
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "card-body" }, [
+        _c(
+          "form",
+          {
+            on: {
+              submit: function($event) {
+                $event.preventDefault()
+                return _vm.registrar($event)
+              }
+            }
+          },
+          [
             _c("div", { staticClass: "form-row" }, [
               _c("div", { staticClass: "form-group col-md-6" }, [
-                _c("label", { attrs: { for: "inputEmail4" } }, [
-                  _vm._v("Solicitud")
-                ]),
+                _c("label", { attrs: { for: "nombre" } }, [_vm._v("nombre")]),
                 _vm._v(" "),
                 _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.usuario.nombre,
+                      expression: "usuario.nombre"
+                    }
+                  ],
                   staticClass: "form-control",
                   attrs: {
                     type: "text",
-                    id: "inputEmail4",
-                    placeholder: "Solicitud",
-                    name: "solicitud"
+                    id: "nombre",
+                    placeholder: "nombre",
+                    name: "nombre"
+                  },
+                  domProps: { value: _vm.usuario.nombre },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.usuario, "nombre", $event.target.value)
+                    }
                   }
                 })
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "form-group col-md-6" }, [
-                _c("label", { attrs: { for: "inputPassword4" } }, [
-                  _vm._v("Fecha")
+                _c("label", { attrs: { for: "apellido" } }, [
+                  _vm._v("apellido")
                 ]),
                 _vm._v(" "),
                 _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.usuario.apellido,
+                      expression: "usuario.apellido"
+                    }
+                  ],
                   staticClass: "form-control",
-                  attrs: { type: "date", id: "inputPassword4", name: "fecha" }
+                  attrs: {
+                    type: "text",
+                    id: "apellido",
+                    placeholder: "apellido",
+                    name: "apellido"
+                  },
+                  domProps: { value: _vm.usuario.apellido },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.usuario, "apellido", $event.target.value)
+                    }
+                  }
                 })
-              ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group col-md-6" }, [
+                _c("label", { attrs: { for: "cedula" } }, [_vm._v("cedula")]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.usuario.cedula,
+                      expression: "usuario.cedula"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "text",
+                    id: "cedula",
+                    placeholder: "cedula",
+                    name: "cedula"
+                  },
+                  domProps: { value: _vm.usuario.cedula },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.usuario, "cedula", $event.target.value)
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group col-md-6" }, [
+                _c("label", { attrs: { for: "email" } }, [_vm._v("email")]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.usuario.email,
+                      expression: "usuario.email"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "email",
+                    id: "email",
+                    placeholder: "email",
+                    name: "email"
+                  },
+                  domProps: { value: _vm.usuario.email },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.usuario, "email", $event.target.value)
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("h5", [_vm._v(" datos para la solicitud ")])
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "form-group" }, [
               _c("label", { attrs: { for: "inputAddress" } }, [
-                _vm._v("Respuesta")
+                _vm._v("solicitud")
               ]),
               _vm._v(" "),
               _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.solicitud.solicitud,
+                    expression: "solicitud.solicitud"
+                  }
+                ],
                 staticClass: "form-control",
-                attrs: {
-                  type: "text",
-                  placeholder: "Aqui va la respuesta a la solicitud SI o NO",
-                  readonly: ""
+                attrs: { type: "text", placeholder: "solicitud" },
+                domProps: { value: _vm.solicitud.solicitud },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.solicitud, "solicitud", $event.target.value)
+                  }
                 }
               })
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "form-group" }, [
-              _c("label", { attrs: { for: "descripcionTextarea" } }, [
+              _c("label", { attrs: { for: "inputAddress" } }, [
+                _vm._v("respuesta")
+              ]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.solicitud.respuesta,
+                    expression: "solicitud.respuesta"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { type: "text", placeholder: " respuesta" },
+                domProps: { value: _vm.solicitud.respuesta },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.solicitud, "respuesta", $event.target.value)
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", { attrs: { for: "inputAddress" } }, [
+                _vm._v("tramite")
+              ]),
+              _vm._v(" "),
+              _c(
+                "select",
+                {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.solicitud.tramite,
+                      expression: "solicitud.tramite"
+                    }
+                  ],
+                  staticClass: "form-control ",
+                  attrs: { id: "tramite", name: "tramite" },
+                  on: {
+                    change: function($event) {
+                      var $$selectedVal = Array.prototype.filter
+                        .call($event.target.options, function(o) {
+                          return o.selected
+                        })
+                        .map(function(o) {
+                          var val = "_value" in o ? o._value : o.value
+                          return val
+                        })
+                      _vm.$set(
+                        _vm.solicitud,
+                        "tramite",
+                        $event.target.multiple
+                          ? $$selectedVal
+                          : $$selectedVal[0]
+                      )
+                    }
+                  }
+                },
+                _vm._l(_vm.tramites, function(tramite) {
+                  return _c(
+                    "option",
+                    { key: tramite.id, domProps: { value: tramite.id } },
+                    [_vm._v(_vm._s(tramite.tramite))]
+                  )
+                }),
+                0
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", { attrs: { for: "descripcion" } }, [
                 _vm._v("Descripcion de solicitud.")
               ]),
               _vm._v(" "),
               _c("textarea", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.solicitud.descripcion,
+                    expression: "solicitud.descripcion"
+                  }
+                ],
                 staticClass: "form-control",
-                attrs: {
-                  id: "descripcionTextarea",
-                  rows: "3",
-                  name: "descripcion"
+                attrs: { id: "descripcion", rows: "3", name: "descripcion" },
+                domProps: { value: _vm.solicitud.descripcion },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.solicitud, "descripcion", $event.target.value)
+                  }
                 }
               })
             ]),
@@ -51024,12 +51343,13 @@ var staticRenderFns = [
               },
               [_vm._v("Registrar")]
             )
-          ])
-        ])
+          ]
+        )
       ])
     ])
-  }
-]
+  ])
+}
+var staticRenderFns = []
 render._withStripped = true
 
 
