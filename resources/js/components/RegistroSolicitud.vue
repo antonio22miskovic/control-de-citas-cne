@@ -36,8 +36,13 @@
 		  					<input type="email" class="form-control" id="email" placeholder="email" name="email" v-model="email">
 
 		  				</div>
+		  				<div>
 		  					<h3 class="text-center text-danger" v-if="validacion === true"> debe introducir todos los datos requeridos</h3>
-		  											<h5> datos para la solicitud </h5>
+		  				</div>
+		  				<div>
+		  					<h5> datos para la solicitud </h5>
+		  				</div>
+
 		  			</div>
 		  			<div class="form-group">
 		  				<label for="inputAddress">solicitud</label>

@@ -11990,6 +11990,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'RegistroSolicitud',
@@ -51356,13 +51361,15 @@ var render = function() {
                 })
               ]),
               _vm._v(" "),
-              _vm.validacion === true
-                ? _c("h3", { staticClass: "text-center text-danger" }, [
-                    _vm._v(" debe introducir todos los datos requeridos")
-                  ])
-                : _vm._e(),
+              _c("div", [
+                _vm.validacion === true
+                  ? _c("h3", { staticClass: "text-center text-danger" }, [
+                      _vm._v(" debe introducir todos los datos requeridos")
+                    ])
+                  : _vm._e()
+              ]),
               _vm._v(" "),
-              _c("h5", [_vm._v(" datos para la solicitud ")])
+              _vm._m(0)
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "form-group" }, [
@@ -51540,7 +51547,7 @@ var render = function() {
               })
             ]),
             _vm._v(" "),
-            _vm._m(0)
+            _vm._m(1)
           ]
         )
       ])
@@ -51548,6 +51555,12 @@ var render = function() {
   ])
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [_c("h5", [_vm._v(" datos para la solicitud ")])])
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
