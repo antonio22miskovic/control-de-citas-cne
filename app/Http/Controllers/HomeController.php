@@ -46,15 +46,11 @@ class HomeController extends Controller
         return $id;
     }
 
-    public function validarci($ci){
+    public function notificacion(){
 
-        $validacion = User::where('ci',$ci)->first();
+      return  Notificacion::all();
 
-        if (is_null($validacion)) {
-            $var = null;
-            return response()->json($var);
-        }
-
-        return response()->json($validacion);
     }
+
+
 }

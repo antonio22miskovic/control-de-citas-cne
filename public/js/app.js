@@ -11874,8 +11874,34 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'Notificaciones'
+  name: 'Notificaciones',
+  mounted: function mounted() {
+    this.notificacion();
+  },
+  data: function data() {
+    return {
+      notifica: []
+    };
+  },
+  methods: {
+    notificacion: function notificacion() {
+      var _this = this;
+
+      axios.get('notificacion').then(function (response) {
+        _this.notifica = response.data;
+        console.log(_this.notifica);
+      });
+    }
+  }
 });
 
 /***/ }),
@@ -11889,6 +11915,33 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -51095,16 +51148,31 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c(
+    "div",
+    _vm._l(_vm.notifica, function(notifi) {
+      return _c(
+        "div",
+        {
+          key: notifi.id,
+          staticClass: "alert alert-success",
+          attrs: { role: "alert" }
+        },
+        [
+          _c("h4", { staticClass: "alert-heading" }, [
+            _vm._v(_vm._s(notifi.asunto) + "!")
+          ]),
+          _vm._v(" "),
+          _c("p", [_vm._v(_vm._s(notifi.descripcion) + ".")]),
+          _vm._v(" "),
+          _c("hr")
+        ]
+      )
+    }),
+    0
+  )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", [_c("p", [_vm._v("notificaciones")])])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -51133,7 +51201,88 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", [_c("p", [_vm._v("estoy en el perfil")])])
+    return _c("div", { staticClass: "container" }, [
+      _c("div", { staticClass: "card mt-4" }, [
+        _c("div", { staticClass: "card-header" }, [
+          _c("h4", { staticClass: "h4" }, [_vm._v("Registro de perfil")])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "card-body" }, [
+          _c("form", [
+            _c("div", { staticClass: "form-row" }, [
+              _c("div", { staticClass: "form-group col-md-6" }, [
+                _c("label", { attrs: { for: "inputEmail4" } }, [
+                  _vm._v("Nombres")
+                ]),
+                _vm._v(" "),
+                _c("input", {
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "email",
+                    id: "inputEmail4",
+                    placeholder: "Nombres...",
+                    name: "nombre"
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group col-md-6" }, [
+                _c("label", { attrs: { for: "inputPassword4" } }, [
+                  _vm._v("Apellidos")
+                ]),
+                _vm._v(" "),
+                _c("input", {
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "password",
+                    id: "inputPassword4",
+                    placeholder: "Apellidos...",
+                    name: "apellido"
+                  }
+                })
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", { attrs: { for: "inputAddress" } }, [
+                _vm._v("Cedula de identidad")
+              ]),
+              _vm._v(" "),
+              _c("input", {
+                staticClass: "form-control",
+                attrs: {
+                  type: "text",
+                  id: "inputAddress",
+                  placeholder: "Cedula de identidad",
+                  name: "cedula"
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", { attrs: { for: "inputAddress2" } }, [
+                _vm._v("Correo")
+              ]),
+              _vm._v(" "),
+              _c("input", {
+                staticClass: "form-control",
+                attrs: {
+                  type: "email",
+                  id: "inputAddress2",
+                  placeholder: "Correo electronico"
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c(
+              "button",
+              { staticClass: "btn btn-primary ", attrs: { type: "submit" } },
+              [_vm._v("Guardar")]
+            )
+          ])
+        ])
+      ])
+    ])
   }
 ]
 render._withStripped = true
