@@ -11898,7 +11898,6 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.get('notificacion').then(function (response) {
         _this.notifica = response.data;
-        console.log(_this.notifica);
       });
     }
   }

@@ -38,7 +38,7 @@
 				.then((response) => {
 
 					this.notifica = response.data
-					console.log(this.notifica)
+
 
 				});
 			}
