@@ -11874,6 +11874,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Notificaciones'
 });
@@ -51124,7 +51136,39 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", [_c("p", [_vm._v("notificaciones")])])
+    return _c("div", { staticClass: "container p-3" }, [
+      _c(
+        "div",
+        { staticClass: "alert alert-success", attrs: { role: "alert" } },
+        [
+          _c("h4", { staticClass: "alert-heading" }, [
+            _vm._v("Notificaciones si!")
+          ]),
+          _vm._v(" "),
+          _c("p", [_vm._v("Aqui va el texto de la notificacion.")]),
+          _vm._v(" "),
+          _c("hr"),
+          _vm._v(" "),
+          _c("p", [_vm._v("Aqui va el texto de la notificacion.")])
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "alert alert-danger", attrs: { role: "alert" } },
+        [
+          _c("h4", { staticClass: "alert-heading" }, [
+            _vm._v("Notificaciones no!")
+          ]),
+          _vm._v(" "),
+          _c("p", [_vm._v("Aqui va el texto de la notificacion.")]),
+          _vm._v(" "),
+          _c("hr"),
+          _vm._v(" "),
+          _c("p", [_vm._v("Aqui va el texto de la notificacion.")])
+        ]
+      )
+    ])
   }
 ]
 render._withStripped = true
