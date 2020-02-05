@@ -11879,13 +11879,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Notificaciones'
 });
@@ -11934,7 +11927,25 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'Perfil'
+  name: 'Perfil',
+  mounted: function mounted() {
+    this.perfil();
+  },
+  data: function data() {
+    return {
+      dataperfil: []
+    };
+  },
+  methods: {
+    perfil: function perfil() {
+      var _this = this;
+
+      axios.get('perfil').then(function (response) {
+        _this.dataperfil = response.data;
+        console.log(_this.dataperfil);
+      });
+    }
+  }
 });
 
 /***/ }),
@@ -51136,29 +51147,13 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container p-3" }, [
+    return _c("div", { staticClass: "container ml-4 p-3" }, [
       _c(
         "div",
         { staticClass: "alert alert-success", attrs: { role: "alert" } },
         [
           _c("h4", { staticClass: "alert-heading" }, [
             _vm._v("Notificaciones si!")
-          ]),
-          _vm._v(" "),
-          _c("p", [_vm._v("Aqui va el texto de la notificacion.")]),
-          _vm._v(" "),
-          _c("hr"),
-          _vm._v(" "),
-          _c("p", [_vm._v("Aqui va el texto de la notificacion.")])
-        ]
-      ),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "alert alert-danger", attrs: { role: "alert" } },
-        [
-          _c("h4", { staticClass: "alert-heading" }, [
-            _vm._v("Notificaciones no!")
           ]),
           _vm._v(" "),
           _c("p", [_vm._v("Aqui va el texto de la notificacion.")]),
@@ -51202,7 +51197,7 @@ var staticRenderFns = [
     return _c("div", { staticClass: "container" }, [
       _c("div", { staticClass: "card mt-4" }, [
         _c("div", { staticClass: "card-header" }, [
-          _c("h4", { staticClass: "h4" }, [_vm._v("Registro de perfil")])
+          _c("h4", { staticClass: "h4" }, [_vm._v("Perfil")])
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "card-body" }, [

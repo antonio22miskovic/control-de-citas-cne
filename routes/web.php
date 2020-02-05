@@ -10,6 +10,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/buscar/{ci}', 'HomeController@buscar');
 Route::get('/id/{ci}', 'HomeController@id');
 Route::get('/validarci/{ci?}', 'HomeController@validarci');
+Route::get('/perfil', 'HomeController@perfil');
 Route::resource('user', 'UserController');
 Route::resource('tramite', 'TramiteController');
 Route::resource('rol', 'RolController');

@@ -57,4 +57,9 @@ class HomeController extends Controller
 
         return response()->json($validacion);
     }
+
+    public function perfil()
+    {
+        return $auth = Auth::user();
+    }
 }
