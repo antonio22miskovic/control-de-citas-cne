@@ -11894,6 +11894,33 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Perfil'
 });
@@ -51128,7 +51155,88 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", [_c("p", [_vm._v("estoy en el perfil")])])
+    return _c("div", { staticClass: "container" }, [
+      _c("div", { staticClass: "card mt-4" }, [
+        _c("div", { staticClass: "card-header" }, [
+          _c("h4", { staticClass: "h4" }, [_vm._v("Registro de perfil")])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "card-body" }, [
+          _c("form", [
+            _c("div", { staticClass: "form-row" }, [
+              _c("div", { staticClass: "form-group col-md-6" }, [
+                _c("label", { attrs: { for: "inputEmail4" } }, [
+                  _vm._v("Nombres")
+                ]),
+                _vm._v(" "),
+                _c("input", {
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "email",
+                    id: "inputEmail4",
+                    placeholder: "Nombres...",
+                    name: "nombre"
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group col-md-6" }, [
+                _c("label", { attrs: { for: "inputPassword4" } }, [
+                  _vm._v("Apellidos")
+                ]),
+                _vm._v(" "),
+                _c("input", {
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "password",
+                    id: "inputPassword4",
+                    placeholder: "Apellidos...",
+                    name: "apellido"
+                  }
+                })
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", { attrs: { for: "inputAddress" } }, [
+                _vm._v("Cedula de identidad")
+              ]),
+              _vm._v(" "),
+              _c("input", {
+                staticClass: "form-control",
+                attrs: {
+                  type: "text",
+                  id: "inputAddress",
+                  placeholder: "Cedula de identidad",
+                  name: "cedula"
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", { attrs: { for: "inputAddress2" } }, [
+                _vm._v("Correo")
+              ]),
+              _vm._v(" "),
+              _c("input", {
+                staticClass: "form-control",
+                attrs: {
+                  type: "email",
+                  id: "inputAddress2",
+                  placeholder: "Correo electronico"
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c(
+              "button",
+              { staticClass: "btn btn-primary ", attrs: { type: "submit" } },
+              [_vm._v("Guardar")]
+            )
+          ])
+        ])
+      ])
+    ])
   }
 ]
 render._withStripped = true
@@ -64426,8 +64534,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/heavy/app/pasantia/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/heavy/app/pasantia/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/deyker/Escritorio/pasantia/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/deyker/Escritorio/pasantia/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
