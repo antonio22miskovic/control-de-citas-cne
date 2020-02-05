@@ -10,7 +10,7 @@
                 <a @click="listadocomponent()" class="list-group-item list-group-item-action bg-coco">listado de solicitudes</a>
                 <a @click="estadisticacomponent()" class="list-group-item list-group-item-action bg-coco">Estadisticas</a>
                 <a @click="perfilcomponent()"  class="list-group-item list-group-item-action bg-coco">Perfil</a>
-                <a @click="Notificacionescomponent()" class="list-group-item list-group-item-action bg-coco">Notificaciones</a>
+                <a @click="Notificacionescomponent()" class="list-group-item list-group-item-action bg-coco">Notificaciones {{ this.contador }}</a>
 
 
             </div>
@@ -85,6 +85,7 @@
         Estadisticas,
         Notificaciones,
 
+
         },
 
         data(){
@@ -96,21 +97,32 @@
         		perfil: false,
         		estadistica: false,
         		notificacion: false,
-
+                contador: 0,
         	}
 
         },
 
         mounted () {
-
+            this.contado()
             $("#menu-toggle").click(function(e) {
                 e.preventDefault();
                 $("#wrapper").toggleClass("toggled");
             });
 
+
+
         },
 
         methods: {
+
+            contado(){
+
+                axios.get('contador').then(response =>{
+                    this.contador = response.data
+
+                })
+
+            },
 
         	registrocomponent(){
 

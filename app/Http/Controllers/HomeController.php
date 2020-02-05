@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Notificacion;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -61,4 +62,9 @@ class HomeController extends Controller
         return $auth ;
     }
 
+    public function contador (){
+        $notificacion = Notificacion::all();
+        $contador = $notificacion->count();
+        return $contador;
+    }
 }

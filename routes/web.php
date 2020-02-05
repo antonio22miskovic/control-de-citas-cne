@@ -14,6 +14,7 @@ Route::get('notificacion', 'HomeController@notificacion');
 
 Route::get('/validarci/{ci?}', 'HomeController@validarci');
 Route::get('/perfil', 'HomeController@perfil');
+Route::get('/contador', 'HomeController@contador');
 
 Route::resource('user', 'UserController');
 Route::resource('tramite', 'TramiteController');

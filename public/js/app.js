@@ -12325,16 +12325,25 @@ __webpack_require__.r(__webpack_exports__);
       listado: false,
       perfil: false,
       estadistica: false,
-      notificacion: false
+      notificacion: false,
+      contador: 0
     };
   },
   mounted: function mounted() {
+    this.contado();
     $("#menu-toggle").click(function (e) {
       e.preventDefault();
       $("#wrapper").toggleClass("toggled");
     });
   },
   methods: {
+    contado: function contado() {
+      var _this = this;
+
+      axios.get('contador').then(function (response) {
+        _this.contador = response.data;
+      });
+    },
     registrocomponent: function registrocomponent() {
       if (this.registro === true && this.listado === false && this.perfil === false && this.estadistica === false && this.notificacion === false) {
         this.registro = true;
@@ -51833,7 +51842,7 @@ var render = function() {
               }
             }
           },
-          [_vm._v("Notificaciones")]
+          [_vm._v("Notificaciones " + _vm._s(this.contador))]
         )
       ])
     ]),
