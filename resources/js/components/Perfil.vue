@@ -2,7 +2,7 @@
 	<div class="container">
 		<div class="card mt-4">
 			<div class="card-header">
-				<h4 class="h4">Registro de perfil</h4>
+				<h4 class="h4">Perfil</h4>
 			</div>
 			<div class="card-body">
 				<form>
@@ -35,6 +35,36 @@
 	export default{
 
 		name:'Perfil',
+        
+        mounted() {
+
+        	this.perfil();
+
+        },
+
+		data(){
+			return{
+				dataperfil: []
+
+			}
+		},
+
+        methods:{
+
+        	perfil(){
+
+        		axios.get('perfil').then((response) => {
+
+        			this.dataperfil = response.data;
+
+        			console.log(this.dataperfil);
+
+        		});
+
+        	}
+        }
 	}
 
+
 </script>
+

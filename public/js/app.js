@@ -11947,7 +11947,25 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'Perfil'
+  name: 'Perfil',
+  mounted: function mounted() {
+    this.perfil();
+  },
+  data: function data() {
+    return {
+      dataperfil: []
+    };
+  },
+  methods: {
+    perfil: function perfil() {
+      var _this = this;
+
+      axios.get('perfil').then(function (response) {
+        _this.dataperfil = response.data;
+        console.log(_this.dataperfil);
+      });
+    }
+  }
 });
 
 /***/ }),
@@ -51203,7 +51221,7 @@ var staticRenderFns = [
     return _c("div", { staticClass: "container" }, [
       _c("div", { staticClass: "card mt-4" }, [
         _c("div", { staticClass: "card-header" }, [
-          _c("h4", { staticClass: "h4" }, [_vm._v("Registro de perfil")])
+          _c("h4", { staticClass: "h4" }, [_vm._v("Perfil")])
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "card-body" }, [

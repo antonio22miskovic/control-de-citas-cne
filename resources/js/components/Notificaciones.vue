@@ -1,4 +1,5 @@
 <template>
+
 	<div>
 
 		<div v-for="notifi of notifica" :key="notifi.id" class="alert alert-success" role="alert">
@@ -7,9 +8,8 @@
 			<hr>
 
 		</div>
-
-
 	</div>
+
 </template>
 <script>
 	export default{
