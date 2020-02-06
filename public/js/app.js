@@ -12301,6 +12301,29 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 // importando los componentes
 
 
@@ -51773,173 +51796,181 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "d-flex", attrs: { id: "wrapper" } }, [
-    _c("div", { staticClass: "bg-coco", attrs: { id: "sidebar-wrapper" } }, [
-      _c("div", { staticClass: "sidebar-heading text-center bg-coco" }, [
-        _vm._v(" CNE ")
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "list-group list-group-flush" }, [
-        _c(
-          "a",
-          {
-            staticClass: "list-group-item list-group-item-action bg-coco",
-            on: {
-              click: function($event) {
-                return _vm.registrocomponent()
-              }
-            }
-          },
-          [_vm._v("Solicitudes")]
-        ),
-        _vm._v(" "),
-        _c(
-          "a",
-          {
-            staticClass: "list-group-item list-group-item-action bg-coco",
-            on: {
-              click: function($event) {
-                return _vm.listadocomponent()
-              }
-            }
-          },
-          [_vm._v("listado de solicitudes")]
-        ),
-        _vm._v(" "),
-        _c(
-          "a",
-          {
-            staticClass: "list-group-item list-group-item-action bg-coco",
-            on: {
-              click: function($event) {
-                return _vm.estadisticacomponent()
-              }
-            }
-          },
-          [_vm._v("Estadisticas")]
-        ),
-        _vm._v(" "),
-        _c(
-          "a",
-          {
-            staticClass: "list-group-item list-group-item-action bg-coco",
-            on: {
-              click: function($event) {
-                return _vm.perfilcomponent()
-              }
-            }
-          },
-          [_vm._v("Perfil")]
-        ),
-        _vm._v(" "),
-        _c(
-          "a",
-          {
-            staticClass: "list-group-item list-group-item-action bg-coco",
-            on: {
-              click: function($event) {
-                return _vm.Notificacionescomponent()
-              }
-            }
-          },
-          [_vm._v("Notificaciones " + _vm._s(this.contador))]
-        )
-      ])
-    ]),
-    _vm._v(" "),
-    _c("div", { attrs: { id: "page-content-wrapper" } }, [
-      _c(
-        "nav",
-        {
-          staticClass: "navbar navbar-expand-lg navbar-light bg-secondary",
-          staticStyle: { height: "3.65rem !important" }
-        },
-        [
+  return _c("div", { attrs: { id: "page-content-wrapper" } }, [
+    _c(
+      "ul",
+      {
+        staticClass: "nav nav-pills mb-3 p-3 bg-secondary text-light",
+        attrs: { id: "pills-tab", role: "tablist" }
+      },
+      [
+        _c("li", { staticClass: "nav-item" }, [
           _c(
-            "button",
-            { staticClass: "btn btn-primary", attrs: { id: "menu-toggle" } },
-            [_c("font-awesome-icon", { attrs: { icon: "server" } })],
-            1
-          ),
-          _vm._v(" "),
-          _vm._m(0),
-          _vm._v(" "),
-          _c(
-            "div",
+            "a",
             {
-              staticClass: "collapse navbar-collapse",
-              attrs: { id: "navbarSupportedContent" }
+              staticClass: "nav-link active text-white",
+              attrs: {
+                id: "pills-home-tab",
+                "data-toggle": "pill",
+                href: "#pills-home",
+                role: "tab",
+                "aria-controls": "pills-home",
+                "aria-selected": "true"
+              },
+              on: {
+                click: function($event) {
+                  return _vm.registrocomponent()
+                }
+              }
             },
-            [
-              _c("ul", { staticClass: "navbar-nav ml-auto mt-2 mt-lg-0" }, [
-                _c("li", { staticClass: "nav-item active" }, [
-                  _c(
-                    "a",
-                    { staticClass: "nav-link", attrs: { href: "/home" } },
-                    [_c("font-awesome-icon", { attrs: { icon: "home" } })],
-                    1
-                  )
-                ]),
-                _vm._v(" "),
-                _c("li", { staticClass: "nav-item" }, [
-                  _c(
-                    "a",
-                    { staticClass: "nav-link", on: { click: _vm.logout } },
-                    [
-                      _c("font-awesome-icon", {
-                        attrs: { icon: "sign-out-alt" }
-                      })
-                    ],
-                    1
-                  )
-                ])
-              ])
-            ]
+            [_vm._v("Solicitudes")]
           )
-        ]
-      ),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "container-fluid" },
-        [
-          _vm.registro === true ? _c("RegistroSolicitud") : _vm._e(),
-          _vm._v(" "),
-          _vm.listado === true ? _c("ListadoSolicitud") : _vm._e(),
-          _vm._v(" "),
-          _vm.perfil === true ? _c("Perfil") : _vm._e(),
-          _vm._v(" "),
-          _vm.estadistica === true ? _c("Estadisticas") : _vm._e(),
-          _vm._v(" "),
-          _vm.notificacion === true ? _c("Notificaciones") : _vm._e()
-        ],
-        1
-      )
-    ])
+        ]),
+        _vm._v(" "),
+        _c("li", { staticClass: "nav-item" }, [
+          _c(
+            "a",
+            {
+              staticClass: "nav-link text-white",
+              attrs: {
+                id: "pills-profile-tab",
+                "data-toggle": "pill",
+                href: "#pills-profile",
+                role: "tab",
+                "aria-controls": "pills-profile",
+                "aria-selected": "false"
+              },
+              on: {
+                click: function($event) {
+                  return _vm.listadocomponent()
+                }
+              }
+            },
+            [_vm._v("Listado de Solicitudes")]
+          )
+        ]),
+        _vm._v(" "),
+        _c("li", { staticClass: "nav-item" }, [
+          _c(
+            "a",
+            {
+              staticClass: "nav-link text-white",
+              attrs: {
+                id: "pills-contact-tab",
+                "data-toggle": "pill",
+                href: "#pills-contact",
+                role: "tab",
+                "aria-controls": "pills-contact",
+                "aria-selected": "false"
+              },
+              on: {
+                click: function($event) {
+                  return _vm.estadisticacomponent()
+                }
+              }
+            },
+            [_vm._v("Estadisticas")]
+          )
+        ]),
+        _vm._v(" "),
+        _c("li", { staticClass: "nav-item" }, [
+          _c(
+            "a",
+            {
+              staticClass: "nav-link text-white",
+              attrs: {
+                id: "pills-contact-tab",
+                "data-toggle": "pill",
+                href: "#pills-contact",
+                role: "tab",
+                "aria-controls": "pills-contact",
+                "aria-selected": "false"
+              },
+              on: {
+                click: function($event) {
+                  return _vm.perfilcomponent()
+                }
+              }
+            },
+            [_vm._v("Perfil")]
+          )
+        ]),
+        _vm._v(" "),
+        _c("li", { staticClass: "nav-item" }, [
+          _c(
+            "a",
+            {
+              staticClass: "nav-link text-white",
+              attrs: {
+                id: "pills-contact-tab",
+                "data-toggle": "pill",
+                href: "#pills-contact",
+                role: "tab",
+                "aria-controls": "pills-contact",
+                "aria-selected": "false"
+              },
+              on: {
+                click: function($event) {
+                  return _vm.Notificacionescomponent()
+                }
+              }
+            },
+            [_vm._v("Notficaciones")]
+          )
+        ]),
+        _vm._v(" "),
+        _c(
+          "li",
+          {
+            staticClass: "nav-item",
+            staticStyle: { "margin-left": "27.5rem !important" }
+          },
+          [
+            _c(
+              "a",
+              { staticClass: "nav-link" },
+              [
+                _c("font-awesome-icon", { attrs: { icon: "home" } }),
+                _vm._v("Home")
+              ],
+              1
+            )
+          ]
+        ),
+        _vm._v(" "),
+        _c("li", { staticClass: "nav-item" }, [
+          _c(
+            "a",
+            { staticClass: "nav-link", on: { click: _vm.logout } },
+            [
+              _c("font-awesome-icon", { attrs: { icon: "sign-out-alt" } }),
+              _vm._v("Salir")
+            ],
+            1
+          )
+        ])
+      ]
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "container-fluid" },
+      [
+        _vm.registro === true ? _c("RegistroSolicitud") : _vm._e(),
+        _vm._v(" "),
+        _vm.listado === true ? _c("ListadoSolicitud") : _vm._e(),
+        _vm._v(" "),
+        _vm.perfil === true ? _c("Perfil") : _vm._e(),
+        _vm._v(" "),
+        _vm.estadistica === true ? _c("Estadisticas") : _vm._e(),
+        _vm._v(" "),
+        _vm.notificacion === true ? _c("Notificaciones") : _vm._e()
+      ],
+      1
+    )
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "button",
-      {
-        staticClass: "navbar-toggler",
-        attrs: {
-          type: "button",
-          "data-toggle": "collapse",
-          "data-target": "#navbarSupportedContent",
-          "aria-controls": "navbarSupportedContent",
-          "aria-expanded": "false",
-          "aria-label": "Toggle navigation"
-        }
-      },
-      [_c("span", { staticClass: "navbar-toggler-icon" })]
-    )
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
