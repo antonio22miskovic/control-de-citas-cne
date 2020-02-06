@@ -11946,6 +11946,23 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Perfil',
   mounted: function mounted() {
@@ -11981,6 +11998,25 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
 /* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_0__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -50902,7 +50938,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [
+  return _c("div", { staticClass: "container bg-light" }, [
     _c("div", [
       _c(
         "div",
@@ -50998,7 +51034,7 @@ var render = function() {
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "row justify-content-center" }, [
-      _c("table", { staticClass: "table mt-4 p-4" }, [
+      _c("table", { staticClass: "table table-striped mt-4 p-4" }, [
         _vm._m(2),
         _vm._v(" "),
         _c(
@@ -51243,94 +51279,76 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "container bg-light" }, [
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col" }),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-9" }, [
+        _c("div", { staticClass: "card mt-2" }, [
+          _c("div", { staticClass: "card-header p-4 bg-dark" }, [
+            _c("div", { staticClass: "row" }, [
+              _c("div", { staticClass: "col-8" }, [
+                _c("h4", { staticClass: "text-white" }, [
+                  _vm._v("Perfil de: " + _vm._s(this.dataperfil.usuario))
+                ])
+              ]),
+              _vm._v(" "),
+              _vm._m(0)
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-body text-center" }, [
+            _c("div", { staticClass: "row" }, [
+              _c("div", { staticClass: "col-6" }, [
+                _vm._v(
+                  "\n\t\t\t\t\t\t\t\tNombre: " +
+                    _vm._s(this.dataperfil.name) +
+                    "\n\t\t\t\t\t\t\t"
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-6 mb-4" }, [
+                _vm._v(
+                  "\n\t\t\t\t\t\t\t\tApellido: " +
+                    _vm._s(this.dataperfil.apellido) +
+                    "\n\t\t\t\t\t\t\t"
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "row" }, [
+              _c("div", { staticClass: "col-6" }, [
+                _vm._v(
+                  "\n\t\t\t\t\t\t\t\tCedula: " +
+                    _vm._s(this.dataperfil.ci) +
+                    "\n\t\t\t\t\t\t\t"
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-6 mb-4" }, [
+                _vm._v(
+                  "\n\t\t\t\t\t\t\t\tcorreo: " +
+                    _vm._s(this.dataperfil.email) +
+                    "\n\t\t\t\t\t\t\t"
+                )
+              ])
+            ])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col" })
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container" }, [
-      _c("div", { staticClass: "card mt-4" }, [
-        _c("div", { staticClass: "card-header" }, [
-          _c("h4", { staticClass: "h4" }, [_vm._v("Perfil")])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "card-body" }, [
-          _c("form", [
-            _c("div", { staticClass: "form-row" }, [
-              _c("div", { staticClass: "form-group col-md-6" }, [
-                _c("label", { attrs: { for: "inputEmail4" } }, [
-                  _vm._v("Nombres")
-                ]),
-                _vm._v(" "),
-                _c("input", {
-                  staticClass: "form-control",
-                  attrs: {
-                    type: "email",
-                    id: "inputEmail4",
-                    placeholder: "Nombres...",
-                    name: "nombre"
-                  }
-                })
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-group col-md-6" }, [
-                _c("label", { attrs: { for: "inputPassword4" } }, [
-                  _vm._v("Apellidos")
-                ]),
-                _vm._v(" "),
-                _c("input", {
-                  staticClass: "form-control",
-                  attrs: {
-                    type: "password",
-                    id: "inputPassword4",
-                    placeholder: "Apellidos...",
-                    name: "apellido"
-                  }
-                })
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "form-group" }, [
-              _c("label", { attrs: { for: "inputAddress" } }, [
-                _vm._v("Cedula de identidad")
-              ]),
-              _vm._v(" "),
-              _c("input", {
-                staticClass: "form-control",
-                attrs: {
-                  type: "text",
-                  id: "inputAddress",
-                  placeholder: "Cedula de identidad",
-                  name: "cedula"
-                }
-              })
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "form-group" }, [
-              _c("label", { attrs: { for: "inputAddress2" } }, [
-                _vm._v("Correo")
-              ]),
-              _vm._v(" "),
-              _c("input", {
-                staticClass: "form-control",
-                attrs: {
-                  type: "email",
-                  id: "inputAddress2",
-                  placeholder: "Correo electronico"
-                }
-              })
-            ]),
-            _vm._v(" "),
-            _c(
-              "button",
-              { staticClass: "btn btn-primary ", attrs: { type: "submit" } },
-              [_vm._v("Guardar")]
-            )
-          ])
-        ])
-      ])
+    return _c("div", { staticClass: "col-4 rounded" }, [
+      _vm._v("\n\t\t\t\t\t\t\t\tAvatar\n\t\t\t\t\t\t\t\t"),
+      _c("img", { attrs: { src: "", alt: "" } })
     ])
   }
 ]
@@ -51355,69 +51373,97 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [
+  return _c("div", { staticClass: "container bg-light" }, [
     _c("div", { staticClass: "card mt-4 rounded-sm" }, [
       _c("div", { staticClass: "card-header" }, [
         _c("h5", { staticClass: "card-title mt-1 p-0 text-center" }, [
           _vm._v("Registro de solicitud")
         ]),
         _vm._v(" "),
-        _c(
-          "form",
-          {
-            on: {
-              submit: function($event) {
-                $event.preventDefault()
-                return _vm.busqueda()
-              }
-            }
-          },
-          [
-            _c("label", [
-              _vm._v(
-                " si ah realizado una solicitud previa por favor introdusza  su cedula de identidad : "
-              )
-            ]),
-            _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.buscar,
-                  expression: "buscar"
-                }
-              ],
-              attrs: { type: "text" },
-              domProps: { value: _vm.buscar },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.buscar = $event.target.value
-                }
-              }
-            }),
-            _vm._v(" "),
-            _c("input", {
-              staticClass: "btn-primary",
-              attrs: { type: "submit", value: "buscar" }
-            })
-          ]
-        ),
-        _vm._v(" "),
-        _vm.mensajebusqueda === true
-          ? _c("p", { staticClass: "text-center text-danger" }, [
-              _vm._v(" verifique sus datos")
-            ])
-          : _vm._e(),
-        _vm._v(" "),
-        _vm.mensajenulo === true
-          ? _c("p", { staticClass: "text-center text-danger" }, [
-              _vm._v(" debe introcir un numero de cedula ")
-            ])
-          : _vm._e()
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-12" }, [
+            _c(
+              "div",
+              {
+                staticClass: "alert alert-secondary",
+                attrs: { role: "alert" }
+              },
+              [
+                _c(
+                  "form",
+                  {
+                    on: {
+                      submit: function($event) {
+                        $event.preventDefault()
+                        return _vm.busqueda()
+                      }
+                    }
+                  },
+                  [
+                    _c("div", { staticClass: "row" }, [
+                      _vm._m(0),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-7" }, [
+                        _c("div", { staticClass: "input-group mb-3" }, [
+                          _c(
+                            "div",
+                            { staticClass: "input-group input-group-lg" },
+                            [
+                              _vm._m(1),
+                              _vm._v(" "),
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.buscar,
+                                    expression: "buscar"
+                                  }
+                                ],
+                                staticClass: "form-control",
+                                attrs: {
+                                  type: "text",
+                                  "aria-label": "Sizing example input",
+                                  "aria-describedby": "inputGroup-sizing-lg"
+                                },
+                                domProps: { value: _vm.buscar },
+                                on: {
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.buscar = $event.target.value
+                                  }
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("input", {
+                                staticClass: "btn btn-outline-success",
+                                attrs: { type: "submit", value: "Buscar" }
+                              })
+                            ]
+                          )
+                        ])
+                      ])
+                    ])
+                  ]
+                ),
+                _vm._v(" "),
+                _vm.mensajebusqueda === true
+                  ? _c("p", { staticClass: "text-center text-danger" }, [
+                      _vm._v("Oh! Algo anda mal, verifique los datos.")
+                    ])
+                  : _vm._e(),
+                _vm._v(" "),
+                _vm.mensajenulo === true
+                  ? _c("p", { staticClass: "text-center text-danger" }, [
+                      _vm._v(" ¡Debe introducir una cédula!")
+                    ])
+                  : _vm._e()
+              ]
+            )
+          ])
+        ])
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "card-body" }, [
@@ -51567,7 +51613,7 @@ var render = function() {
                   : _vm._e()
               ]),
               _vm._v(" "),
-              _vm._m(0)
+              _vm._m(2)
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "form-group" }, [
@@ -51745,7 +51791,7 @@ var render = function() {
               })
             ]),
             _vm._v(" "),
-            _vm._m(1)
+            _vm._m(3)
           ]
         )
       ])
@@ -51753,6 +51799,37 @@ var render = function() {
   ])
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-5" }, [
+      _c(
+        "div",
+        { staticClass: "alert alert-info text-dark", attrs: { role: "alert" } },
+        [
+          _vm._v(
+            "\n                                        Ingrese una C.I para buscar solicitud.\n                                    "
+          )
+        ]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "input-group-prepend" }, [
+      _c(
+        "span",
+        {
+          staticClass: "input-group-text",
+          attrs: { id: "inputGroup-sizing-lg" }
+        },
+        [_vm._v("C.I.")]
+      )
+    ])
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -51800,7 +51877,7 @@ var render = function() {
     _c(
       "ul",
       {
-        staticClass: "nav nav-pills mb-3 p-3 bg-secondary text-light",
+        staticClass: "nav nav-pills mb-3 p-3 bg-dark text-light",
         attrs: { id: "pills-tab", role: "tablist" }
       },
       [
@@ -51923,7 +52000,7 @@ var render = function() {
           "li",
           {
             staticClass: "nav-item",
-            staticStyle: { "margin-left": "27.5rem !important" }
+            staticStyle: { "margin-left": "24rem !important" }
           },
           [
             _c(

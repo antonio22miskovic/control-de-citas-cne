@@ -1,32 +1,49 @@
 <template>
-	<div class="container">
-		<div class="card mt-4">
-			<div class="card-header">
-				<h4 class="h4">Perfil</h4>
-			</div>
-			<div class="card-body">
-				<form>
-					<div class="form-row">
-						<div class="form-group col-md-6">
-							<label for="inputEmail4">Nombres</label>
-							<input type="email" class="form-control" id="inputEmail4" placeholder="Nombres..." name="nombre">
+	<div class="container bg-light">
+		<div class="row">
+			<div class="col"></div>
+			<div class="col-9">
+					<div class="card mt-2">
+						<div class="card-header p-4 bg-dark">
+							<div class="row">
+								<div class="col-8">
+									<h4 class="text-white">Perfil de: {{ this.dataperfil.usuario  }}</h4>
+								</div>
+								<div class="col-4 rounded">
+									Avatar
+									<img src="" alt="">
+								</div>
+							</div>
 						</div>
-						<div class="form-group col-md-6">
-							<label for="inputPassword4">Apellidos</label>
-							<input type="password" class="form-control" id="inputPassword4" placeholder="Apellidos..." name="apellido">
-						</div>
+						<div class="card-body text-center">
+							<div class="row">
+								<div class="col-6">
+									Nombre: {{ this.dataperfil.name }}
+								</div>
+								<div class="col-6 mb-4">
+									Apellido: {{ this.dataperfil.apellido }}
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-6">
+									Cedula: {{ this.dataperfil.ci }}
+								</div>
+								<div class="col-6 mb-4">
+									correo: {{ this.dataperfil.email }}
+								</div>
+							</div>
+						<!-- 	<div class="row">
+								<div class="col-6">
+									usuario
+								</div>
+								<div class="col-6">
+									Fecha de creacion
+								</div>
+							</div> -->
 					</div>
-					<div class="form-group">
-						<label for="inputAddress">Cedula de identidad</label>
-						<input type="text" class="form-control" id="inputAddress" placeholder="Cedula de identidad" name="cedula">
-					</div>
-					<div class="form-group">
-						<label for="inputAddress2">Correo</label>
-						<input type="email" class="form-control" id="inputAddress2" placeholder="Correo electronico">
-					</div>
-					<button type="submit" class="btn btn-primary ">Guardar</button>
-				</form>
+				</div>
 			</div>
+			<div class="col"></div>
 		</div>
 	</div>
 </template>
@@ -35,7 +52,7 @@
 	export default{
 
 		name:'Perfil',
-        
+
         mounted() {
 
         	this.perfil();
