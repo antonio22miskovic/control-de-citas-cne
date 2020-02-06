@@ -22,7 +22,7 @@
         <!-- Page Content -->
         <div id="page-content-wrapper">
 
-            <ul class="nav nav-pills mb-3 p-3 bg-secondary text-light" id="pills-tab" role="tablist">
+            <ul class="nav nav-pills mb-3 p-3 bg-dark text-light" id="pills-tab" role="tablist">
                 <li class="nav-item">
                     <a @click="registrocomponent()" class="nav-link active text-white" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Solicitudes</a>
                 </li>
@@ -38,7 +38,7 @@
                 <li class="nav-item">
                     <a @click="Notificacionescomponent()" class="nav-link text-white" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Notficaciones</a>
                 </li>
-                <li class="nav-item" style="margin-left: 27.5rem !important;">
+                <li class="nav-item" style="margin-left: 24rem !important;">
                     <a class="nav-link"><font-awesome-icon icon="home"/>Home</a>   
                 </li>
                 <li class="nav-item">

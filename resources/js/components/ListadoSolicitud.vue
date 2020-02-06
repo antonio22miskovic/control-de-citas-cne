@@ -1,6 +1,6 @@
 <template>
 
-    <div class="container">
+    <div class="container bg-light">
         <div>
             <div class="modal fade" id="detallesmodalcenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
@@ -39,7 +39,7 @@
 
 
         <div class="row justify-content-center">
-            <table class="table mt-4 p-4">
+            <table class="table table-striped mt-4 p-4">
                 <thead class="thead-dark">
                     <tr>
                         <th scope="col">Solicitud</th>

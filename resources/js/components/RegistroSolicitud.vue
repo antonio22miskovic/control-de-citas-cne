@@ -1,18 +1,37 @@
 <template>
-    <div class="container">
+    <div class="container bg-light">
 		<div class="card mt-4 rounded-sm">
 
   			<div class="card-header">
     			<h5 class="card-title mt-1 p-0 text-center">Registro de solicitud</h5>
-
-    			<form @submit.prevent="busqueda()">
-    				<label> si ah realizado una solicitud previa por favor introdusza  su cedula de identidad : </label>
-    				<input type="text" v-model="buscar">
-    				<input type="submit" class="btn-primary" value="buscar">
-    			</form>
-    			<p v-if="mensajebusqueda === true" class="text-center text-danger"> verifique sus datos</p>
-    			<p v-if="mensajenulo === true" class="text-center text-danger"> debe introcir un numero de cedula </p>
-
+                <div class="row">
+                    <div class="col-12">
+                        <div class="alert alert-secondary" role="alert">
+                        <form @submit.prevent="busqueda()">
+                            <div class="row">
+                                <div class="col-5">
+                                    <div class="alert alert-info text-dark" role="alert">
+                                        Ingrese una C.I. para buscar solicitud.
+                                    </div>
+                                </div>
+                                <div class="col-7">
+                                    <div class="input-group mb-3">
+                                        <div class="input-group input-group-lg">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" id="inputGroup-sizing-lg">C.I.</span>
+                                            </div>
+                                            <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" v-model="Buscar">
+                                            <input type="submit" class="btn btn-outline-success" value="Buscar">  
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <p v-if="mensajebusqueda === true" class="text-center text-danger">Oh! Algo anda mal, verifique los datos.</p>
+                        <p v-if="mensajenulo === true" class="text-center text-danger"> ¡Debe introducir una cédula!</p>
+                        </div>
+                    </div>
+                </div>
   			</div>
 
 		  	<div class="card-body">
