@@ -31,6 +31,7 @@ import Swal from 'sweetalert2'
 
 
 Vue.component('home', require('./views/Home.vue').default);
+// Vue.component('Admin', require('./views/Admin.vue').default);
 
 
 

@@ -64130,7 +64130,8 @@ _fortawesome_fontawesome_svg_core__WEBPACK_IMPORTED_MODULE_0__["library"].add(_f
 Vue.component('font-awesome-icon', _fortawesome_vue_fontawesome__WEBPACK_IMPORTED_MODULE_2__["FontAwesomeIcon"]); /// LIBRERIA DE FONT AWESOME
 
 
-Vue.component('home', __webpack_require__(/*! ./views/Home.vue */ "./resources/js/views/Home.vue")["default"]);
+Vue.component('home', __webpack_require__(/*! ./views/Home.vue */ "./resources/js/views/Home.vue")["default"]); // Vue.component('Admin', require('./views/Admin.vue').default);
+
 var app = new Vue({
   el: '#app'
 });

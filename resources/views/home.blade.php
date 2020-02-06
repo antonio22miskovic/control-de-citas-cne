@@ -2,6 +2,6 @@
 
 @section('content')
 
-    <Home></Home>
+    		<Home></Home>
 
 @endsection
