@@ -14,7 +14,6 @@ Route::get('/validarci/{ci?}', 'HomeController@validarci');
 Route::get('/perfil', 'HomeController@perfil');
 Route::get('/contador', 'HomeController@contador');
 
-
 Route::resource('user', 'UserController');
 Route::resource('tramite', 'TramiteController');
 Route::resource('rol', 'RolController');
@@ -23,3 +22,4 @@ Route::resource('solicitud', 'SolicitudController');
 Route::resource('cliente', 'ClienteController');
 
 Route::get('/admin','AdminController@vista');
+Route::get('/admin/{id}','AdminController@filtroporusuario');

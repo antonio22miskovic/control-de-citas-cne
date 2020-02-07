@@ -81,6 +81,10 @@ class SolicitudController extends Controller
 
     public function destroy($id)
     {
+        $solicitud = Solicitud::find($id);
 
+        $solicitud->delete();
+
+        return response()->json(['mensaje'=> 'solicitud eliminada']);
     }
 }

@@ -12,36 +12,9 @@ class UserController extends Controller
 
     public function index()
     {
-        //obtenemos los datos del usuario logeado
-        $user = Auth::user();
-
-           //significa que solo pude registrar a los encargados
-        if ($user->rol_id === 1) {
-                // si el admin registra al encargado sin foto
-                $rol = 2;
-        }else{
-
-            $rol = 3;
-
-        }
-
-
-         $user = User::orderBy('id', 'desc')->where('rol_id',$rol)->paginate(5);
-
-        return [
-
-            'paginate' => [
-
-                'total' => $user->total(),
-                'current_page' => $user->currentPage(),
-                'per_page' => $user->perPage(),
-                'last_page' => $user->lastPage(),
-                'from' => $user->firstItem(),
-                'to' => $user->lastPage(),
-
-            ],
-           'user' => $user
-        ];
+      $user =  User::where('rol_id',2)->get();
+        $user->toJson();
+      return $user;
     }
 
     /**
