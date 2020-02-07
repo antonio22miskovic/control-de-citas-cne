@@ -22,5 +22,4 @@ Route::resource('notificacion', 'NotificacionController');
 Route::resource('solicitud', 'SolicitudController');
 Route::resource('cliente', 'ClienteController');
 
-
 Route::get('/admin','AdminController@vista');
