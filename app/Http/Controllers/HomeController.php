@@ -48,13 +48,6 @@ class HomeController extends Controller
         return $id;
     }
 
-    public function notificacion(){
-
-      return  Notificacion::all();
-
-    }
-
-
     public function perfil()
     {
         $auth = Auth::user();

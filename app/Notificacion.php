@@ -15,7 +15,7 @@ class Notificacion extends Model
 
 		'asunto',
 		'descripcion',
-		'estado_id',
+
 
 	];
 

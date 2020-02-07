@@ -11690,8 +11690,69 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'AdminPerfil'
+  name: 'AdminPerfil',
+  mounted: function mounted() {
+    this.perfil();
+  },
+  data: function data() {
+    return {
+      dataperfil: []
+    };
+  },
+  methods: {
+    perfil: function perfil() {
+      var _this = this;
+
+      axios.get('perfil').then(function (response) {
+        _this.dataperfil = response.data;
+      });
+    }
+  }
 });
 
 /***/ }),
@@ -11705,13 +11766,127 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_0__);
 //
 //
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'ControlNotificaciones'
+  name: 'ControlNotificaciones',
+  mounted: function mounted() {
+    this.notificacion();
+  },
+  data: function data() {
+    return {
+      notifica: [],
+      asunto: '',
+      descripcion: ''
+    };
+  },
+  methods: {
+    notificacion: function notificacion() {
+      var _this = this;
+
+      axios.get('notificacion').then(function (response) {
+        _this.notifica = response.data;
+      });
+    },
+    eliminar: function eliminar(id) {
+      var _this2 = this;
+
+      sweetalert2__WEBPACK_IMPORTED_MODULE_0___default.a.fire({
+        title: 'estas seguro?',
+        text: "deseas eliminar la notificacion!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+      }).then(function (result) {
+        if (result.value) {
+          axios["delete"]('notificacion/' + id).then(function (res) {
+            _this2.notificacion();
+          });
+          sweetalert2__WEBPACK_IMPORTED_MODULE_0___default.a.fire('eliminado', 'se ah eliminado con exito.', 'success');
+        }
+      });
+    },
+    registrarnotificacion: function registrarnotificacion() {
+      var _this3 = this;
+
+      var datos = {
+        'asunto': this.asunto,
+        'descripcion': this.descripcion
+      };
+      axios.post('notificacion', datos).then(function (res) {
+        _this3.asunto = null;
+        _this3.descripcion = null;
+
+        _this3.notificacion();
+
+        sweetalert2__WEBPACK_IMPORTED_MODULE_0___default.a.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'solicitud registrada con exito',
+          showConfirmButton: false
+        });
+      });
+    }
+  }
 });
 
 /***/ }),
@@ -11727,6 +11902,41 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
 /* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_0__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -11923,7 +12133,11 @@ __webpack_require__.r(__webpack_exports__);
         'from': 0,
         'to': 0
       },
-      passwordconfirmar: ''
+      passwordconfirmar: '',
+      detallesolicitud: '',
+      user: '',
+      cliente: '',
+      tramite: ''
     };
   },
   methods: {
@@ -11993,8 +12207,18 @@ __webpack_require__.r(__webpack_exports__);
         }
       });
     },
-    borrar: function borrar(id) {
+    detalles: function detalles(solicitud) {
       var _this4 = this;
+
+      axios.get('solicitud/' + solicitud.id).then(function (res) {
+        _this4.detallesolicitud = res.data.solicitud;
+        _this4.tramite = res.data.solicitud.tramite;
+        _this4.cliente = res.data.cliente;
+        _this4.user = res.data.solicitud.user;
+      });
+    },
+    borrar: function borrar(id) {
+      var _this5 = this;
 
       sweetalert2__WEBPACK_IMPORTED_MODULE_0___default.a.fire({
         title: 'estas seguro?',
@@ -12007,7 +12231,7 @@ __webpack_require__.r(__webpack_exports__);
       }).then(function (result) {
         if (result.value) {
           axios["delete"]('solicitud/' + id).then(function (res) {
-            _this4.listado(_this4.paginate.current_page);
+            _this5.listado(_this5.paginate.current_page);
           });
           sweetalert2__WEBPACK_IMPORTED_MODULE_0___default.a.fire('eliminado', 'se ah eliminado con exito.', 'success');
         }
@@ -12372,7 +12596,6 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.get('perfil').then(function (response) {
         _this.dataperfil = response.data;
-        console.log(_this.dataperfil);
       });
     }
   }
@@ -51608,14 +51831,77 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "container bg-light" }, [
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col" }),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-9" }, [
+        _c("div", { staticClass: "card mt-2" }, [
+          _c("div", { staticClass: "card-header p-4 bg-dark" }, [
+            _c("div", { staticClass: "row" }, [
+              _c("div", { staticClass: "col-8" }, [
+                _c("h4", { staticClass: "text-white" }, [
+                  _vm._v("Perfil de: " + _vm._s(this.dataperfil.usuario))
+                ])
+              ]),
+              _vm._v(" "),
+              _vm._m(0)
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-body text-center" }, [
+            _c("div", { staticClass: "row" }, [
+              _c("div", { staticClass: "col-6" }, [
+                _vm._v(
+                  "\n\t\t\t\t\t\t\t\tNombre: " +
+                    _vm._s(this.dataperfil.name) +
+                    "\n\t\t\t\t\t\t\t"
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-6 mb-4" }, [
+                _vm._v(
+                  "\n\t\t\t\t\t\t\t\tApellido: " +
+                    _vm._s(this.dataperfil.apellido) +
+                    "\n\t\t\t\t\t\t\t"
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "row" }, [
+              _c("div", { staticClass: "col-6" }, [
+                _vm._v(
+                  "\n\t\t\t\t\t\t\t\tCedula: " +
+                    _vm._s(this.dataperfil.ci) +
+                    "\n\t\t\t\t\t\t\t"
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-6 mb-4" }, [
+                _vm._v(
+                  "\n\t\t\t\t\t\t\t\tcorreo: " +
+                    _vm._s(this.dataperfil.email) +
+                    "\n\t\t\t\t\t\t\t"
+                )
+              ])
+            ])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col" })
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", [_c("p", [_vm._v("admin perfil")])])
+    return _c("div", { staticClass: "col-4 rounded" }, [
+      _vm._v("\n\t\t\t\t\t\t\t\tAvatar\n\t\t\t\t\t\t\t\t"),
+      _c("img", { attrs: { src: "", alt: "" } })
+    ])
   }
 ]
 render._withStripped = true
@@ -51639,14 +51925,231 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c(
+    "div",
+    [
+      _c(
+        "div",
+        {
+          staticClass: "modal fade",
+          attrs: {
+            id: "registrar",
+            tabindex: "-1",
+            role: "dialog",
+            "aria-labelledby": "exampleModalCenterTitle",
+            "aria-hidden": "true"
+          }
+        },
+        [
+          _c(
+            "div",
+            {
+              staticClass: "modal-dialog modal-dialog-centered",
+              attrs: { role: "document" }
+            },
+            [
+              _c("div", { staticClass: "modal-content" }, [
+                _vm._m(0),
+                _vm._v(" "),
+                _c("div", { staticClass: "modal-body" }, [
+                  _c("div", [
+                    _c(
+                      "form",
+                      {
+                        staticClass: "form-horizontal",
+                        on: {
+                          submit: function($event) {
+                            $event.preventDefault()
+                            return _vm.registrarnotificacion()
+                          }
+                        }
+                      },
+                      [
+                        _c("h5", { staticClass: "text-center" }, [
+                          _vm._v(" registra una nueva notificacion")
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "form-group p-3" }, [
+                          _c("label", [_vm._v(" asunto de la notificacion :")]),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.asunto,
+                                expression: "asunto"
+                              }
+                            ],
+                            staticClass: "form-control rounded-pill",
+                            attrs: { type: "text", placeholder: " asunto " },
+                            domProps: { value: _vm.asunto },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.asunto = $event.target.value
+                              }
+                            }
+                          })
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "form-group p-3" }, [
+                          _c("label", [_vm._v(" descripcion:")]),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.descripcion,
+                                expression: "descripcion"
+                              }
+                            ],
+                            staticClass: "form-control rounded-pill",
+                            attrs: {
+                              type: "text",
+                              placeholder: "breve descripcion"
+                            },
+                            domProps: { value: _vm.descripcion },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.descripcion = $event.target.value
+                              }
+                            }
+                          })
+                        ]),
+                        _vm._v(" "),
+                        _vm._m(1)
+                      ]
+                    )
+                  ])
+                ]),
+                _vm._v(" "),
+                _vm._m(2)
+              ])
+            ]
+          )
+        ]
+      ),
+      _vm._v(" "),
+      _c("h3", { staticClass: " text-center" }, [
+        _vm._v(" control de notificaciones ")
+      ]),
+      _vm._v(" "),
+      _c("p", [
+        _vm._v("desea publicar una nueva notificacion: "),
+        _c(
+          "a",
+          {
+            staticClass: "btn btn-outline-success rounded-pill",
+            attrs: { "data-toggle": "modal", "data-target": "#registrar" }
+          },
+          [_c("font-awesome-icon", { attrs: { icon: "plus" } })],
+          1
+        )
+      ]),
+      _vm._v(" "),
+      _vm._l(_vm.notifica, function(notifi) {
+        return _c(
+          "div",
+          {
+            key: notifi.id,
+            staticClass: "alert alert-success",
+            attrs: { role: "alert" }
+          },
+          [
+            _c("h4", { staticClass: "alert-heading" }, [
+              _vm._v(_vm._s(notifi.asunto) + "!")
+            ]),
+            _vm._v(" "),
+            _c("p", [_vm._v(_vm._s(notifi.descripcion) + ".")]),
+            _vm._v(" "),
+            _c("hr"),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-outline-danger text-center",
+                on: {
+                  click: function($event) {
+                    $event.preventDefault()
+                    return _vm.eliminar(notifi.id)
+                  }
+                }
+              },
+              [_c("font-awesome-icon", { attrs: { icon: "trash" } })],
+              1
+            )
+          ]
+        )
+      })
+    ],
+    2
+  )
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", [_c("p", [_vm._v(" control de notificaciones ")])])
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "h5",
+        {
+          staticClass: "modal-title ",
+          attrs: { id: "exampleModalCenterTitle" }
+        },
+        [_vm._v("agrega una nueva notificacion ")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "container text-center" }, [
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-primary rounded-pill",
+          attrs: { type: "submit" }
+        },
+        [_vm._v(" agregar ")]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-footer" }, [
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-secondary rounded-pill",
+          attrs: { type: "button", "data-dismiss": "modal" }
+        },
+        [_vm._v("Close")]
+      )
+    ])
   }
 ]
 render._withStripped = true
@@ -51679,6 +52182,104 @@ var render = function() {
           {
             staticClass: "modal fade",
             attrs: {
+              id: "detallesmodalcenter",
+              tabindex: "-1",
+              role: "dialog",
+              "aria-labelledby": "exampleModalCenterTitle",
+              "aria-hidden": "true"
+            }
+          },
+          [
+            _c(
+              "div",
+              {
+                staticClass: "modal-dialog modal-dialog-centered",
+                attrs: { role: "document" }
+              },
+              [
+                _c("div", { staticClass: "modal-content" }, [
+                  _c("div", { staticClass: "modal-header" }, [
+                    _c(
+                      "h5",
+                      {
+                        staticClass: "modal-title ",
+                        attrs: { id: "exampleModalCenterTitle" }
+                      },
+                      [
+                        _vm._v(
+                          "Solicitud:     " +
+                            _vm._s(this.detallesolicitud.solicitud)
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _vm._m(0)
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "modal-body" }, [
+                    _c("div", [
+                      _c("p", [
+                        _vm._v(
+                          " fecha:  " + _vm._s(this.detallesolicitud.fecha)
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("p", [
+                        _vm._v(
+                          " respuesta:  " +
+                            _vm._s(this.detallesolicitud.respuesta)
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("p", [
+                        _vm._v(" tramite:  " + _vm._s(this.tramite.tramite))
+                      ]),
+                      _vm._v(" "),
+                      _c("p", [
+                        _vm._v(
+                          " estatus:  " + _vm._s(this.detallesolicitud.status)
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("p", [
+                        _vm._v(
+                          " descripcion:  " +
+                            _vm._s(this.detallesolicitud.descripcion)
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("h5", [_vm._v(" datos del solicitante ")]),
+                      _vm._v(" "),
+                      _c("p", [
+                        _vm._v(" nombre:   " + _vm._s(this.cliente.name))
+                      ]),
+                      _vm._v(" "),
+                      _c("p", [
+                        _vm._v(" apellido:   " + _vm._s(this.cliente.apellido))
+                      ]),
+                      _vm._v(" "),
+                      _c("p", [_vm._v(" cedula:  " + _vm._s(this.cliente.ci))]),
+                      _vm._v(" "),
+                      _c("p", [
+                        _vm._v(" correo:  " + _vm._s(this.cliente.email))
+                      ])
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _vm._m(1)
+                ])
+              ]
+            )
+          ]
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", [
+        _c(
+          "div",
+          {
+            staticClass: "modal fade",
+            attrs: {
               id: "actualizar",
               tabindex: "-1",
               role: "dialog",
@@ -51695,7 +52296,7 @@ var render = function() {
               },
               [
                 _c("div", { staticClass: "modal-content" }, [
-                  _vm._m(0),
+                  _vm._m(2),
                   _vm._v(" "),
                   _c("div", { staticClass: "modal-body" }, [
                     _c("div", [
@@ -51936,14 +52537,14 @@ var render = function() {
                               })
                             ]),
                             _vm._v(" "),
-                            _vm._m(1)
+                            _vm._m(3)
                           ])
                         ]
                       )
                     ])
                   ]),
                   _vm._v(" "),
-                  _vm._m(2)
+                  _vm._m(4)
                 ])
               ]
             )
@@ -52054,7 +52655,7 @@ var render = function() {
             _vm._v(" "),
             _c("div", { staticClass: "row justify-content-center" }, [
               _c("table", { staticClass: "table table-striped mt-4 p-4" }, [
-                _vm._m(3),
+                _vm._m(5),
                 _vm._v(" "),
                 _c(
                   "tbody",
@@ -52224,6 +52825,38 @@ var render = function() {
   )
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "button",
+      {
+        staticClass: "close",
+        attrs: {
+          type: "button",
+          "data-dismiss": "modal",
+          "aria-label": "Close"
+        }
+      },
+      [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-footer" }, [
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-primary btn-lg btn-block",
+          attrs: { type: "button", "data-dismiss": "modal" }
+        },
+        [_vm._v("Cerrar")]
+      )
+    ])
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement

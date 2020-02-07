@@ -1,6 +1,41 @@
 <template>
 	<div>
 
+		<div>
+            <div class="modal fade" id="detallesmodalcenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title " id="exampleModalCenterTitle">Solicitud:     {{this.detallesolicitud.solicitud}}</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+
+                        <div class="modal-body">
+                            <div>
+
+                                <p> fecha:  {{ this.detallesolicitud.fecha }}</p>
+                                <p> respuesta:  {{ this.detallesolicitud.respuesta }}</p>
+                                <p> tramite:  {{ this.tramite.tramite }}</p>
+                                <p> estatus:  {{this.detallesolicitud.status }}</p>
+                                <p> descripcion:  {{this.detallesolicitud.descripcion }}</p>
+
+                                <h5> datos del solicitante </h5>
+                                <p> nombre:   {{ this.cliente.name }}</p>
+                                <p> apellido:   {{ this.cliente.apellido}}</p>
+                                <p> cedula:  {{ this.cliente.ci }}</p>
+                                <p> correo:  {{ this.cliente.email}}</p>
+
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary btn-lg btn-block" data-dismiss="modal">Cerrar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
 		 <div>
             <div class="modal fade" id="actualizar" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -208,6 +243,12 @@ import Swal from 'sweetalert2'
                 },
 				passwordconfirmar:'',
 
+				detallesolicitud:'',
+                user:'',
+                cliente:'',
+                tramite:'',
+
+
 			}
 		},
 
@@ -309,6 +350,19 @@ import Swal from 'sweetalert2'
 		})
 
     },
+
+   		detalles(solicitud){
+
+                axios.get('solicitud/'+solicitud.id).
+                then(res =>{
+                    this.detallesolicitud = res.data.solicitud;
+                    this.tramite = res.data.solicitud.tramite;
+                    this.cliente = res.data.cliente;
+                    this.user = res.data.solicitud.user;
+
+                });
+
+            },
 
     borrar(id){
 

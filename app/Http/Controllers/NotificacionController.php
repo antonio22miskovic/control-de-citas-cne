@@ -14,7 +14,9 @@ class NotificacionController extends Controller
      */
     public function index()
     {
-      return Notificacion::all();
+       $notificacion =  Notificacion::orderBy('id', 'desc')->get();
+       $notificacion->toJson();
+      return  $notificacion;
     }
 
     public function store(Request $request)

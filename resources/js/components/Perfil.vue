@@ -74,7 +74,7 @@
 
         			this.dataperfil = response.data;
 
-        			console.log(this.dataperfil);
+
 
         		});
 

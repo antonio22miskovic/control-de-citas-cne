@@ -9,7 +9,6 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/buscar/{ci}', 'HomeController@buscar');
 Route::get('/id/{ci}', 'HomeController@id');
-Route::get('notificacion', 'HomeController@notificacion');
 Route::get('/validarci/{ci?}', 'HomeController@validarci');
 Route::get('/perfil', 'HomeController@perfil');
 Route::get('/contador', 'HomeController@contador');
