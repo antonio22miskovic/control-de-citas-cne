@@ -52,7 +52,7 @@
                     <h4 v-if="solicitudes.length === 0" class="text-center">No tiene solicitudes.</h4>
                     <tr v-for="solicitud of solicitudes" :key="solicitud.id">
 
-                        <td>t{{ solicitud.solicitud }}</td>
+                        <td>{{ solicitud.solicitud }}</td>
                         <td>{{ solicitud.respuesta }}</td>
 
 

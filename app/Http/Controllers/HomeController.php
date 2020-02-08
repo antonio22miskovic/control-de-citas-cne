@@ -52,12 +52,15 @@ class HomeController extends Controller
     {
         $auth = Auth::user();
 
-        return $auth ;
+        return $auth;
     }
 
     public function contador (){
+
         $notificacion = Notificacion::all();
         $contador = $notificacion->count();
         return $contador;
+
     }
+
 }

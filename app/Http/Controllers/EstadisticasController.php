@@ -1,0 +1,226 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Solicitud;
+use Carbon\Carbon;
+use Illuminate\Http\Request;
+
+class EstadisticasController extends Controller
+{
+    public function estadisticas(){
+
+    	$year = Solicitud::whereYear('fecha',2020)->count();
+    	$enero = Solicitud::whereMonth('fecha',1)->whereYear('fecha',2020)->count();
+    	$febrero = Solicitud::whereMonth('fecha',2)->whereYear('fecha',2020)->count();
+    	$marzo = Solicitud::whereMonth('fecha',3)->whereYear('fecha',2020)->count();
+    	$abril = Solicitud::whereMonth('fecha',4)->whereYear('fecha',2020)->count();
+    	$mayo = Solicitud::whereMonth('fecha',5)->whereYear('fecha',2020)->count();
+    	$junio = Solicitud::whereMonth('fecha',6)->whereYear('fecha',2020)->count();
+    	$julio = Solicitud::whereMonth('fecha',7)->whereYear('fecha',2020)->count();
+    	$agosto = Solicitud::whereMonth('fecha',8)->whereYear('fecha',2020)->count();
+    	$septiembre = Solicitud::whereMonth('fecha',9)->whereYear('fecha',2020)->count();
+    	$octubre = Solicitud::whereMonth('fecha',10)->whereYear('fecha',2020)->count();
+    	$noviembre = Solicitud::whereMonth('fecha',11)->whereYear('fecha',2020)->count();
+    	$diciembre = Solicitud::whereMonth('fecha',12)->whereYear('fecha',2020)->count();
+
+
+
+    	$atendidoyear = Solicitud::where('status','atendido')->whereYear('fecha',2020)->count();
+    	$atendidoenero = Solicitud::whereMonth('fecha',1)->where('status','atendido')->whereYear('fecha',2020)->count();
+    	$atendidofebrero = Solicitud::whereMonth('fecha',2)->whereYear('fecha',2020)->count();
+    	$atendidomarzo = Solicitud::whereMonth('fecha',3)->where('status','atendido')->whereYear('fecha',2020)->count();
+    	$atendidoabril = Solicitud::whereMonth('fecha',4)->where('status','atendido')->whereYear('fecha',2020)->count();
+    	$atendidomayo = Solicitud::whereMonth('fecha',5)->where('status','atendido')->whereYear('fecha',2020)->count();
+    	$atendidojunio = Solicitud::whereMonth('fecha',6)->where('status','atendido')->whereYear('fecha',2020)->count();
+    	$atendidojulio = Solicitud::whereMonth('fecha',7)->where('status','atendido')->whereYear('fecha',2020)->count();
+    	$atendidoagosto = Solicitud::whereMonth('fecha',8)->where('status','atendido')->whereYear('fecha',2020)->count();
+    	$atendidoseptiembre = Solicitud::whereMonth('fecha',9)->where('status','atendido')->whereYear('fecha',2020)->count();
+    	$atendidooctubre = Solicitud::whereMonth('fecha',10)->where('status','atendido')->whereYear('fecha',2020)->count();
+    	$atendidonoviembre = Solicitud::whereMonth('fecha',11)->where('status','atendido')->whereYear('fecha',2020)->count();
+    	$atendidodiciembre = Solicitud::whereMonth('fecha',12)->where('status','atendido')->whereYear('fecha',2020)->count();
+
+
+
+    	$pendienteyear = Solicitud::where('status','pendiente')->whereYear('fecha',2020)->count();
+    	$pendienteenero = Solicitud::whereMonth('fecha',1)->where('status','pendiente')->whereYear('fecha',2020)->count();
+    	$pendientefebrero = Solicitud::whereMonth('fecha',2)->whereYear('fecha',2020)->count();
+    	$pendientemarzo = Solicitud::whereMonth('fecha',3)->where('status','pendiente')->whereYear('fecha',2020)->count();
+    	$pendienteabril = Solicitud::whereMonth('fecha',4)->where('status','pendiente')->whereYear('fecha',2020)->count();
+    	$pendientemayo = Solicitud::whereMonth('fecha',5)->where('status','pendiente')->whereYear('fecha',2020)->count();
+    	$pendientejunio = Solicitud::whereMonth('fecha',6)->where('status','pendiente')->whereYear('fecha',2020)->count();
+    	$pendientejulio = Solicitud::whereMonth('fecha',7)->where('status','pendiente')->whereYear('fecha',2020)->count();
+    	$pendienteagosto = Solicitud::whereMonth('fecha',8)->where('status','pendiente')->whereYear('fecha',2020)->count();
+    	$pendienteseptiembre = Solicitud::whereMonth('fecha',9)->where('status','pendiente')->whereYear('fecha',2020)->count();
+    	$pendienteoctubre = Solicitud::whereMonth('fecha',10)->where('status','pendiente')->whereYear('fecha',2020)->count();
+    	$pendientenoviembre = Solicitud::whereMonth('fecha',11)->where('status','pendiente')->whereYear('fecha',2020)->count();
+    	$pendientediciembre = Solicitud::whereMonth('fecha',12)->where('status','pendiente')->whereYear('fecha',2020)->count();
+
+
+
+    return [
+    		'total' => [
+    			'year' => $year,
+    			'enero' => $enero,
+    			'febrero'=> $febrero,
+    			'marzo' => $marzo,
+    			'abril' => $abril,
+    			'mayo' => $mayo,
+    			'junio' => $junio,
+    			'julio'  => $julio,
+    			'agosto' => $agosto,
+    			'septiembre' =>$septiembre,
+    			'octubre' => $octubre,
+    			'noviembre' => $noviembre,
+    			'diciembre' => $diciembre,
+    			],
+    		'atendidos' => [
+
+    			'atendidoyear' => $atendidoyear,
+    			'atendidoenero' => $atendidoenero,
+    			'atendidofebrero'=> $atendidofebrero,
+    			'atendidomarzo' => $atendidomarzo,
+    			'atendidoabril' => $atendidoabril,
+    			'atendidomayo' => $atendidomayo,
+    			'atendidojunio' => $atendidojunio,
+    			'atendidojulio'  => $atendidojulio,
+    			'atendidoagosto' => $atendidoagosto,
+    			'atendidoseptiembre' =>$atendidoseptiembre,
+    			'atendidooctubre' => $atendidooctubre,
+    			'atendidonoviembre' => $atendidonoviembre,
+    			'atendidodiciembre' => $atendidodiciembre,
+
+    			],
+    		'pendientes' => [
+    			'pendienteyear'	=> $pendienteyear,
+    			'pendienteenero' => $pendienteenero,
+    			'pendientefebrero'=> $pendientefebrero,
+    			'pendientemarzo' => $pendientemarzo,
+    			'pendienteabril' => $pendienteabril,
+    			'pendientemayo' => $pendientemayo,
+    			'pendientejunio' => $pendientejunio,
+    			'pendientejulio'  => $pendientejulio,
+    			'pendienteagosto' => $pendienteagosto,
+    			'pendienteseptiembre' =>$pendienteseptiembre,
+    			'pendienteoctubre' => $pendienteoctubre,
+    			'pendientenoviembre' => $pendientenoviembre,
+    			'pendientediciembre' => $pendientediciembre,
+
+    			]
+
+    		];
+
+    }
+
+    public function listadousuarios(){
+
+    $listado = User::where('rol_id',2)->get();
+    	$listado->toJson();
+
+    	return $listado;
+    }
+
+    public function estadisticauser($id){
+
+    	$useryear = Solicitud::whereYear('fecha',2020)->where('user_id',$id)->count();
+    	$userenero = Solicitud::whereMonth('fecha',1)->where('user_id',$id)->whereYear('fecha',2020)->count();
+    	$userfebrero = Solicitud::whereMonth('fecha',2)->where('user_id',$id)->whereYear('fecha',2020)->count();
+    	$usermarzo = Solicitud::whereMonth('fecha',3)->where('user_id',$id)->whereYear('fecha',2020)->count();
+    	$userabril = Solicitud::whereMonth('fecha',4)->where('user_id',$id)->whereYear('fecha',2020)->count();
+    	$usermayo = Solicitud::whereMonth('fecha',5)->where('user_id',$id)->whereYear('fecha',2020)->count();
+    	$userjunio = Solicitud::whereMonth('fecha',6)->where('user_id',$id)->whereYear('fecha',2020)->count();
+    	$userjulio = Solicitud::whereMonth('fecha',7)->where('user_id',$id)->whereYear('fecha',2020)->count();
+    	$useragosto = Solicitud::whereMonth('fecha',8)->where('user_id',$id)->whereYear('fecha',2020)->count();
+    	$userseptiembre = Solicitud::whereMonth('fecha',9)->where('user_id',$id)->whereYear('fecha',2020)->count();
+    	$useroctubre = Solicitud::whereMonth('fecha',10)->where('user_id',$id)->whereYear('fecha',2020)->count();
+    	$usernoviembre = Solicitud::whereMonth('fecha',11)->where('user_id',$id)->whereYear('fecha',2020)->count();
+    	$userdiciembre = Solicitud::whereMonth('fecha',12)->where('user_id',$id)->whereYear('fecha',2020)->count();
+
+
+
+    	$useratendidoyear = Solicitud::where('status','atendido')->where('user_id',$id)->whereYear('fecha',2020)->count();
+    	$useratendidoenero = Solicitud::whereMonth('fecha',1)->where('user_id',$id)->where('status','atendido')->whereYear('fecha',2020)->count();
+    	$useratendidofebrero = Solicitud::whereMonth('fecha',2)->where('user_id',$id)->whereYear('fecha',2020)->count();
+    	$useratendidomarzo = Solicitud::whereMonth('fecha',3)->where('user_id',$id)->where('status','atendido')->whereYear('fecha',2020)->count();
+    	$useratendidoabril = Solicitud::whereMonth('fecha',4)->where('user_id',$id)->where('status','atendido')->whereYear('fecha',2020)->count();
+    	$useratendidomayo = Solicitud::whereMonth('fecha',5->where('user_id',$id))->where('status','atendido')->whereYear('fecha',2020)->count();
+    	$useratendidojunio = Solicitud::whereMonth('fecha',6)->where('user_id',$id)->where('status','atendido')->whereYear('fecha',2020)->count();
+    	$useratendidojulio = Solicitud::whereMonth('fecha',7)->where('user_id',$id)->where('status','atendido')->whereYear('fecha',2020)->count();
+    	$useratendidoagosto = Solicitud::whereMonth('fecha',8)->where('user_id',$id)->where('status','atendido')->whereYear('fecha',2020)->count();
+    	$useratendidoseptiembre = Solicitud::whereMonth('fecha',9)->where('user_id',$id)->where('status','atendido')->whereYear('fecha',2020)->count();
+    	$useratendidooctubre = Solicitud::whereMonth('fecha',10)->where('user_id',$id)->where('status','atendido')->whereYear('fecha',2020)->count();
+    	$useratendidonoviembre = Solicitud::whereMonth('fecha',11)->where('user_id',$id)->where('status','atendido')->whereYear('fecha',2020)->count();
+    	$useratendidodiciembre = Solicitud::whereMonth('fecha',12)->where('user_id',$id)->where('status','atendido')->whereYear('fecha',2020)->count();
+
+
+    	$suerpendienteyear = Solicitud::where('status','pendiente')->where('user_id',$id)->whereYear('fecha',2020)->count();
+    	$suerpendienteenero = Solicitud::whereMonth('fecha',1)->where('user_id',$id)->where('status','pendiente')->whereYear('fecha',2020)->count();
+    	$suerpendientefebrero = Solicitud::whereMonth('fecha',2)->where('user_id',$id)->whereYear('fecha',2020)->count();
+    	$suerpendientemarzo = Solicitud::whereMonth('fecha',3)->where('user_id',$id)->where('status','pendiente')->whereYear('fecha',2020)->count();
+    	$suerpendienteabril = Solicitud::whereMonth('fecha',4)->where('user_id',$id)->where('status','pendiente')->whereYear('fecha',2020)->count();
+    	$suerpendientemayo = Solicitud::whereMonth('fecha',5)->where('user_id',$id)->where('status','pendiente')->whereYear('fecha',2020)->count();
+    	$suerpendientejunio = Solicitud::whereMonth('fecha',6)->where('user_id',$id)->where('status','pendiente')->whereYear('fecha',2020)->count();
+    	$suerpendientejulio = Solicitud::whereMonth('fecha',7)->where('user_id',$id)->where('status','pendiente')->whereYear('fecha',2020)->count();
+    	$suerpendienteagosto = Solicitud::whereMonth('fecha',8)->where('user_id',$id)->where('status','pendiente')->whereYear('fecha',2020)->count();
+    	$suerpendienteseptiembre = Solicitud::whereMonth('fecha',9)->where('user_id',$id)->where('status','pendiente')->whereYear('fecha',2020)->count();
+    	$suerpendienteoctubre = Solicitud::whereMonth('fecha',10)->where('user_id',$id)->where('status','pendiente')->whereYear('fecha',2020)->count();
+    	$suerpendientenoviembre = Solicitud::whereMonth('fecha',11)->where('user_id',$id)->where('status','pendiente')->whereYear('fecha',2020)->count();
+    	$suerpendientediciembre = Solicitud::whereMonth('fecha',12)->where('user_id',$id)->where('status','pendiente')->whereYear('fecha',2020)->count();
+
+    	  return [
+    		'usertotal' => [
+
+    			'useryear' => $useryear,
+    			'userenero' => $userenero,
+    			'userfebrero'=> $userfebrero,
+    			'usermarzo' => $usermarzo,
+    			'userabril' => $userabril,
+    			'usermayo' => $usermayo,
+    			'userjunio' => $userjunio,
+    			'userjulio'  => $userjulio,
+    			'useragosto' => $useragosto,
+    			'userseptiembre' =>$userseptiembre,
+    			'useroctubre' => $useroctubre,
+    			'usernoviembre' => $usernoviembre,
+    			'userdiciembre' => $userdiciembre,
+    			],
+
+    		'useratendidos' =>
+
+    			'useratendidoyear' => $useratendidoyear,
+    			'useratendidoenero' => $useratendidoenero,
+    			'useratendidofebrero'=> $useratendidofebrero,
+    			'useratendidomarzo' => $useratendidomarzo,
+    			'useratendidoabril' => $useratendidoabril,
+    			'useratendidomayo' => $useratendidomayo,
+    			'useratendidojunio' => $useratendidojunio,
+    			'useratendidojulio'  => $useratendidojulio,
+    			'useratendidoagosto' => $useratendidoagosto,
+    			'useratendidoseptiembre' =>$useratendidoseptiembre,
+    			'useratendidooctubre' => $useratendidooctubre,
+    			'useratendidonoviembre' => $useratendidonoviembre,
+    			'useratendidodiciembre' => $useratendidodiciembre,
+
+    			],
+    		'userpendientes' => [
+    			'userpendienteyear'	=> $userpendienteyear,
+    			'userpendienteenero' => $userpendienteenero,
+    			'userpendientefebrero'=> $userpendientefebrero,
+    			'userpendientemarzo' => $userpendientemarzo,
+    			'userpendienteabril' => $userpendienteabril,
+    			'userpendientemayo' => $userpendientemayo,
+    			'userpendientejunio' => $userpendientejunio,
+    			'userpendientejulio'  => $userpendientejulio,
+    			'userpendienteagosto' => $userpendienteagosto,
+    			'userpendienteseptiembre' =>$userpendienteseptiembre,
+    			'userpendienteoctubre' => $userpendienteoctubre,
+    			'userpendientenoviembre' => $userpendientenoviembre,
+    			'userpendientediciembre' => $userpendientediciembre,
+
+    			]
+
+    		];
+
+    }
+
+}

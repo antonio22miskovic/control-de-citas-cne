@@ -12,6 +12,6 @@ class SolicitudUserSeeder extends Seeder
      */
     public function run()
     {
-      factory(Solicitud_User::class,40)->create();
+      factory(Solicitud_User::class,10)->create();
     }
 }

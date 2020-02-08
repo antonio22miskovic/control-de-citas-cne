@@ -81,8 +81,8 @@
 		  			<div class="form-group">
 		  				<label for="inputAddress">estatus</label>
 		  				<select class="form-control" placeholder="estutus" v-model="status">
-		  					<option value="activo"> activio </option>
-		  					<option value="inactivo"> inactivo </option>
+		  					<option value="atendido"> atendido </option>
+		  					<option value="pendiente"> pendiente </option>
 		  				</select>
 
 		  			</div>

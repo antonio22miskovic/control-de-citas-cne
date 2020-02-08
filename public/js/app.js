@@ -12288,8 +12288,113 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'Estadisticas'
+  name: 'Estadisticas',
+  data: function data() {
+    return {
+      total: [],
+      atendidos: [],
+      pendientes: [],
+      usuarios: [],
+      usertotal: [],
+      useratendidos: [],
+      userpendientes: []
+    };
+  },
+  mounted: function mounted() {
+    this.Solicitudes();
+  },
+  methods: {
+    Solicitudes: function Solicitudes() {
+      var _this = this;
+
+      axios.get('estadisticas').then(function (response) {
+        _this.total = response.data.total;
+        _this.atendidos = response.data.atendidos;
+        _this.pendientes = response.data.pendientes;
+      });
+    },
+    usuarios: function usuarios(id) {
+      var _this2 = this;
+
+      axios.get('estadisticas/detalles/' + id).then(function (response) {
+        _this2.usertotal = response.data.usertotal;
+        _this2.useratendidos = response.data.useratendidos;
+        _this2.userpendientes = response.data.userpendientes;
+      });
+    }
+  }
 });
 
 /***/ }),
@@ -52953,14 +53058,246 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", [
+    _c("table", { staticClass: "table table-sm table-dark" }, [
+      _vm._m(0),
+      _vm._v(" "),
+      _c("tbody", [
+        _c("tr", [
+          _c("th", { attrs: { scope: "row" } }, [_vm._v("cantidad por mes:")]),
+          _vm._v(" "),
+          _c("td", { staticClass: "text-center" }, [
+            _vm._v(_vm._s(this.total.enero))
+          ]),
+          _vm._v(" "),
+          _c("td", { staticClass: "text-center" }, [
+            _vm._v(_vm._s(this.total.febrero))
+          ]),
+          _vm._v(" "),
+          _c("td", { staticClass: "text-center" }, [
+            _vm._v(_vm._s(this.total.marzo))
+          ]),
+          _vm._v(" "),
+          _c("td", { staticClass: "text-center" }, [
+            _vm._v(_vm._s(this.total.abril))
+          ]),
+          _vm._v(" "),
+          _c("td", { staticClass: "text-center" }, [
+            _vm._v(_vm._s(this.total.mayo))
+          ]),
+          _vm._v(" "),
+          _c("td", { staticClass: "text-center" }, [
+            _vm._v(_vm._s(this.total.junio))
+          ]),
+          _vm._v(" "),
+          _c("td", { staticClass: "text-center" }, [
+            _vm._v(_vm._s(this.total.julio))
+          ]),
+          _vm._v(" "),
+          _c("td", { staticClass: "text-center" }, [
+            _vm._v(_vm._s(this.total.agosto))
+          ]),
+          _vm._v(" "),
+          _c("td", { staticClass: "text-center" }, [
+            _vm._v(_vm._s(this.total.septiembre))
+          ]),
+          _vm._v(" "),
+          _c("td", { staticClass: "text-center" }, [
+            _vm._v(_vm._s(this.total.octubre))
+          ]),
+          _vm._v(" "),
+          _c("td", { staticClass: "text-center" }, [
+            _vm._v(_vm._s(this.total.noviembre))
+          ]),
+          _vm._v(" "),
+          _c("td", { staticClass: "text-center" }, [
+            _vm._v(_vm._s(this.total.diciembre))
+          ]),
+          _vm._v(" "),
+          _c("td", { staticClass: "text-center" }, [
+            _vm._v(_vm._s(this.total.year))
+          ])
+        ]),
+        _vm._v(" "),
+        _c("tr", [
+          _c("th", { attrs: { scope: "row" } }, [_vm._v("atendidas:")]),
+          _vm._v(" "),
+          _c("td", { staticClass: "text-center" }, [
+            _vm._v(_vm._s(this.atendidos.atendidoenero))
+          ]),
+          _vm._v(" "),
+          _c("td", { staticClass: "text-center" }, [
+            _vm._v(_vm._s(this.atendidos.atendidofebrero))
+          ]),
+          _vm._v(" "),
+          _c("td", { staticClass: "text-center" }, [
+            _vm._v(_vm._s(this.atendidos.atendidomarzo))
+          ]),
+          _vm._v(" "),
+          _c("td", { staticClass: "text-center" }, [
+            _vm._v(_vm._s(this.atendidos.atendidoabril))
+          ]),
+          _vm._v(" "),
+          _c("td", { staticClass: "text-center" }, [
+            _vm._v(_vm._s(this.atendidos.atendidomayo))
+          ]),
+          _vm._v(" "),
+          _c("td", { staticClass: "text-center" }, [
+            _vm._v(_vm._s(this.atendidos.atendidojunio))
+          ]),
+          _vm._v(" "),
+          _c("td", { staticClass: "text-center" }, [
+            _vm._v(_vm._s(this.atendidos.atendidojulio))
+          ]),
+          _vm._v(" "),
+          _c("td", { staticClass: "text-center" }, [
+            _vm._v(_vm._s(this.atendidos.atendidoagosto))
+          ]),
+          _vm._v(" "),
+          _c("td", { staticClass: "text-center" }, [
+            _vm._v(_vm._s(this.atendidos.atendidoseptiembre))
+          ]),
+          _vm._v(" "),
+          _c("td", { staticClass: "text-center" }, [
+            _vm._v(_vm._s(this.atendidos.atendidooctubre))
+          ]),
+          _vm._v(" "),
+          _c("td", { staticClass: "text-center" }, [
+            _vm._v(_vm._s(this.atendidos.atendidonoviembre))
+          ]),
+          _vm._v(" "),
+          _c("td", { staticClass: "text-center" }, [
+            _vm._v(_vm._s(this.atendidos.atendidodiciembre))
+          ]),
+          _vm._v(" "),
+          _c("td", { staticClass: "text-center" }, [
+            _vm._v(" " + _vm._s(this.atendidos.atendidoyear) + " ")
+          ])
+        ]),
+        _vm._v(" "),
+        _c("tr", [
+          _c("th", { attrs: { scope: "row" } }, [_vm._v("pendientes:")]),
+          _vm._v(" "),
+          _c("td", { staticClass: "text-center" }, [
+            _vm._v(_vm._s(this.pendientes.pendienteenero))
+          ]),
+          _vm._v(" "),
+          _c("td", { staticClass: "text-center" }, [
+            _vm._v(_vm._s(this.pendientes.pendientefebrero))
+          ]),
+          _vm._v(" "),
+          _c("td", { staticClass: "text-center" }, [
+            _vm._v(_vm._s(this.pendientes.pendientemarzo))
+          ]),
+          _vm._v(" "),
+          _c("td", { staticClass: "text-center" }, [
+            _vm._v(_vm._s(this.pendientes.pendienteabril))
+          ]),
+          _vm._v(" "),
+          _c("td", { staticClass: "text-center" }, [
+            _vm._v(_vm._s(this.pendientes.pendientemayo))
+          ]),
+          _vm._v(" "),
+          _c("td", { staticClass: "text-center" }, [
+            _vm._v(_vm._s(this.pendientes.pendientejunio))
+          ]),
+          _vm._v(" "),
+          _c("td", { staticClass: "text-center" }, [
+            _vm._v(_vm._s(this.pendientes.pendientejulio))
+          ]),
+          _vm._v(" "),
+          _c("td", { staticClass: "text-center" }, [
+            _vm._v(_vm._s(this.pendientes.pendienteagosto))
+          ]),
+          _vm._v(" "),
+          _c("td", { staticClass: "text-center" }, [
+            _vm._v(_vm._s(this.pendientes.pendienteseptiembre))
+          ]),
+          _vm._v(" "),
+          _c("td", { staticClass: "text-center" }, [
+            _vm._v(_vm._s(this.pendientes.pendienteoctubre))
+          ]),
+          _vm._v(" "),
+          _c("td", { staticClass: "text-center" }, [
+            _vm._v(_vm._s(this.pendientes.pendientenoviembre))
+          ]),
+          _vm._v(" "),
+          _c("td", { staticClass: "text-center" }, [
+            _vm._v(_vm._s(this.pendientes.pendientediciembre))
+          ]),
+          _vm._v(" "),
+          _c("td", { staticClass: "text-center" }, [
+            _vm._v(" " + _vm._s(this.pendientes.pendienteyear) + " ")
+          ])
+        ])
+      ])
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", [_c("p", [_vm._v(" estadisticas ")])])
+    return _c("thead", [
+      _c("tr", [
+        _c("th", { staticClass: "text-center", attrs: { scope: "col" } }, [
+          _vm._v("Solicitud")
+        ]),
+        _vm._v(" "),
+        _c("th", { staticClass: "text-center", attrs: { scope: "col" } }, [
+          _vm._v("enero")
+        ]),
+        _vm._v(" "),
+        _c("th", { staticClass: "text-center", attrs: { scope: "col" } }, [
+          _vm._v("febrero")
+        ]),
+        _vm._v(" "),
+        _c("th", { staticClass: "text-center", attrs: { scope: "col" } }, [
+          _vm._v("marzo")
+        ]),
+        _vm._v(" "),
+        _c("th", { staticClass: "text-center", attrs: { scope: "col" } }, [
+          _vm._v("abril")
+        ]),
+        _vm._v(" "),
+        _c("th", { staticClass: "text-center", attrs: { scope: "col" } }, [
+          _vm._v("mayo")
+        ]),
+        _vm._v(" "),
+        _c("th", { staticClass: "text-center", attrs: { scope: "col" } }, [
+          _vm._v("junio")
+        ]),
+        _vm._v(" "),
+        _c("th", { staticClass: "text-center", attrs: { scope: "col" } }, [
+          _vm._v("julio")
+        ]),
+        _vm._v(" "),
+        _c("th", { staticClass: "text-center", attrs: { scope: "col" } }, [
+          _vm._v("agosto")
+        ]),
+        _vm._v(" "),
+        _c("th", { staticClass: "text-center", attrs: { scope: "col" } }, [
+          _vm._v("septiembre")
+        ]),
+        _vm._v(" "),
+        _c("th", { staticClass: "text-center", attrs: { scope: "col" } }, [
+          _vm._v("octubre")
+        ]),
+        _vm._v(" "),
+        _c("th", { staticClass: "text-center", attrs: { scope: "col" } }, [
+          _vm._v("noviembre")
+        ]),
+        _vm._v(" "),
+        _c("th", { staticClass: "text-center", attrs: { scope: "col" } }, [
+          _vm._v("diciembre")
+        ]),
+        _vm._v(" "),
+        _c("th", { staticClass: "text-center", attrs: { scope: "col" } }, [
+          _vm._v("Total")
+        ])
+      ])
+    ])
   }
 ]
 render._withStripped = true
@@ -53094,7 +53431,7 @@ var render = function() {
             _vm._v(" "),
             _vm._l(_vm.solicitudes, function(solicitud) {
               return _c("tr", { key: solicitud.id }, [
-                _c("td", [_vm._v("t" + _vm._s(solicitud.solicitud))]),
+                _c("td", [_vm._v(_vm._s(solicitud.solicitud))]),
                 _vm._v(" "),
                 _c("td", [_vm._v(_vm._s(solicitud.respuesta))]),
                 _vm._v(" "),
@@ -54050,12 +54387,12 @@ var render = function() {
                   }
                 },
                 [
-                  _c("option", { attrs: { value: "activo" } }, [
-                    _vm._v(" activio ")
+                  _c("option", { attrs: { value: "atendido" } }, [
+                    _vm._v(" atendido ")
                   ]),
                   _vm._v(" "),
-                  _c("option", { attrs: { value: "inactivo" } }, [
-                    _vm._v(" inactivo ")
+                  _c("option", { attrs: { value: "pendiente" } }, [
+                    _vm._v(" pendiente ")
                   ])
                 ]
               )
