@@ -14,13 +14,16 @@ Vue.prototype.$http = window.axios;
 
 	import { faHome , faBuilding , faImages , faAt ,
  			faSearch, faPrint, faEye, faTrash,faMarker,
- 			faServer,faInfo , faList, faPlus, faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
+ 			faServer,faInfo , faList, faPlus, faSignOutAlt,
+ 			faUserPlus, faUserSlash, faUserEdit, faUserCircle } from "@fortawesome/free-solid-svg-icons";
 
 	import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
 	library.add( faHome, faBuilding, faImages, faAt,faSearch,
  				 faPrint ,faEye ,faTrash, faMarker, faServer,
- 				 faInfo, faList, faPlus,faSignOutAlt );
+ 				 faInfo, faList, faPlus,faSignOutAlt,
+ 				 faUserPlus,faUserSlash ,faUserEdit,
+ 				 faUserCircle );
 
 	Vue.component('font-awesome-icon', FontAwesomeIcon)
 

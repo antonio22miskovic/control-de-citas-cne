@@ -150,7 +150,7 @@
         			this.solicitud.length === 0 || this.status.length === 0 || this.respuesta.length === 0 || this.descripcion === 0 ||
         			this.tramite.length === 0 ) {
 
-        			this.validacion = true
+        			alert('debe introducir todos los datos requeridos')
 
         		}else{
 

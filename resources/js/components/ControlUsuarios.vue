@@ -125,19 +125,19 @@
 
                         </div>
                         <div class="col-12 col-lg-4 col-md-6 text-center">
-                            <img src="https://robohash.org/68.186.255.198.png" alt="" class="mx-auto rounded-circle img-fluid">
+                            <img  alt="" class="mx-auto rounded-circle img-fluid">
                             <br>
 
                         </div>
 
                         <button class="btn btn-outline-warning text-center  m-3" data-toggle="modal" data-target="#actualizar" @click.prevent="editar(encargado)">
-                        <font-awesome-icon icon="marker"/>
+                        <font-awesome-icon icon="user-edit"/>
                     </button>
                     <button class="btn btn-outline-primary text-center m-3" @click="buscar(encargado.id)">
                             <font-awesome-icon icon="eye"/>
                     </button>
                     <button class="btn btn-outline-danger  text-center  m-3" @click="eliminar(encargado.id)">
-                            <font-awesome-icon icon="trash"/>
+                            <font-awesome-icon icon="user-slash"/>
                     </button>
 
                         <!--/col-->

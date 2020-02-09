@@ -12,6 +12,9 @@ Route::get('/id/{ci}', 'HomeController@id');
 Route::get('/validarci/{ci?}', 'HomeController@validarci');
 Route::get('/perfil', 'HomeController@perfil');
 Route::get('/contador', 'HomeController@contador');
+Route::get('/email/verificacion/{emial}', 'HomeController@emailferivicacion');
+Route::get('/user/verificacion/{user}', 'HomeController@usuarioferivicacion');
+Route::get('/ci/verificacion/{ci}', 'HomeController@ciferivicacion');
 
 Route::resource('user', 'UserController');
 Route::resource('tramite', 'TramiteController');

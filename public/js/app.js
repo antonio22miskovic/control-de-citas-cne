@@ -12862,6 +12862,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_0__);
 //
 //
 //
@@ -12920,22 +12922,33 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'RegistroEncargado',
   mounted: function mounted() {},
   data: function data() {
     return {
       usuario: {
-        imagenminiatura: '',
         name: '',
         apellido: '',
         user: '',
         ci: '',
         email: '',
         avatar: '',
-        password: '',
-        confpassword: ''
-      }
+        password: ''
+      },
+      mensaje: false,
+      confpassword: '',
+      emailexiste: 0,
+      userexiste: 0,
+      ciexiste: 0,
+      mesanjeuser: false,
+      mesanjeci: false,
+      mesanjeemail: false
     };
   },
   methods: {
@@ -12951,23 +12964,85 @@ __webpack_require__.r(__webpack_exports__);
       var reader = new FileReader();
 
       reader.onload = function (e) {
-        _this.imagenminiatura = e.target.result;
+        _this.usuario.avatar = e.target.result;
       };
 
       reader.readAsDataURL(file);
     },
     agregar: function agregar() {
-      var formData = new FormData();
-      formData.append('name', this.usuario.name);
-      formData.append('apellido', this.usuario.apellido);
-      formData.append('user', this.usuario.user);
-      formData.append('ci', this.usuario.ci);
-      formData.append('avatar', this.usuario.avatar);
-      formData.append('name', this.usuario.email);
-      formData.append('password', this.usuario.password);
-      axios.post('admin/resgistro', formData).then(function (res) {
-        console.log(res.data);
-      });
+      var _this2 = this;
+
+      // let formData = new  FormData();
+      // 	formData.append('name',this.usuario.name)
+      // 	formData.append('apellido',this.usuario.apellido)
+      // 	formData.append('user',this.usuario.user)
+      // 	formData.append('ci',this.usuario.ci)
+      // 	formData.append('avatar',this.usuario.avatar)
+      // 	formData.append('name',this.usuario.email)
+      // 	formData.append('password',this.usuario.password)
+      if (this.usuario.name.length === 0 || this.usuario.apellido.length === 0 || this.usuario.user.length === 0 || this.usuario.ci.length === 0 || this.usuario.email.length === 0 || this.usuario.password.length === 0 || this.confpassword.length === 0) {
+        alert(' debe introducir todos los datos requeridos');
+      } else {
+        axios.get('/user/verificacion/' + this.usuario.user).then(function (res) {
+          _this2.userexiste = res.data;
+          console.log(_this2.userexiste);
+          console.log(res.data);
+        });
+
+        if (this.userexiste === 1) {
+          console.log('dentro de la primera validacion de user');
+          this.mesanjeuser = true;
+        } else {
+          this.mesanjeuser = false;
+          axios.get('/ci/verificacion/' + this.usuario.ci).then(function (res) {
+            _this2.ciexiste = res.data;
+            console.log(_this2.ciexiste);
+            console.log(res.data);
+          });
+
+          if (this.ciexiste === 1) {
+            console.log('dentro de la primera validacion de ci');
+            this.mesanjeci = true;
+          } else {
+            this.mesanjeci = false;
+            axios.get('/email/verificacion/' + this.usuario.email).then(function (res) {
+              _this2.emailexiste = res.data;
+              console.log(_this2.emailexiste);
+              console.log(res.data);
+            });
+
+            if (this.emailexiste === 1) {
+              console.log('dentro de la primera validacion de email');
+              this.mesanjeemail = true;
+            } else {
+              this.mesanjeemail = false;
+
+              if (this.usuario.password === this.confpassword) {
+                this.mensaje = false;
+                axios.post('admin/resgistro', this.usuario).then(function (res) {
+                  sweetalert2__WEBPACK_IMPORTED_MODULE_0___default.a.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'solicitud registrada con exito',
+                    showConfirmButton: false
+                  });
+                  _this2.usuario.name = null;
+                  _this2.usuario.apellido = null;
+                  _this2.usuario.user = null;
+                  _this2.usuario.ci = null;
+                  _this2.usuario.email = null;
+                  _this2.usuario.avatar = null;
+                  _this2.usuario.password = null;
+                  _this2.confpassword = null;
+                });
+              } else {
+                this.confpassword = null;
+                this.mensaje = true;
+              }
+            }
+          }
+        }
+      }
     }
   },
   computed: {}
@@ -13124,7 +13199,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       if (this.name.length === 0 || this.apellido.length === 0 || this.cedula.length === 0 || this.email.length === 0 || this.solicitud.length === 0 || this.status.length === 0 || this.respuesta.length === 0 || this.descripcion === 0 || this.tramite.length === 0) {
-        this.validacion = true;
+        alert('debe introducir todos los datos requeridos');
       } else {
         if (this.validarregistro === true) {
           axios.get('cliente/' + this.idparacliente).then(function (response) {
@@ -13262,6 +13337,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_ControlNotificaciones_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/ControlNotificaciones.vue */ "./resources/js/components/ControlNotificaciones.vue");
 /* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
 /* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_5__);
+//
 //
 //
 //
@@ -52804,7 +52880,7 @@ var render = function() {
                           },
                           [
                             _c("font-awesome-icon", {
-                              attrs: { icon: "marker" }
+                              attrs: { icon: "user-edit" }
                             })
                           ],
                           1
@@ -52838,7 +52914,7 @@ var render = function() {
                           },
                           [
                             _c("font-awesome-icon", {
-                              attrs: { icon: "trash" }
+                              attrs: { icon: "user-slash" }
                             })
                           ],
                           1
@@ -53130,7 +53206,7 @@ var staticRenderFns = [
     return _c("div", { staticClass: "col-12 col-lg-4 col-md-6 text-center" }, [
       _c("img", {
         staticClass: "mx-auto rounded-circle img-fluid",
-        attrs: { src: "https://robohash.org/68.186.255.198.png", alt: "" }
+        attrs: { alt: "" }
       }),
       _vm._v(" "),
       _c("br")
@@ -54353,7 +54429,13 @@ var render = function() {
                     _vm.$set(_vm.usuario, "user", $event.target.value)
                   }
                 }
-              })
+              }),
+              _vm._v(" "),
+              _vm.mesanjeuser === true
+                ? _c("p", { staticClass: "text-center" }, [
+                    _vm._v(" usuario no disponible")
+                  ])
+                : _vm._e()
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "form-group col-md-6" }, [
@@ -54379,7 +54461,13 @@ var render = function() {
                     _vm.$set(_vm.usuario, "ci", $event.target.value)
                   }
                 }
-              })
+              }),
+              _vm._v(" "),
+              _vm.mesanjeci === true
+                ? _c("p", { staticClass: "text-center" }, [
+                    _vm._v(" cedula no disponible")
+                  ])
+                : _vm._e()
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "form-group col-md-6" }, [
@@ -54405,7 +54493,13 @@ var render = function() {
                     _vm.$set(_vm.usuario, "email", $event.target.value)
                   }
                 }
-              })
+              }),
+              _vm._v(" "),
+              _vm.mesanjeemail === true
+                ? _c("p", { staticClass: "text-center" }, [
+                    _vm._v(" email no disponible")
+                  ])
+                : _vm._e()
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "form-group col-md-6" }, [
@@ -54452,8 +54546,8 @@ var render = function() {
                   {
                     name: "model",
                     rawName: "v-model",
-                    value: _vm.usuario.confpassword,
-                    expression: "usuario.confpassword"
+                    value: _vm.confpassword,
+                    expression: "confpassword"
                   }
                 ],
                 staticClass: "form-control",
@@ -54461,16 +54555,22 @@ var render = function() {
                   type: "password",
                   placeholder: "confirmar la contraseña"
                 },
-                domProps: { value: _vm.usuario.confpassword },
+                domProps: { value: _vm.confpassword },
                 on: {
                   input: function($event) {
                     if ($event.target.composing) {
                       return
                     }
-                    _vm.$set(_vm.usuario, "confpassword", $event.target.value)
+                    _vm.confpassword = $event.target.value
                   }
                 }
-              })
+              }),
+              _vm._v(" "),
+              _vm.mensaje === true
+                ? _c("p", { staticClass: "text-center" }, [
+                    _vm._v(" contraseñas no coinciden")
+                  ])
+                : _vm._e()
             ]),
             _vm._v(" "),
             _vm._m(0)
@@ -55044,7 +55144,7 @@ var render = function() {
                   _c(
                     "a",
                     {
-                      staticClass: "nav-link",
+                      staticClass: "nav-link  m-2",
                       on: {
                         click: function($event) {
                           return _vm.estadisticacomponent()
@@ -55059,14 +55159,14 @@ var render = function() {
                   _c(
                     "a",
                     {
-                      staticClass: "nav-link",
+                      staticClass: "nav-link  m-2",
                       on: {
                         click: function($event) {
                           return _vm.listadocomponent()
                         }
                       }
                     },
-                    [_vm._v("Listado de Solicitudes")]
+                    [_vm._v("usuarios")]
                   )
                 ]),
                 _vm._v(" "),
@@ -55074,14 +55174,15 @@ var render = function() {
                   _c(
                     "a",
                     {
-                      staticClass: "nav-link",
+                      staticClass: "nav-link m-2 ",
                       on: {
                         click: function($event) {
                           return _vm.registrocomponent()
                         }
                       }
                     },
-                    [_vm._v("Solicitudes")]
+                    [_c("font-awesome-icon", { attrs: { icon: "user-plus" } })],
+                    1
                   )
                 ]),
                 _vm._v(" "),
@@ -55089,14 +55190,19 @@ var render = function() {
                   _c(
                     "a",
                     {
-                      staticClass: "nav-link",
+                      staticClass: "nav-link  m-2",
                       on: {
                         click: function($event) {
                           return _vm.perfilcomponent()
                         }
                       }
                     },
-                    [_vm._v("Perfil")]
+                    [
+                      _c("font-awesome-icon", {
+                        attrs: { icon: "user-circle" }
+                      })
+                    ],
+                    1
                   )
                 ]),
                 _vm._v(" "),
@@ -55104,7 +55210,7 @@ var render = function() {
                   _c(
                     "a",
                     {
-                      staticClass: "nav-link",
+                      staticClass: "nav-link  m-2",
                       attrs: { "data-toggle": "modal" },
                       on: {
                         click: function($event) {
@@ -55119,7 +55225,7 @@ var render = function() {
                 _c("li", { staticClass: "nav-item" }, [
                   _c(
                     "a",
-                    { staticClass: "nav-link", on: { click: _vm.logout } },
+                    { staticClass: "nav-link  m-2", on: { click: _vm.logout } },
                     [
                       _c("font-awesome-icon", {
                         attrs: { icon: "sign-out-alt" }
@@ -67543,7 +67649,7 @@ Vue.prototype.$http = window.axios; /// LIBRERIA DE FONT AWESOME
 
 
 
-_fortawesome_fontawesome_svg_core__WEBPACK_IMPORTED_MODULE_0__["library"].add(_fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faHome"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faBuilding"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faImages"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faAt"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faSearch"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faPrint"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faEye"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faTrash"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faMarker"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faServer"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faInfo"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faList"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faPlus"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faSignOutAlt"]);
+_fortawesome_fontawesome_svg_core__WEBPACK_IMPORTED_MODULE_0__["library"].add(_fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faHome"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faBuilding"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faImages"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faAt"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faSearch"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faPrint"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faEye"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faTrash"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faMarker"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faServer"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faInfo"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faList"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faPlus"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faSignOutAlt"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faUserPlus"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faUserSlash"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faUserEdit"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faUserCircle"]);
 Vue.component('font-awesome-icon', _fortawesome_vue_fontawesome__WEBPACK_IMPORTED_MODULE_2__["FontAwesomeIcon"]); /// LIBRERIA DE FONT AWESOME
 
 

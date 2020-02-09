@@ -63,4 +63,31 @@ class HomeController extends Controller
 
     }
 
+    public function emailferivicacion($email){
+
+        $e = User::where('email', $email)->first();
+        if (is_null($e)) {
+            return response()->json(1);
+        }
+        return response()->json(2);
+    }
+
+    public function usuarioferivicacion($user){
+
+        $e = User::where('usuario', $user)->first();
+        if (is_null($e)) {
+            return response()->json(1);
+        }
+        return response()->json(2);
+    }
+
+    public function ciferivicacion($ci){
+
+        $e = User::where('ci', $ci)->first();
+        if (is_null($e)) {
+            return response()->json(1);
+        }
+        return response()->json(2);
+    }
+
 }
