@@ -109,7 +109,48 @@
             </div>
         </div>
 
-		<div v-if="tabla === false" v-for ="encargado of encargados" :key="encargado.id" class="card" style="width: 18rem;">
+ <div class=" container m-4" v-if="tabla === false" v-for ="encargado of encargados" :key="encargado.id">
+    <div class="row">
+        <div class="col-6">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-12 col-lg-8 col-md-6">
+                            <h3 class="mb-0 text-truncated">usuario:{{ encargado.usuario }}</h3>
+
+                            <p class="card-text">nombre: {{ encargado.name }}</p>
+                            <p class="card-text">apellido: {{ encargado.apellido }}</p>
+                            <p class="card-text">email: {{ encargado.email }}</p>
+
+
+                        </div>
+                        <div class="col-12 col-lg-4 col-md-6 text-center">
+                            <img src="https://robohash.org/68.186.255.198.png" alt="" class="mx-auto rounded-circle img-fluid">
+                            <br>
+
+                        </div>
+
+                        <button class="btn btn-outline-warning text-center  m-3" data-toggle="modal" data-target="#actualizar" @click.prevent="editar(encargado)">
+                        <font-awesome-icon icon="marker"/>
+                    </button>
+                    <button class="btn btn-outline-primary text-center m-3" @click="buscar(encargado.id)">
+                            <font-awesome-icon icon="eye"/>
+                    </button>
+                    <button class="btn btn-outline-danger  text-center  m-3" @click="eliminar(encargado.id)">
+                            <font-awesome-icon icon="trash"/>
+                    </button>
+
+                        <!--/col-->
+                    </div>
+                    <!--/row-->
+                </div>
+                <!--/card-block-->
+            </div>
+        </div>
+    </div>
+</div>
+
+		<!-- <div v-if="tabla === false" v-for ="encargado of encargados" :key="encargado.id" class="card" style="width: 18rem;">
  			 <img src="" class="card-img-top" alt="">
   			 <div class="card-body">
     			<h5 class="card-title">usuario:{{ encargado.usuario }}</h5>
@@ -127,7 +168,7 @@
                             <font-awesome-icon icon="trash"/>
                     </button>
  	 		 </div>
-		</div>
+		</div> -->
 
 			<div class="container" v-if =" tabla === true ">
 

@@ -2,7 +2,7 @@
 	<div>
 		<h3> registro de personal encargado</h3>
 		<div class="card-body">
-		  		<form @submit.prevent="" enctype="multipart/form-data">
+		  		<form @submit.prevent="agregar" enctype="multipart/form-data">
 		  			<div class="form-row">
 		  				<div class="form-group col-md-6">
 		  					<label>nombre</label>
@@ -71,7 +71,7 @@
 		data(){
 			return{
 				usuario:{
-
+					imagenminiatura:'',
 					name:'',
 					apellido:'',
 					user:'',
@@ -99,10 +99,31 @@
 			cargarimagen(file){
 
 				let reader = new FileReader();
+				reader.onload = (e) =>{
+					this.imagenminiatura = e.target.result;
+				}
+				reader.readAsDataURL(file);
 
-				reader.readAsDataURL();
+			},
+			agregar(){
 
-			}
+				let formData = new  FormData();
+					formData.append('name',this.usuario.name)
+					formData.append('apellido',this.usuario.apellido)
+					formData.append('user',this.usuario.user)
+					formData.append('ci',this.usuario.ci)
+					formData.append('avatar',this.usuario.avatar)
+					formData.append('name',this.usuario.email)
+					formData.append('password',this.usuario.password)
+
+					axios.post('admin/resgistro',formData).then(res =>{
+
+						console.log(res.data)
+
+					})
+
+
+			},
 
 
 		},

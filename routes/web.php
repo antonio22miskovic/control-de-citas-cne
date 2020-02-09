@@ -22,6 +22,7 @@ Route::resource('cliente', 'ClienteController');
 
 Route::get('/admin','AdminController@vista');
 Route::get('/admin/{id}','AdminController@filtroporusuario');
+Route::post('admin/resgistro','AdminController@registro');
 
 Route::get('estadisticas','EstadisticasController@estadisticas');
 Route::get('estadisticas/detalles/{id}','EstadisticasController@estadisticauser');

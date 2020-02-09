@@ -34,4 +34,10 @@ class AdminController extends Controller
 
 
   	}
+
+    public function registro(Request $request){
+
+        return $request->all();
+
+    }
 }

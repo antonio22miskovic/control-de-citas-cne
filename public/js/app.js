@@ -12084,6 +12084,47 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'ControlUsuarios',
@@ -12262,6 +12303,27 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -12768,20 +12830,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Perfil',
   mounted: function mounted() {
@@ -12878,6 +12926,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       usuario: {
+        imagenminiatura: '',
         name: '',
         apellido: '',
         user: '',
@@ -12897,8 +12946,28 @@ __webpack_require__.r(__webpack_exports__);
       this.cargarimagen(file);
     },
     cargarimagen: function cargarimagen(file) {
+      var _this = this;
+
       var reader = new FileReader();
-      reader.readAsDataURL();
+
+      reader.onload = function (e) {
+        _this.imagenminiatura = e.target.result;
+      };
+
+      reader.readAsDataURL(file);
+    },
+    agregar: function agregar() {
+      var formData = new FormData();
+      formData.append('name', this.usuario.name);
+      formData.append('apellido', this.usuario.apellido);
+      formData.append('user', this.usuario.user);
+      formData.append('ci', this.usuario.ci);
+      formData.append('avatar', this.usuario.avatar);
+      formData.append('name', this.usuario.email);
+      formData.append('password', this.usuario.password);
+      axios.post('admin/resgistro', formData).then(function (res) {
+        console.log(res.data);
+      });
     }
   },
   computed: {}
@@ -52691,89 +52760,95 @@ var render = function() {
       _vm._v(" "),
       _vm._l(_vm.encargados, function(encargado) {
         return _vm.tabla === false
-          ? _c(
-              "div",
-              {
-                key: encargado.id,
-                staticClass: "card",
-                staticStyle: { width: "18rem" }
-              },
-              [
-                _c("img", {
-                  staticClass: "card-img-top",
-                  attrs: { src: "", alt: "" }
-                }),
-                _vm._v(" "),
-                _c("div", { staticClass: "card-body" }, [
-                  _c("h5", { staticClass: "card-title" }, [
-                    _vm._v("usuario:" + _vm._s(encargado.usuario))
-                  ]),
-                  _vm._v(" "),
-                  _c("p", { staticClass: "card-text" }, [
-                    _vm._v("nombre: " + _vm._s(encargado.name))
-                  ]),
-                  _vm._v(" "),
-                  _c("p", { staticClass: "card-text" }, [
-                    _vm._v("apellido: " + _vm._s(encargado.apellido))
-                  ]),
-                  _vm._v(" "),
-                  _c("p", { staticClass: "card-text" }, [
-                    _vm._v("email: " + _vm._s(encargado.email))
-                  ]),
-                  _vm._v(" "),
-                  _c("p", { staticClass: "card-text" }, [
-                    _vm._v("contraseña asignada: ")
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-outline-warning text-center",
-                      attrs: {
-                        "data-toggle": "modal",
-                        "data-target": "#actualizar"
-                      },
-                      on: {
-                        click: function($event) {
-                          $event.preventDefault()
-                          return _vm.editar(encargado)
-                        }
-                      }
-                    },
-                    [_c("font-awesome-icon", { attrs: { icon: "marker" } })],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-outline-primary text-center",
-                      on: {
-                        click: function($event) {
-                          return _vm.buscar(encargado.id)
-                        }
-                      }
-                    },
-                    [_c("font-awesome-icon", { attrs: { icon: "eye" } })],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-outline-danger  text-center",
-                      on: {
-                        click: function($event) {
-                          return _vm.eliminar(encargado.id)
-                        }
-                      }
-                    },
-                    [_c("font-awesome-icon", { attrs: { icon: "trash" } })],
-                    1
-                  )
+          ? _c("div", { key: encargado.id, staticClass: " container m-4" }, [
+              _c("div", { staticClass: "row" }, [
+                _c("div", { staticClass: "col-6" }, [
+                  _c("div", { staticClass: "card" }, [
+                    _c("div", { staticClass: "card-body" }, [
+                      _c("div", { staticClass: "row" }, [
+                        _c("div", { staticClass: "col-12 col-lg-8 col-md-6" }, [
+                          _c("h3", { staticClass: "mb-0 text-truncated" }, [
+                            _vm._v("usuario:" + _vm._s(encargado.usuario))
+                          ]),
+                          _vm._v(" "),
+                          _c("p", { staticClass: "card-text" }, [
+                            _vm._v("nombre: " + _vm._s(encargado.name))
+                          ]),
+                          _vm._v(" "),
+                          _c("p", { staticClass: "card-text" }, [
+                            _vm._v("apellido: " + _vm._s(encargado.apellido))
+                          ]),
+                          _vm._v(" "),
+                          _c("p", { staticClass: "card-text" }, [
+                            _vm._v("email: " + _vm._s(encargado.email))
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _vm._m(5, true),
+                        _vm._v(" "),
+                        _c(
+                          "button",
+                          {
+                            staticClass:
+                              "btn btn-outline-warning text-center  m-3",
+                            attrs: {
+                              "data-toggle": "modal",
+                              "data-target": "#actualizar"
+                            },
+                            on: {
+                              click: function($event) {
+                                $event.preventDefault()
+                                return _vm.editar(encargado)
+                              }
+                            }
+                          },
+                          [
+                            _c("font-awesome-icon", {
+                              attrs: { icon: "marker" }
+                            })
+                          ],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "button",
+                          {
+                            staticClass:
+                              "btn btn-outline-primary text-center m-3",
+                            on: {
+                              click: function($event) {
+                                return _vm.buscar(encargado.id)
+                              }
+                            }
+                          },
+                          [_c("font-awesome-icon", { attrs: { icon: "eye" } })],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "button",
+                          {
+                            staticClass:
+                              "btn btn-outline-danger  text-center  m-3",
+                            on: {
+                              click: function($event) {
+                                return _vm.eliminar(encargado.id)
+                              }
+                            }
+                          },
+                          [
+                            _c("font-awesome-icon", {
+                              attrs: { icon: "trash" }
+                            })
+                          ],
+                          1
+                        )
+                      ])
+                    ])
+                  ])
                 ])
-              ]
-            )
+              ])
+            ])
           : _vm._e()
       }),
       _vm._v(" "),
@@ -52792,7 +52867,7 @@ var render = function() {
             _vm._v(" "),
             _c("div", { staticClass: "row justify-content-center" }, [
               _c("table", { staticClass: "table table-striped mt-4 p-4" }, [
-                _vm._m(5),
+                _vm._m(6),
                 _vm._v(" "),
                 _c(
                   "tbody",
@@ -53046,6 +53121,19 @@ var staticRenderFns = [
         },
         [_vm._v("Cerrar")]
       )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-12 col-lg-4 col-md-6 text-center" }, [
+      _c("img", {
+        staticClass: "mx-auto rounded-circle img-fluid",
+        attrs: { src: "https://robohash.org/68.186.255.198.png", alt: "" }
+      }),
+      _vm._v(" "),
+      _c("br")
     ])
   },
   function() {
@@ -53313,7 +53401,11 @@ var render = function() {
         ]
       ),
       _vm._v(" "),
-      _c("table", { staticClass: "table table-sm table-dark" }, [
+      _c("h3", { staticClass: "text-center m-2" }, [
+        _vm._v("estadisticas de solicitudes ")
+      ]),
+      _vm._v(" "),
+      _c("table", { staticClass: "table table-sm table-dark m-3" }, [
         _vm._m(3),
         _vm._v(" "),
         _c("tbody", [
@@ -53489,62 +53581,61 @@ var render = function() {
         ])
       ]),
       _vm._v(" "),
+      _c("h4", { staticClass: "text-center m-2" }, [
+        _vm._v("estadisticas de usuarios ")
+      ]),
+      _vm._v(" "),
       _vm._l(_vm.usuarios, function(encargado) {
-        return _c(
-          "div",
-          {
-            key: encargado.id,
-            staticClass: "card",
-            staticStyle: { width: "18rem" }
-          },
-          [
-            _c("img", {
-              staticClass: "card-img-top",
-              attrs: { src: "", alt: "" }
-            }),
-            _vm._v(" "),
-            _c("div", { staticClass: "card-body" }, [
-              _c("h5", { staticClass: "card-title" }, [
-                _vm._v("usuario:" + _vm._s(encargado.usuario))
-              ]),
-              _vm._v(" "),
-              _c("p", { staticClass: "card-text" }, [
-                _vm._v("nombre: " + _vm._s(encargado.name))
-              ]),
-              _vm._v(" "),
-              _c("p", { staticClass: "card-text" }, [
-                _vm._v("apellido: " + _vm._s(encargado.apellido))
-              ]),
-              _vm._v(" "),
-              _c("p", { staticClass: "card-text" }, [
-                _vm._v("email: " + _vm._s(encargado.email))
-              ]),
-              _vm._v(" "),
-              _c("p", { staticClass: "card-text" }, [
-                _vm._v("contraseña asignada: ")
-              ]),
-              _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-outline-warning text-center",
-                  attrs: {
-                    "data-toggle": "modal",
-                    "data-target": ".bd-example-modal-xl"
-                  },
-                  on: {
-                    click: function($event) {
-                      $event.preventDefault()
-                      return _vm.detalles(encargado.id)
-                    }
-                  }
-                },
-                [_c("font-awesome-icon", { attrs: { icon: "eye" } })],
-                1
-              )
+        return _c("div", { key: encargado.id, staticClass: " container m-4" }, [
+          _c("div", { staticClass: "row" }, [
+            _c("div", { staticClass: "col-6" }, [
+              _c("div", { staticClass: "card" }, [
+                _c("div", { staticClass: "card-body" }, [
+                  _c("div", { staticClass: "row" }, [
+                    _c("div", { staticClass: "col-12 col-lg-8 col-md-6" }, [
+                      _c("h3", { staticClass: "mb-0 text-truncated" }, [
+                        _vm._v("usuario:" + _vm._s(encargado.usuario))
+                      ]),
+                      _vm._v(" "),
+                      _c("p", { staticClass: "card-text" }, [
+                        _vm._v("nombre: " + _vm._s(encargado.name))
+                      ]),
+                      _vm._v(" "),
+                      _c("p", { staticClass: "card-text" }, [
+                        _vm._v("apellido: " + _vm._s(encargado.apellido))
+                      ]),
+                      _vm._v(" "),
+                      _c("p", { staticClass: "card-text" }, [
+                        _vm._v("email: " + _vm._s(encargado.email))
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _vm._m(4, true),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-outline-warning text-center",
+                        attrs: {
+                          "data-toggle": "modal",
+                          "data-target": ".bd-example-modal-xl"
+                        },
+                        on: {
+                          click: function($event) {
+                            $event.preventDefault()
+                            return _vm.detalles(encargado.id)
+                          }
+                        }
+                      },
+                      [_c("font-awesome-icon", { attrs: { icon: "eye" } })],
+                      1
+                    )
+                  ])
+                ])
+              ])
             ])
-          ]
-        )
+          ])
+        ])
       })
     ],
     2
@@ -53720,6 +53811,19 @@ var staticRenderFns = [
           _vm._v("Total")
         ])
       ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-12 col-lg-4 col-md-6 text-center" }, [
+      _c("img", {
+        staticClass: "mx-auto rounded-circle img-fluid",
+        attrs: { src: "https://robohash.org/68.186.255.198.png", alt: "" }
+      }),
+      _vm._v(" "),
+      _c("br")
     ])
   }
 ]
@@ -54085,65 +54189,39 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container bg-light" }, [
+  return _c("div", { staticClass: "container m-4" }, [
     _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col" }),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-9" }, [
-        _c("div", { staticClass: "card mt-2" }, [
-          _c("div", { staticClass: "card-header p-4 bg-dark" }, [
+      _c("div", { staticClass: "col-30" }, [
+        _c("div", { staticClass: "card" }, [
+          _c("div", { staticClass: "card-body" }, [
             _c("div", { staticClass: "row" }, [
-              _c("div", { staticClass: "col-8" }, [
-                _c("h4", { staticClass: "text-white" }, [
+              _c("div", { staticClass: "col-12 col-lg-8 col-md-6" }, [
+                _c("h3", { staticClass: "mb-0 text-truncated" }, [
                   _vm._v("Perfil de: " + _vm._s(this.dataperfil.usuario))
+                ]),
+                _vm._v(" "),
+                _c("p", { staticClass: "lead" }, [
+                  _vm._v("Nombre: " + _vm._s(this.dataperfil.name))
+                ]),
+                _vm._v(" "),
+                _c("p", { staticClass: "lead" }, [
+                  _vm._v("Nombre: " + _vm._s(this.dataperfil.apellido))
+                ]),
+                _vm._v(" "),
+                _c("p", { staticClass: "lead" }, [
+                  _vm._v("Nombre: " + _vm._s(this.dataperfil.ci))
+                ]),
+                _vm._v(" "),
+                _c("p", { staticClass: "lead" }, [
+                  _vm._v("Nombre: " + _vm._s(this.dataperfil.email))
                 ])
               ]),
               _vm._v(" "),
               _vm._m(0)
             ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "card-body text-center" }, [
-            _c("div", { staticClass: "row" }, [
-              _c("div", { staticClass: "col-6" }, [
-                _vm._v(
-                  "\n\t\t\t\t\t\t\t\tNombre: " +
-                    _vm._s(this.dataperfil.name) +
-                    "\n\t\t\t\t\t\t\t"
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-6 mb-4" }, [
-                _vm._v(
-                  "\n\t\t\t\t\t\t\t\tApellido: " +
-                    _vm._s(this.dataperfil.apellido) +
-                    "\n\t\t\t\t\t\t\t"
-                )
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "row" }, [
-              _c("div", { staticClass: "col-6" }, [
-                _vm._v(
-                  "\n\t\t\t\t\t\t\t\tCedula: " +
-                    _vm._s(this.dataperfil.ci) +
-                    "\n\t\t\t\t\t\t\t"
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-6 mb-4" }, [
-                _vm._v(
-                  "\n\t\t\t\t\t\t\t\tcorreo: " +
-                    _vm._s(this.dataperfil.email) +
-                    "\n\t\t\t\t\t\t\t"
-                )
-              ])
-            ])
           ])
         ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col" })
+      ])
     ])
   ])
 }
@@ -54152,9 +54230,13 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-4 rounded" }, [
-      _vm._v("\n\t\t\t\t\t\t\t\tAvatar\n\t\t\t\t\t\t\t\t"),
-      _c("img", { attrs: { src: "", alt: "" } })
+    return _c("div", { staticClass: "col-12 col-lg-4 col-md-6 text-center" }, [
+      _c("img", {
+        staticClass: "mx-auto rounded-circle img-fluid",
+        attrs: { src: "https://robohash.org/68.186.255.198.png", alt: "" }
+      }),
+      _vm._v(" "),
+      _c("br")
     ])
   }
 ]
@@ -54190,6 +54272,7 @@ var render = function() {
           on: {
             submit: function($event) {
               $event.preventDefault()
+              return _vm.agregar($event)
             }
           }
         },
