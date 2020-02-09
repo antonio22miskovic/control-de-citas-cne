@@ -1,5 +1,99 @@
 <template>
 	<div>
+	<!-- 	<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-xl">Extra large modal</button>
+ -->
+		<div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+ 			 <div class="modal-dialog modal-xl">
+    			<div class="modal-content">
+    				<div class="modal-header">
+                            <h5 class="modal-title " id="exampleModalCenterTitle"> estadisticas personales</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+
+                        <div class="modal-body">
+        <table class="table table-sm table-dark">
+        <thead>
+          <tr>
+			<th scope="col" class="text-center">Solicitud</th>
+			<th scope="col" class="text-center">enero</th>
+			<th scope="col" class="text-center">febrero</th>
+			<th scope="col" class="text-center">marzo</th>
+			<th scope="col" class="text-center">abril</th>
+			<th scope="col"class="text-center" >mayo</th>
+			<th scope="col" class="text-center">junio</th>
+			<th scope="col" class="text-center">julio</th>
+			<th scope="col"class="text-center" >agosto</th>
+			<th scope="col" class="text-center">septiembre</th>
+			<th scope="col" class="text-center">octubre</th>
+			<th scope="col" class="text-center">noviembre</th>
+			<th scope="col"class="text-center" >diciembre</th>
+			<th scope="col" class="text-center">Total</th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <tr>
+            <th scope="row">cantidad por mes:</th>
+            <td class="text-center">{{ this.usertotal.userenero }}</td>
+            <td class="text-center">{{ this.usertotal.userfebrero }}</td>
+            <td class="text-center">{{ this.usertotal.usermarzo }}</td>
+            <td class="text-center">{{ this.usertotal.userabril }}</td>
+            <td class="text-center">{{ this.usertotal.usermayo }}</td>
+            <td class="text-center">{{ this.usertotal.userjunio }}</td>
+            <td class="text-center">{{ this.usertotal.userjulio }}</td>
+            <td class="text-center">{{ this.usertotal.useragosto }}</td>
+            <td class="text-center">{{ this.usertotal.userseptiembre }}</td>
+            <td class="text-center">{{ this.usertotal.useroctubre }}</td>
+            <td class="text-center">{{ this.usertotal.usernoviembre }}</td>
+            <td class="text-center">{{ this.usertotal.userdiciembre }}</td>
+            <td class="text-center">{{ this.usertotal.useryear }}</td>
+          </tr>
+          <tr>
+            <th scope="row">atendidas:</th>
+            <td class="text-center">{{ this.useratendidos.useratendidoenero }}</td>
+            <td class="text-center">{{ this.useratendidos.useratendidofebrero }}</td>
+            <td class="text-center">{{ this.useratendidos.useratendidomarzo }}</td>
+            <td class="text-center">{{ this.useratendidos.useratendidoabril }}</td>
+            <td class="text-center">{{ this.useratendidos.useratendidomayo }}</td>
+            <td class="text-center">{{ this.useratendidos.useratendidojunio }}</td>
+            <td class="text-center">{{ this.useratendidos.useratendidojulio }}</td>
+            <td class="text-center">{{ this.useratendidos.useratendidoagosto }}</td>
+            <td class="text-center">{{ this.useratendidos.useratendidoseptiembre }}</td>
+            <td class="text-center">{{ this.useratendidos.useratendidooctubre }}</td>
+            <td class="text-center">{{ this.useratendidos.useratendidonoviembre }}</td>
+            <td class="text-center">{{ this.useratendidos.useratendidodiciembre }}</td>
+            <td class="text-center"> {{ this.useratendidos.useratendidoyear }} </td>
+
+          </tr>
+        <tr>
+            <th scope="row">pendientes:</th>
+            <td class="text-center">{{ this.userpendientes.userpendienteenero }}</td>
+            <td class="text-center">{{ this.userpendientes.userpendientefebrero }}</td>
+            <td class="text-center">{{ this.userpendientes.userpendientemarzo }}</td>
+            <td class="text-center">{{ this.userpendientes.userpendienteabril }}</td>
+            <td class="text-center">{{ this.userpendientes.userpendientemayo }}</td>
+            <td class="text-center">{{ this.userpendientes.userpendientejunio }}</td>
+            <td class="text-center">{{ this.userpendientes.userpendientejulio }}</td>
+            <td class="text-center">{{ this.userpendientes.userpendienteagosto }}</td>
+            <td class="text-center">{{ this.userpendientes.userpendienteseptiembre }}</td>
+            <td class="text-center">{{ this.userpendientes.userpendienteoctubre }}</td>
+            <td class="text-center">{{ this.userpendientes.userpendientenoviembre }}</td>
+            <td class="text-center">{{ this.userpendientes.userpendientediciembre }}</td>
+            <td class="text-center"> {{ this.userpendientes.userpendienteyear }} </td>
+          </tr>
+        </tbody>
+      </table>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary btn-lg btn-block" data-dismiss="modal">Cerrar</button>
+                        </div>
+    		</div>
+  		</div>
+	</div>
+
 		<table class="table table-sm table-dark">
         <thead>
           <tr>
@@ -72,6 +166,20 @@
           </tr>
         </tbody>
       </table>
+
+      <div  v-for ="encargado of usuarios" :key="encargado.id" class="card" style="width: 18rem;">
+ 			 <img src="" class="card-img-top" alt="">
+  			 <div class="card-body">
+    			<h5 class="card-title">usuario:{{ encargado.usuario }}</h5>
+    				<p class="card-text">nombre: {{ encargado.name }}</p>
+    				<p class="card-text">apellido: {{ encargado.apellido }}</p>
+    				<p class="card-text">email: {{ encargado.email }}</p>
+    				<p class="card-text">contraseña asignada: </p>
+    				<button class="btn btn-outline-warning text-center" data-toggle="modal" data-target=".bd-example-modal-xl" @click.prevent="detalles(encargado.id)">
+                        <font-awesome-icon icon="eye"/>
+                    </button>
+ 	 		 </div>
+		</div>
 	</div>
 </template>
 
@@ -97,7 +205,7 @@
 		mounted(){
 
 			this.Solicitudes()
-
+			this.listadouser()
 		},
 
 		methods:{
@@ -113,7 +221,7 @@
         		});
 			},
 
-			usuarios(id){
+			detalles(id){
 
 				axios.get('estadisticas/detalles/' + id ).then((response) => {
 
@@ -122,8 +230,19 @@
 						this.userpendientes = response.data.userpendientes
 
         		});
-			}
-		}
+			},
+
+			listadouser(){
+
+				axios.get('estadisticas/usuarios').then((response) => {
+
+						this.usuarios = response.data
+						console.log(this.usuarios)
+
+        		});
+
+			},
+		},
 	}
 
 </script>

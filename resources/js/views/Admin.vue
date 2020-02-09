@@ -1,41 +1,44 @@
 <template>
 	<div>
 
-		  <div id="page-content-wrapper">
+		  <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+             <div class="container">
+                <a class="navbar-brand" href="/home">  <font-awesome-icon icon="home" /> CNE </a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a @click="estadisticacomponent()"class="nav-link">Estadisticas</a>
+                        </li>
+                        <li class="nav-item">
+                            <a @click="listadocomponent()"class="nav-link">Listado de Solicitudes</a>
+                        </li>
+                        <li>
+                            <a @click="registrocomponent()"class="nav-link">Solicitudes</a>
+                        </li>
+                        <li class="nav-item">
+                            <a @click="perfilcomponent()" class="nav-link">Perfil</a>
+                        </li>
+                        <li class="nav-item">
+                             <a @click="Notificacionescomponent()"class="nav-link" data-toggle="modal">Notficaciones</a>
+                         </li>
+                        <li class="nav-item">
+                              <a class="nav-link" v-on:click="logout"><font-awesome-icon icon="sign-out-alt"/></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
 
-            <ul class="nav nav-pills mb-3 p-3 bg-dark text-light" id="pills-tab" role="tablist">
-                <li class="nav-item">
-                    <a @click="registrocomponent()" class="nav-link active text-white" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Solicitudes</a>
-                </li>
-                <li class="nav-item">
-                    <a @click="listadocomponent()" class="nav-link text-white" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Listado de Solicitudes</a>
-                </li>
-                <li class="nav-item">
-                    <a @click="estadisticacomponent()" class="nav-link text-white" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Estadisticas</a>
-                </li>
-                <li class="nav-item">
-                    <a @click="perfilcomponent()" class="nav-link text-white" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Perfil</a>
-                </li>
-                <li class="nav-item">
-                    <a @click="Notificacionescomponent()" class="nav-link text-white" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Notficaciones</a>
-                </li>
-                <li class="nav-item" style="margin-left: 24rem !important;">
-                    <a class="nav-link"><font-awesome-icon icon="home"/>Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" @click="logout" ><font-awesome-icon icon="sign-out-alt"/>Salir</a>
-                </li>
-            </ul>
-
-	</div>
-
-	 <div class="container-fluid">
+	       <div class="container-fluid">
 
             	<!-- MONTANDO LOS COMPONENTES -->
             	<RegistroEncargado v-if="registro === true"></RegistroEncargado>
             	<ControlUsuarios v-if="listado === true" ></ControlUsuarios>
             	<AdminPerfil v-if="perfil === true"></AdminPerfil>
-            	<AdminEstadisticas v-if=" estadistica === true"></AdminEstadisticas>
+            	<Estadisticas v-if=" estadistica === true"></Estadisticas>
             	<ControlNotificaciones v-if="notificacion === true"></ControlNotificaciones>
 
             </div>
@@ -48,7 +51,7 @@
 	import RegistroEncargado from '../components/RegistroEncargado.vue'
 	import ControlUsuarios from '../components/ControlUsuarios.vue'
 	import AdminPerfil from '../components/AdminPerfil.vue'
-	import AdminEstadisticas from '../components/AdminEstadisticas.vue'
+	import Estadisticas from '../components/Estadisticas.vue'
 	import ControlNotificaciones from '../components/ControlNotificaciones.vue'
 
 	//IPORTAMOS LAS ALERTAS POR SI LAS NECESITAMOS
@@ -63,7 +66,7 @@
         RegistroEncargado,
         ControlNotificaciones,
         ControlUsuarios,
-        AdminEstadisticas,
+         Estadisticas,
         AdminPerfil,
 
         },

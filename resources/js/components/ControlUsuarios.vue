@@ -12,7 +12,7 @@
                             </button>
                         </div>
 
-                        <div class="modal-body">
+                        <div class="modal-body p-4 m-3">
                             <div>
 
                                 <p> fecha:  {{ this.detallesolicitud.fecha }}</p>

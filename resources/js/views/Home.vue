@@ -1,71 +1,36 @@
 <template>
 
-
-    <!-- <div class="d-flex" id="wrapper"> -->
-        <!-- Sidebar -->
-<!--         <div class="bg-coco" id="sidebar-wrapper">
-            <div class="sidebar-heading text-center bg-coco"> CNE </div>
-            <div class="list-group list-group-flush"> -->
-
-
-<!--                 <a @click="registrocomponent()" class="list-group-item list-group-item-action bg-coco">Solicitudes</a>
-                <a @click="listadocomponent()" class="list-group-item list-group-item-action bg-coco">listado de solicitudes</a>
-                <a @click="estadisticacomponent()" class="list-group-item list-group-item-action bg-coco">Estadisticas</a>
-                <a @click="perfilcomponent()"  class="list-group-item list-group-item-action bg-coco">Perfil</a>
-                <a @click="Notificacionescomponent()" class="list-group-item list-group-item-action bg-coco">Notificaciones {{ this.contador }}</a> -->
-
-<!-- 
-            </div>
-        </div> -->
-        <!-- /#sidebar-wrapper -->
-
-        <!-- Page Content -->
-        <div id="page-content-wrapper">
-
-            <ul class="nav nav-pills mb-3 p-3 bg-dark text-light" id="pills-tab" role="tablist">
-                <li class="nav-item">
-                    <a @click="registrocomponent()" class="nav-link active text-white" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Solicitudes</a>
-                </li>
-                <li class="nav-item">
-                    <a @click="listadocomponent()" class="nav-link text-white" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Listado de Solicitudes</a>
-                </li>
-                <li class="nav-item">
-                    <a @click="estadisticacomponent()" class="nav-link text-white" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Estadisticas</a>
-                </li>
-                <li class="nav-item">
-                    <a @click="perfilcomponent()" class="nav-link text-white" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Perfil</a>
-                </li>
-                <li class="nav-item">
-                    <a @click="Notificacionescomponent()" class="nav-link text-white" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Notficaciones</a>
-                </li>
-                <li class="nav-item" style="margin-left: 24rem !important;">
-                    <a class="nav-link"><font-awesome-icon icon="home"/>Home</a>   
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" @click="logout" ><font-awesome-icon icon="sign-out-alt"/>Salir</a>   
-                </li>
-            </ul>
-        </ul>
-<!--             <nav class="navbar navbar-expand-lg navbar-light bg-dark" style="height: 3.65rem !important;">
-                <button class="btn btn-primary" id="menu-toggle"><font-awesome-icon icon="server"/></button>
-
-
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="/home"><font-awesome-icon icon="home"/></a>
-                        </li>
-
+<div>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+             <div class="container">
+                <a class="navbar-brand" href="/home">  <font-awesome-icon icon="home" /> CNE </a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                            <a class="nav-link" @click="logout" ><font-awesome-icon icon="sign-out-alt"/></a>
+                            <a @click="estadisticacomponent()"class="nav-link">Estadisticas</a>
+                        </li>
+                        <li class="nav-item">
+                            <a @click="listadocomponent()"class="nav-link">Listado de Solicitudes</a>
+                        </li>
+                        <li>
+                            <a @click="registrocomponent()"class="nav-link">Solicitudes</a>
+                        </li>
+                        <li class="nav-item">
+                            <a @click="perfilcomponent()" class="nav-link">Perfil</a>
+                        </li>
+                        <li class="nav-item">
+                             <a @click="Notificacionescomponent()"class="nav-link" data-toggle="modal">Notficaciones</a>
+                         </li>
+                        <li class="nav-item">
+                              <a class="nav-link" v-on:click="logout"><font-awesome-icon icon="sign-out-alt"/></a>
                         </li>
                     </ul>
                 </div>
-            </nav> -->
+            </div>
+        </nav>
 
             <div class="container-fluid">
 
@@ -77,8 +42,6 @@
             	<Notificaciones v-if="notificacion === true"></Notificaciones>
 
             </div>
-        </div>
-        <!-- /#page-content-wrapper -->
 
     </div>
 
