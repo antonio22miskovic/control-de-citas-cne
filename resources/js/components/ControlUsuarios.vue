@@ -269,6 +269,7 @@ import Swal from 'sweetalert2'
 					'avatar':'',
 
 				},
+
 				tabla:false,
 				solicitudes:[],
 				datobuscar:'',

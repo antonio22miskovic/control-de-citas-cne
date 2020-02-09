@@ -12943,9 +12943,9 @@ __webpack_require__.r(__webpack_exports__);
       },
       mensaje: false,
       confpassword: '',
-      emailexiste: 0,
-      userexiste: 0,
-      ciexiste: 0,
+      emailexiste: '',
+      userexiste: '',
+      ciexiste: '',
       mesanjeuser: false,
       mesanjeci: false,
       mesanjeemail: false
@@ -12980,39 +12980,30 @@ __webpack_require__.r(__webpack_exports__);
       // 	formData.append('avatar',this.usuario.avatar)
       // 	formData.append('name',this.usuario.email)
       // 	formData.append('password',this.usuario.password)
-      if (this.usuario.name.length === 0 || this.usuario.apellido.length === 0 || this.usuario.user.length === 0 || this.usuario.ci.length === 0 || this.usuario.email.length === 0 || this.usuario.password.length === 0 || this.confpassword.length === 0) {
+      if (this.usuario.name.length === 0 || this.usuario.apellido.length === 0 || this.usuario.user.length === 0 || this.usuario.ci.length === 0 || this.usuario.email.length === 0 || this.usuario.password.length === 0 || this.confpassword.length === 0 || this.usuario.avatar.length === 0) {
         alert(' debe introducir todos los datos requeridos');
       } else {
         axios.get('/user/verificacion/' + this.usuario.user).then(function (res) {
           _this2.userexiste = res.data;
-          console.log(_this2.userexiste);
-          console.log(res.data);
         });
 
-        if (this.userexiste === 1) {
-          console.log('dentro de la primera validacion de user');
+        if (this.userexiste.length === 0) {
           this.mesanjeuser = true;
         } else {
           this.mesanjeuser = false;
           axios.get('/ci/verificacion/' + this.usuario.ci).then(function (res) {
             _this2.ciexiste = res.data;
-            console.log(_this2.ciexiste);
-            console.log(res.data);
           });
 
-          if (this.ciexiste === 1) {
-            console.log('dentro de la primera validacion de ci');
+          if (this.ciexiste.length === 0) {
             this.mesanjeci = true;
           } else {
             this.mesanjeci = false;
             axios.get('/email/verificacion/' + this.usuario.email).then(function (res) {
               _this2.emailexiste = res.data;
-              console.log(_this2.emailexiste);
-              console.log(res.data);
             });
 
-            if (this.emailexiste === 1) {
-              console.log('dentro de la primera validacion de email');
+            if (this.emailexiste.length === 0) {
               this.mesanjeemail = true;
             } else {
               this.mesanjeemail = false;
@@ -13034,6 +13025,7 @@ __webpack_require__.r(__webpack_exports__);
                   _this2.usuario.avatar = null;
                   _this2.usuario.password = null;
                   _this2.confpassword = null;
+                  _this2.mensaje = false;
                 });
               } else {
                 this.confpassword = null;
@@ -54338,7 +54330,9 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("h3", [_vm._v(" registro de personal encargado")]),
+    _c("h3", { staticClass: "text-center" }, [
+      _vm._v(" registro de personal encargado")
+    ]),
     _vm._v(" "),
     _c("div", { staticClass: "card-body" }, [
       _c(
@@ -54432,7 +54426,7 @@ var render = function() {
               }),
               _vm._v(" "),
               _vm.mesanjeuser === true
-                ? _c("p", { staticClass: "text-center" }, [
+                ? _c("p", { staticClass: "text-center text-danger" }, [
                     _vm._v(" usuario no disponible")
                   ])
                 : _vm._e()
@@ -54464,7 +54458,7 @@ var render = function() {
               }),
               _vm._v(" "),
               _vm.mesanjeci === true
-                ? _c("p", { staticClass: "text-center" }, [
+                ? _c("p", { staticClass: "text-center text-danger" }, [
                     _vm._v(" cedula no disponible")
                   ])
                 : _vm._e()
@@ -54496,7 +54490,7 @@ var render = function() {
               }),
               _vm._v(" "),
               _vm.mesanjeemail === true
-                ? _c("p", { staticClass: "text-center" }, [
+                ? _c("p", { staticClass: "text-center text-danger" }, [
                     _vm._v(" email no disponible")
                   ])
                 : _vm._e()

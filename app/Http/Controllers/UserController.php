@@ -128,7 +128,18 @@ class UserController extends Controller
 
         }
 
-        $user->update($request->all());
+        $user->update(
+
+        'name' => $request['name'],
+        'apellido' => $request['apellido'],
+        'usuario' => $request['user'],
+        'ci' => $request['ci'],
+        'avatar' => $filename,
+        'email' => $request['email'],
+        'password' => bcrypt($request['password']),
+        'rol_id' => 2,
+
+        );
          return response()->json(['mensaje'=>'se ah actualizado con exito'],201);
     }
 

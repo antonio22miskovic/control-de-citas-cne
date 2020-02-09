@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<h3> registro de personal encargado</h3>
+		<h3 class="text-center"> registro de personal encargado</h3>
 		<div class="card-body">
 		  		<form @submit.prevent="agregar" enctype="multipart/form-data">
 		  			<div class="form-row">
@@ -17,19 +17,19 @@
 		  				<div class="form-group col-md-6">
 		  					<label>usuario</label>
 		  					<input type="text" class="form-control" placeholder="usuario" v-model="usuario.user">
-		  					<p v-if="mesanjeuser === true" class="text-center"> usuario no disponible</p>
+		  					<p v-if="mesanjeuser === true" class="text-center text-danger"> usuario no disponible</p>
 		  				</div>
 
 		  				<div class="form-group col-md-6">
 		  					<label>cedula</label>
 		  					<input type="text" class="form-control" placeholder="cedula" v-model="usuario.ci">
-		  					<p v-if="mesanjeci === true" class="text-center"> cedula no disponible</p>
+		  					<p v-if="mesanjeci === true" class="text-center text-danger"> cedula no disponible</p>
 		  				</div>
 
 		  				<div class="form-group col-md-6">
 		  					<label >email</label>
 		  					<input type="email" class="form-control" placeholder="email" v-model="usuario.email">
-		  					<p v-if="mesanjeemail === true" class="text-center"> email no disponible</p>
+		  					<p v-if="mesanjeemail === true" class="text-center text-danger"> email no disponible</p>
 		  				</div>
 
 		  				<div class="form-group col-md-6">
@@ -89,9 +89,9 @@
 				},
 				mensaje:false,
 				confpassword:'',
-				emailexiste: 0,
-				userexiste: 0,
-				ciexiste: 0,
+				emailexiste: '',
+				userexiste: '',
+				ciexiste: '',
 				mesanjeuser:false,
 				mesanjeci:false,
 				mesanjeemail:false,
@@ -128,7 +128,7 @@
 				// 	formData.append('avatar',this.usuario.avatar)
 				// 	formData.append('name',this.usuario.email)
 				// 	formData.append('password',this.usuario.password)
-				if ( this.usuario.name.length === 0 || this.usuario.apellido.length === 0 || this.usuario.user.length === 0 || this.usuario.ci.length === 0 ||this.usuario.email.length === 0 || this.usuario.password.length === 0 || this.confpassword.length === 0 ) {
+				if ( this.usuario.name.length === 0 || this.usuario.apellido.length === 0 || this.usuario.user.length === 0 || this.usuario.ci.length === 0 ||this.usuario.email.length === 0 || this.usuario.password.length === 0 || this.confpassword.length === 0 || this.usuario.avatar.length === 0 ) {
 
 					alert(' debe introducir todos los datos requeridos')
 
@@ -137,39 +137,40 @@
 					 axios.get('/user/verificacion/'+ this.usuario.user).then( res =>{
 
 					 		this.userexiste = res.data
-					 		console.log(this.userexiste)
-					 		console.log(res.data)
+
 					 })
 
-					 if (this.userexiste === 1) {
-					 	console.log('dentro de la primera validacion de user')
+					 if (this.userexiste.length === 0) {
+
+
 					 	this.mesanjeuser = true
 
 					 }else{
 
 					 		this.mesanjeuser = false
+
 					 		 axios.get('/ci/verificacion/'+ this.usuario.ci).then( res =>{
 
 					 		this.ciexiste = res.data
-					 		console.log(this.ciexiste)
-					 		console.log(res.data)
+
 							 })
 
-					 		 if (this.ciexiste === 1) {
-					 		 	console.log('dentro de la primera validacion de ci')
+					 		 if (this.ciexiste.length === 0) {
+
 					 			this.mesanjeci = true
 
 							 }else{
+
 							 	this.mesanjeci = false
+
 							  axios.get('/email/verificacion/'+ this.usuario.email).then( res =>{
 
 					 		this.emailexiste = res.data
-					 		console.log(this.emailexiste)
-					 		console.log(res.data)
+
 							 })
 
-							  if (this.emailexiste === 1) {
-							  		console.log('dentro de la primera validacion de email')
+							  if (this.emailexiste.length === 0) {
+
 					 			this.mesanjeemail = true
 
 							 }else{
@@ -177,8 +178,11 @@
 							 	this.mesanjeemail = false
 
 							 	if (this.usuario.password === this.confpassword) {
+
 									this.mensaje = false
+
 								axios.post('admin/resgistro',this.usuario).then(res =>{
+
 								Swal.fire({
 
                 					position: 'center',
@@ -196,7 +200,7 @@
 							this.usuario.avatar = null
 							this.usuario.password = null
 							this.confpassword = null
-
+							this.mensaje = false
 						})
 					}else{
 
