@@ -9,4 +9,5 @@
 		name:'AdminEstadisticas',
 
 	}
+
 </script>
