@@ -33,7 +33,7 @@
             </div>
         </nav>
 
-            <div class="container-fluid">
+            <div class="container">
 
             	<!-- MONTANDO LOS COMPONENTES -->
             	<RegistroSolicitud v-if="registro === true"></RegistroSolicitud>

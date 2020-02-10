@@ -11701,6 +11701,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Perfil',
   mounted: function mounted() {
@@ -11708,7 +11709,8 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      dataperfil: []
+      dataperfil: [],
+      ruta: '/img/'
     };
   },
   methods: {
@@ -12126,6 +12128,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
+      ruta: '/img/',
       encargados: [],
       fillusuario: {
         'id': '',
@@ -12864,7 +12867,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       dataperfil: [],
-      ruta: '/public/img/'
+      ruta: '/img/'
     };
   },
   methods: {
@@ -52141,6 +52144,10 @@ var render = function() {
             _c("div", { staticClass: "card-body" }, [
               _c("div", { staticClass: "row" }, [
                 _c("div", { staticClass: "col-12 col-lg-8 col-md-6" }, [
+                  _c("h5", { staticClass: "text-center" }, [
+                    _vm._v(" administrador ")
+                  ]),
+                  _vm._v(" "),
                   _c("h3", { staticClass: "mb-0 text-truncated" }, [
                     _vm._v("Perfil de: " + _vm._s(this.dataperfil.usuario))
                   ]),
@@ -52162,7 +52169,18 @@ var render = function() {
                   ])
                 ]),
                 _vm._v(" "),
-                _vm._m(0)
+                _c(
+                  "div",
+                  { staticClass: "col-12 col-lg-4 col-md-6 text-center" },
+                  [
+                    _c("img", {
+                      staticClass: "mx-auto rounded-circle img-fluid",
+                      attrs: { src: "/img/" + this.dataperfil.avatar, alt: "" }
+                    }),
+                    _vm._v(" "),
+                    _c("br")
+                  ]
+                )
               ])
             ])
           ])
@@ -52171,21 +52189,7 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-12 col-lg-4 col-md-6 text-center" }, [
-      _c("img", {
-        staticClass: "mx-auto rounded-circle img-fluid",
-        attrs: { src: "https://robohash.org/68.186.255.198.png", alt: "" }
-      }),
-      _vm._v(" "),
-      _c("br")
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -52830,7 +52834,7 @@ var render = function() {
       )
     ]),
     _vm._v(" "),
-    _c("div", { staticClass: "container" }, [
+    _c("div", { staticClass: "container m-4" }, [
       _c(
         "div",
         { staticClass: "col justify-content-center" },
@@ -52838,7 +52842,7 @@ var render = function() {
           return _vm.tabla === false
             ? _c("div", { key: encargado.id, staticClass: " container m-4" }, [
                 _c("div", { staticClass: "row" }, [
-                  _c("div", { staticClass: "col-6" }, [
+                  _c("div", { staticClass: "col-30" }, [
                     _c("div", { staticClass: "card" }, [
                       _c("div", { staticClass: "card-body" }, [
                         _c("div", { staticClass: "row" }, [
@@ -52866,7 +52870,24 @@ var render = function() {
                             ]
                           ),
                           _vm._v(" "),
-                          _vm._m(5, true),
+                          _c(
+                            "div",
+                            {
+                              staticClass:
+                                "col-12 col-lg-4 col-md-6 text-center"
+                            },
+                            [
+                              _c("img", {
+                                staticClass: "mx-auto rounded-circle img-fluid",
+                                attrs: {
+                                  src: "/img/" + encargado.avatar,
+                                  alt: ""
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("br")
+                            ]
+                          ),
                           _vm._v(" "),
                           _c(
                             "button",
@@ -52956,7 +52977,7 @@ var render = function() {
           _vm._v(" "),
           _c("div", { staticClass: "row justify-content-center" }, [
             _c("table", { staticClass: "table table-striped mt-4 p-4" }, [
-              _vm._m(6),
+              _vm._m(5),
               _vm._v(" "),
               _c(
                 "tbody",
@@ -53201,19 +53222,6 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-12 col-lg-4 col-md-6 text-center" }, [
-      _c("img", {
-        staticClass: "mx-auto rounded-circle img-fluid",
-        attrs: { alt: "" }
-      }),
-      _vm._v(" "),
-      _c("br")
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
     return _c("thead", { staticClass: "thead-dark" }, [
       _c("tr", [
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Solicitud")]),
@@ -53269,15 +53277,15 @@ var render = function() {
           _c("div", { staticClass: "modal-content" }, [
             _vm._m(0),
             _vm._v(" "),
-            _c("div", { staticClass: "modal-body" }, [
-              _c("div", { staticClass: "container text-center" }, [
-                _c("table", { staticClass: "table table-sm table-dark m-3" }, [
+            _c("div", { staticClass: "modal-body-sm" }, [
+              _c("div", { staticClass: "container" }, [
+                _c("table", { staticClass: " table-sm table-dark" }, [
                   _vm._m(1),
                   _vm._v(" "),
                   _c("tbody", [
                     _c("tr", [
                       _c("th", { attrs: { scope: "row" } }, [
-                        _vm._v("cantidad por mes:")
+                        _vm._v("cantidad:")
                       ]),
                       _vm._v(" "),
                       _c("td", { staticClass: "text-center" }, [
@@ -53335,7 +53343,7 @@ var render = function() {
                     _vm._v(" "),
                     _c("tr", [
                       _c("th", { attrs: { scope: "row" } }, [
-                        _vm._v("atendidas:")
+                        _vm._v("atendida:")
                       ]),
                       _vm._v(" "),
                       _c("td", { staticClass: "text-center" }, [
@@ -53399,7 +53407,7 @@ var render = function() {
                     _vm._v(" "),
                     _c("tr", [
                       _c("th", { attrs: { scope: "row" } }, [
-                        _vm._v("pendientes:")
+                        _vm._v("pendiente:")
                       ]),
                       _vm._v(" "),
                       _c("td", { staticClass: "text-center" }, [
@@ -53657,17 +53665,17 @@ var render = function() {
       _vm._v("estadisticas de usuarios ")
     ]),
     _vm._v(" "),
-    _c("div", { staticClass: "container " }, [
+    _c("div", { staticClass: "container m-4" }, [
       _c(
         "div",
-        { staticClass: "row-30 " },
+        { staticClass: "col justify-content-center" },
         _vm._l(_vm.usuarios, function(encargado) {
           return _c(
             "div",
             { key: encargado.id, staticClass: " container m-4" },
             [
               _c("div", { staticClass: "row" }, [
-                _c("div", { staticClass: "col-6" }, [
+                _c("div", { staticClass: "col-30" }, [
                   _c("div", { staticClass: "card" }, [
                     _c("div", { staticClass: "card-body" }, [
                       _c("div", { staticClass: "row" }, [
@@ -53689,12 +53697,29 @@ var render = function() {
                           ])
                         ]),
                         _vm._v(" "),
-                        _vm._m(4, true),
+                        _c(
+                          "div",
+                          {
+                            staticClass: "col-12 col-lg-4 col-md-6 text-center"
+                          },
+                          [
+                            _c("img", {
+                              staticClass: "mx-auto rounded-circle img-fluid",
+                              attrs: {
+                                src: "/img/" + encargado.avatar,
+                                alt: ""
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("br")
+                          ]
+                        ),
                         _vm._v(" "),
                         _c(
                           "button",
                           {
-                            staticClass: "btn btn-outline-warning text-center",
+                            staticClass:
+                              "btn btn-outline-warning text-center p-4",
                             attrs: {
                               "data-toggle": "modal",
                               "data-target": ".bd-example-modal-xl"
@@ -53758,7 +53783,7 @@ var staticRenderFns = [
     return _c("thead", [
       _c("tr", [
         _c("th", { staticClass: "text-center", attrs: { scope: "col" } }, [
-          _vm._v("Solicitud")
+          _vm._v("solicitud")
         ]),
         _vm._v(" "),
         _c("th", { staticClass: "text-center", attrs: { scope: "col" } }, [
@@ -53892,19 +53917,6 @@ var staticRenderFns = [
           _vm._v("Total")
         ])
       ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-12 col-lg-4 col-md-6 text-center" }, [
-      _c("img", {
-        staticClass: "mx-auto rounded-circle img-fluid",
-        attrs: { src: "https://robohash.org/68.186.255.198.png", alt: "" }
-      }),
-      _vm._v(" "),
-      _c("br")
     ])
   }
 ]
@@ -54307,7 +54319,7 @@ var render = function() {
                 [
                   _c("img", {
                     staticClass: "mx-auto rounded-circle img-fluid",
-                    attrs: { src: this.ruta + this.dataperfil.avatar, alt: "" }
+                    attrs: { src: "/img/" + this.dataperfil.avatar, alt: "" }
                   }),
                   _vm._v(" "),
                   _c("br")
@@ -55439,7 +55451,7 @@ var render = function() {
     _vm._v(" "),
     _c(
       "div",
-      { staticClass: "container-fluid" },
+      { staticClass: "container" },
       [
         _vm.registro === true ? _c("RegistroSolicitud") : _vm._e(),
         _vm._v(" "),
@@ -68497,8 +68509,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/heavy/app/pasantia/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/heavy/app/pasantia/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/ramon/app/pasantia/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/ramon/app/pasantia/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

@@ -108,11 +108,11 @@
                 </div>
             </div>
         </div>
-<div class="container">
- <div class="col justify-content-center">
+<div class="container m-4">
+    <div class="col justify-content-center">
  <div class=" container m-4" v-if="tabla === false" v-for ="encargado of encargados" :key="encargado.id">
     <div class="row">
-        <div class="col-6">
+        <div class="col-30">
             <div class="card">
                 <div class="card-body">
                     <div class="row">
@@ -126,7 +126,7 @@
 
                         </div>
                         <div class="col-12 col-lg-4 col-md-6 text-center">
-                            <img  alt="" class="mx-auto rounded-circle img-fluid">
+                            <img :src="'/img/' + encargado.avatar" alt="" class="mx-auto rounded-circle img-fluid">
                             <br>
 
                         </div>
@@ -258,7 +258,7 @@ import Swal from 'sweetalert2'
 
 		data(){
 			return{
-
+                 ruta:'/img/',
 				encargados:[],
 
 				fillusuario:{
