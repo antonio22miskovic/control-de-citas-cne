@@ -1,6 +1,6 @@
 <template>
-	<div>
-		<h3 class="text-center"> registro de personal encargado</h3>
+	<div class="container">
+		<h3 class="text-center m-3"> registro de personal encargado</h3>
 		<div class="card-body">
 		  		<form @submit.prevent="agregar" enctype="multipart/form-data">
 		  			<div class="form-row">
@@ -49,8 +49,8 @@
 		  					<p v-if=" mensaje === true" class="text-center"> contraseñas no coinciden</p>
 
 		  				</div>
-		  				<div class="">
-		  						<input type="submit" value="registrar" class="btn btn-primary">
+		  				<div class=" container text-center">
+		  						<button type="submit" class="btn btn-outline-primary"> <font-awesome-icon icon="user-plus"/> registrar </button>
 		  				</div>
 
 		  			</div>

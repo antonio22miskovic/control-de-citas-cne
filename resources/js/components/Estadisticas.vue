@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<div class="container">
 	<!-- 	<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-xl">Extra large modal</button>
  -->
 		<div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
@@ -13,7 +13,8 @@
                         </div>
 
                         <div class="modal-body">
-        <table class="table table-sm table-dark">
+                            <div class="container text-center">
+        <table class="table table-sm table-dark m-3">
         <thead>
           <tr>
 			<th scope="col" class="text-center">Solicitud</th>
@@ -90,6 +91,7 @@
                         <div class="modal-footer">
                             <button type="button" class="btn btn-primary btn-lg btn-block" data-dismiss="modal">Cerrar</button>
                         </div>
+                 </div>
     		</div>
   		</div>
 	</div>
@@ -166,7 +168,10 @@
           </tr>
         </tbody>
       </table>
-<h4 class="text-center m-2">estadisticas de usuarios </h4>
+
+<h4 class="text-center m-2 ">estadisticas de usuarios </h4>
+<div class="container ">
+<div class="row-30 ">
     <div class=" container m-4" v-for ="encargado of usuarios" :key="encargado.id">
     <div class="row">
         <div class="col-6">
@@ -200,6 +205,8 @@
             </div>
         </div>
     </div>
+</div>
+</div>
 </div>
 	</div>
 </template>

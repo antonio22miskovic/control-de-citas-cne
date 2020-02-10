@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<div class="container">
 
 		<div class="modal fade" id="registrar" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -39,11 +39,12 @@
     </div>
 
 
-		<h3 class=" text-center"> control de notificaciones </h3>
-
+		<h3 class=" text-center m-3"> control de notificaciones </h3>
+    <div class="container text-center">
 		<p>desea publicar una nueva notificacion: <a class="btn btn-outline-success rounded-pill" data-toggle="modal" data-target="#registrar"> <font-awesome-icon icon="plus" /> </a> </p>
-
-
+    </div>
+    <div class="container">
+       <div class="col justify-content-center">
 		<div v-for="notifi of notifica" :key="notifi.id" class="alert alert-success" role="alert">
 			<h4 class="alert-heading">{{ notifi.asunto }}!</h4>
 			<p>{{ notifi.descripcion }}.</p>
@@ -52,6 +53,8 @@
                <font-awesome-icon icon="trash"/>
         </button>
 		</div>
+  </div>
+</div>
 	</div>
 </template>
 <script>

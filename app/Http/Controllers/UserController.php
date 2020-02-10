@@ -126,21 +126,31 @@ class UserController extends Controller
 
             response()->json(['mensaje'=>'el usuario no se encuentra registrado'],404);
 
-        }
+        }else{
 
-        $user->update(
+              $exploded = explode(',', $request->avatar);
+             $decoded =base64_decode($exploded[1]);
 
-        'name' => $request['name'],
-        'apellido' => $request['apellido'],
-        'usuario' => $request['user'],
-        'ci' => $request['ci'],
-        'avatar' => $filename,
-        'email' => $request['email'],
-        'password' => bcrypt($request['password']),
-        'rol_id' => 2,
+            if (str_contains($exploded[0], 'jpeg')) {
 
-        );
+                 $extension = 'jpg';
+
+             }else{
+
+                $extension = 'png';
+
+            }
+
+        $filename = str_random().'.'.$extension;
+
+        $path = public_path().'/img/'.$filename;
+
+        file_put_contents($path, $decoded);
+
+        $user->update($request->all());
          return response()->json(['mensaje'=>'se ah actualizado con exito'],201);
+
+        }
     }
 
     /**

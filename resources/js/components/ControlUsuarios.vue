@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<div class="container">
 
 		<div>
             <div class="modal fade" id="detallesmodalcenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -13,7 +13,7 @@
                         </div>
 
                         <div class="modal-body p-4 m-3">
-                            <div>
+                            <div class="container">
 
                                 <p> fecha:  {{ this.detallesolicitud.fecha }}</p>
                                 <p> respuesta:  {{ this.detallesolicitud.respuesta }}</p>
@@ -50,7 +50,7 @@
 
                         <div class="modal-body">
                             <div>
-                            	<form @submit.prevent="" enctype="multipart/form-data">
+                            	<form @submit.prevent="update(fillusuario.id)" enctype="multipart/form-data">
 		  			<div class="form-row">
 		  				<div class="form-group col-md-6">
 		  					<label>nombre</label>
@@ -79,7 +79,7 @@
 
 		  				<div class="form-group col-md-6">
 		  					<label>avatar</label>
-		  					<input type="file" @change="obtenerimagen"  class="form-control">
+		  					<input type="file" @change="obtenerimagen"  class="">
 		  				</div>
 
 
@@ -108,7 +108,8 @@
                 </div>
             </div>
         </div>
-
+<div class="container">
+ <div class="col justify-content-center">
  <div class=" container m-4" v-if="tabla === false" v-for ="encargado of encargados" :key="encargado.id">
     <div class="row">
         <div class="col-6">
@@ -149,6 +150,8 @@
         </div>
     </div>
 </div>
+</div>
+</div>
 
 		<!-- <div v-if="tabla === false" v-for ="encargado of encargados" :key="encargado.id" class="card" style="width: 18rem;">
  			 <img src="" class="card-img-top" alt="">
@@ -172,7 +175,7 @@
 
 			<div class="container" v-if =" tabla === true ">
 
-				<div class="container text-center">
+				<div class="container text-center m-3">
 					<button class="btn btn-outline-primary" @click="cambiar"> revisar otro usuario </button>
 				</div>
 
@@ -259,9 +262,9 @@ import Swal from 'sweetalert2'
 				encargados:[],
 
 				fillusuario:{
-
+                    'id':'',
 					'name':'',
-					'usuariousuario':'',
+					'usuario':'',
 					'apellido':'',
 					'ci':'',
 					'email':'',
@@ -269,6 +272,7 @@ import Swal from 'sweetalert2'
 					'avatar':'',
 
 				},
+
 
 				tabla:false,
 				solicitudes:[],
@@ -319,24 +323,24 @@ import Swal from 'sweetalert2'
 			},
 
 			obtenerimagen(e){
+                let file = e.target.files[0];
+                console.log(file)
+                this.fillusuario.avatar = file;
+                this.cargarimagen(file);
+            },
 
-				let file = e.target.files[0];
-				console.log(file)
-				this.usuario.avatar = file;
-				this.cargarimagen(file);
+            cargarimagen(file){
 
-			},
+                let reader = new FileReader();
+                reader.onload = (e) =>{
+                    this.fillusuario.avatar = e.target.result;
+                }
+                reader.readAsDataURL(file);
 
-			cargarimagen(file){
-
-				let reader = new FileReader();
-
-				reader.readAsDataURL();
-
-			},
+            },
 
 			editar(encargado){
-
+                this.fillusuario.id = encargado.id
 				this.fillusuario.name = encargado.name
 				this.fillusuario.apellido = encargado.apellido
 				this.fillusuario.usuario = encargado.usuario
@@ -345,6 +349,26 @@ import Swal from 'sweetalert2'
 				this.fillusuario.ci = encargado.ci
 
 			},
+
+                update(id){
+
+             axios.put('user/'+id, this.fillusuario).
+             then(response =>{
+
+            this.listado(this.paginate.current_page);
+
+             Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: ' se ah actualizado con exito',
+                showConfirmButton: false,
+                timer: 1500
+            })
+
+      })
+
+    },
+
 
 			  Chagepage(page){
 

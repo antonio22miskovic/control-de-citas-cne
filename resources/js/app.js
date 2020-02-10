@@ -15,7 +15,8 @@ Vue.prototype.$http = window.axios;
 	import { faHome , faBuilding , faImages , faAt ,
  			faSearch, faPrint, faEye, faTrash,faMarker,
  			faServer,faInfo , faList, faPlus, faSignOutAlt,
- 			faUserPlus, faUserSlash, faUserEdit, faUserCircle } from "@fortawesome/free-solid-svg-icons";
+ 			faUserPlus, faUserSlash, faUserEdit, faUserCircle,
+ 			faUsers, faBell, faChartLine } from "@fortawesome/free-solid-svg-icons";
 
 	import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
@@ -23,7 +24,7 @@ Vue.prototype.$http = window.axios;
  				 faPrint ,faEye ,faTrash, faMarker, faServer,
  				 faInfo, faList, faPlus,faSignOutAlt,
  				 faUserPlus,faUserSlash ,faUserEdit,
- 				 faUserCircle );
+ 				 faUserCircle, faUsers, faBell, faChartLine );
 
 	Vue.component('font-awesome-icon', FontAwesomeIcon)
 

@@ -1,31 +1,32 @@
 <template>
 
 <div>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+     <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
              <div class="container">
-                <a class="navbar-brand" href="/home">  <font-awesome-icon icon="home" /> CNE </a>
+                <a class="navbar-brand" href="/home">  <font-awesome-icon icon="home" /> </a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                            <a @click="estadisticacomponent()"class="nav-link">Estadisticas</a>
+                            <a @click="estadisticacomponent()"class="nav-link  m-2"><font-awesome-icon icon="chart-line"/></a>
                         </li>
                         <li class="nav-item">
-                            <a @click="listadocomponent()"class="nav-link">Listado de Solicitudes</a>
+                            <a @click="listadocomponent()"class="nav-link  m-2"><font-awesome-icon icon="list"/></a>
                         </li>
                         <li>
-                            <a @click="registrocomponent()"class="nav-link">Solicitudes</a>
+                            <a @click="registrocomponent()"class="nav-link m-2 "><font-awesome-icon icon="user-plus"/></a>
                         </li>
                         <li class="nav-item">
-                            <a @click="perfilcomponent()" class="nav-link">Perfil</a>
+                            <a @click="perfilcomponent()" class="nav-link  m-2"> <font-awesome-icon icon="user-circle"/></a>
                         </li>
                         <li class="nav-item">
-                             <a @click="Notificacionescomponent()"class="nav-link" data-toggle="modal">Notficaciones</a>
+                             <a @click="Notificacionescomponent()"class="nav-link  m-2" data-toggle="modal"><font-awesome-icon icon="bell"/> <span class="tag tag-pill text-danger">{{ this.contador }}</span></a></a>
                          </li>
                         <li class="nav-item">
-                              <a class="nav-link" v-on:click="logout"><font-awesome-icon icon="sign-out-alt"/></a>
+                              <a class="nav-link  m-2" v-on:click="logout"><font-awesome-icon icon="sign-out-alt"/></a>
+
                         </li>
                     </ul>
                 </div>

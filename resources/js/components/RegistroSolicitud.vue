@@ -17,11 +17,11 @@
                                 <div class="col-7">
                                     <div class="input-group mb-3">
                                         <div class="input-group input-group-lg">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text" id="inputGroup-sizing-lg">C.I.</span>
-                                            </div>
+
                                             <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" v-model="buscar">
-                                            <input type="submit" class="btn btn-outline-success" value="Buscar">
+                                            <button type="submit" class="btn btn-outline-success">
+                                                <font-awesome-icon icon="search" />
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
@@ -92,7 +92,7 @@
 		  				<textarea class="form-control" id="descripcion" rows="3" name="descripcion" v-model="descripcion"></textarea>
 		  			</div>
 		  			<div class="text-center">
-		  				<button type="submit" class="btn btn-primary" name="registrar-solicitud">Registrar</button>
+		  				<button type="submit" class="btn btn-outline-primary" name="registrar-solicitud">Registrar<font-awesome-icon icon="user-plus"/></button>
 		  			</div>
 
 		  		</form>
