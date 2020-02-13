@@ -12186,33 +12186,38 @@ __webpack_require__.r(__webpack_exports__);
       this.fillusuario.ci = encargado.ci;
     },
     update: function update(id) {
-      console.log(this.fillusuario); //        axios.put('user/'+id, this.fillusuario).
-      //        then(response =>{
-      //       this.listado(this.paginate.current_page);
-      //        Swal.fire({
-      //           position: 'center',
-      //           icon: 'success',
-      //           title: ' se ah actualizado con exito',
-      //           showConfirmButton: false,
-      //           timer: 1500
-      //       })
-      // })
+      var _this3 = this;
+
+      console.log(this.fillusuario);
+      axios.put('user/' + id, this.fillusuario).then(function (response) {
+        console.log(response.data.mensaje);
+
+        _this3.traerencargados();
+
+        sweetalert2__WEBPACK_IMPORTED_MODULE_0___default.a.fire({
+          position: 'center',
+          icon: 'success',
+          title: ' se ah actualizado con exito',
+          showConfirmButton: false,
+          timer: 1500
+        });
+      });
     },
     Chagepage: function Chagepage(page) {
       this.paginate.current_page = page;
       this.listado(page);
     },
     listado: function listado(page) {
-      var _this3 = this;
+      var _this4 = this;
 
       var url = '/admin/' + this.datobuscar + '?page=' + page;
       axios.get(url).then(function (res) {
-        _this3.solicitudes = res.data.solicitud.data;
-        _this3.paginate = res.data.paginate;
+        _this4.solicitudes = res.data.solicitud.data;
+        _this4.paginate = res.data.paginate;
       });
     },
     eliminar: function eliminar(id) {
-      var _this4 = this;
+      var _this5 = this;
 
       sweetalert2__WEBPACK_IMPORTED_MODULE_0___default.a.fire({
         title: 'estas seguro?',
@@ -12225,24 +12230,24 @@ __webpack_require__.r(__webpack_exports__);
       }).then(function (result) {
         if (result.value) {
           axios["delete"]('user/' + id).then(function (res) {
-            _this4.traerencargados();
+            _this5.traerencargados();
           });
           sweetalert2__WEBPACK_IMPORTED_MODULE_0___default.a.fire('eliminado', 'se ah eliminado con exito.', 'success');
         }
       });
     },
     detalles: function detalles(solicitud) {
-      var _this5 = this;
+      var _this6 = this;
 
       axios.get('solicitud/' + solicitud.id).then(function (res) {
-        _this5.detallesolicitud = res.data.solicitud;
-        _this5.tramite = res.data.solicitud.tramite;
-        _this5.cliente = res.data.cliente;
-        _this5.user = res.data.solicitud.user;
+        _this6.detallesolicitud = res.data.solicitud;
+        _this6.tramite = res.data.solicitud.tramite;
+        _this6.cliente = res.data.cliente;
+        _this6.user = res.data.solicitud.user;
       });
     },
     borrar: function borrar(id) {
-      var _this6 = this;
+      var _this7 = this;
 
       sweetalert2__WEBPACK_IMPORTED_MODULE_0___default.a.fire({
         title: 'estas seguro?',
@@ -12255,7 +12260,7 @@ __webpack_require__.r(__webpack_exports__);
       }).then(function (result) {
         if (result.value) {
           axios["delete"]('solicitud/' + id).then(function (res) {
-            _this6.listado(_this6.paginate.current_page);
+            _this7.listado(_this7.paginate.current_page);
           });
           sweetalert2__WEBPACK_IMPORTED_MODULE_0___default.a.fire('eliminado', 'se ah eliminado con exito.', 'success');
         }
@@ -52669,15 +52674,7 @@ var render = function() {
                                   )
                                 }
                               }
-                            }),
-                            _vm._v(" "),
-                            _vm.mesanjeuser === true
-                              ? _c(
-                                  "p",
-                                  { staticClass: "text-center text-danger" },
-                                  [_vm._v(" usuario no disponible")]
-                                )
-                              : _vm._e()
+                            })
                           ]),
                           _vm._v(" "),
                           _c("div", { staticClass: "form-group col-md-6" }, [
@@ -52707,15 +52704,7 @@ var render = function() {
                                   )
                                 }
                               }
-                            }),
-                            _vm._v(" "),
-                            _vm.mesanjeci === true
-                              ? _c(
-                                  "p",
-                                  { staticClass: "text-center text-danger" },
-                                  [_vm._v(" cedula no disponible")]
-                                )
-                              : _vm._e()
+                            })
                           ]),
                           _vm._v(" "),
                           _c("div", { staticClass: "form-group col-md-6" }, [
@@ -52745,15 +52734,7 @@ var render = function() {
                                   )
                                 }
                               }
-                            }),
-                            _vm._v(" "),
-                            _vm.mesanjeemail === true
-                              ? _c(
-                                  "p",
-                                  { staticClass: "text-center text-danger" },
-                                  [_vm._v(" email no disponible")]
-                                )
-                              : _vm._e()
+                            })
                           ]),
                           _vm._v(" "),
                           _c("div", { staticClass: "form-group col-md-6" }, [
@@ -52824,13 +52805,7 @@ var render = function() {
                                   _vm.passwordconfirmar = $event.target.value
                                 }
                               }
-                            }),
-                            _vm._v(" "),
-                            _vm.mensaje === true
-                              ? _c("p", { staticClass: "text-center" }, [
-                                  _vm._v(" contraseñas no coinciden ")
-                                ])
-                              : _vm._e()
+                            })
                           ]),
                           _vm._v(" "),
                           _vm._m(3)

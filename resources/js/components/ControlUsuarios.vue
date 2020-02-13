@@ -65,19 +65,19 @@
 		  				<div class="form-group col-md-6">
 		  					<label>usuario</label>
 		  					<input type="text" class="form-control" placeholder="usuario" v-model="fillusuario.usuario">
-                            <p v-if="mesanjeuser === true" class="text-center text-danger"> usuario no disponible</p>
+                           <!--  <p v-if="mesanjeuser === true" class="text-center text-danger"> usuario no disponible</p> -->
 		  				</div>
 
 		  				<div class="form-group col-md-6">
 		  					<label>cedula</label>
 		  					<input type="text" class="form-control" placeholder="cedula" v-model="fillusuario.ci">
-                            <p v-if="mesanjeci === true" class="text-center text-danger"> cedula no disponible</p>
+                           <!--  <p v-if="mesanjeci === true" class="text-center text-danger"> cedula no disponible</p> -->
 		  				</div>
 
 		  				<div class="form-group col-md-6">
 		  					<label >email</label>
 		  					<input type="email" class="form-control" placeholder="email" v-model="fillusuario.email">
-                            <p v-if="mesanjeemail === true" class="text-center text-danger"> email no disponible</p>
+                           <!--  <p v-if="mesanjeemail === true" class="text-center text-danger"> email no disponible</p> -->
 		  				</div>
 
 		  				<div class="form-group col-md-6">
@@ -94,7 +94,7 @@
 		  				<div class="form-group col-md-6">
 		  					<label >confirmar contaseña</label>
 		  					<input type="password" class="form-control" placeholder="confirmar la contraseña" v-model="passwordconfirmar">
-                            <p v-if=" mensaje === true" class="text-center"> contraseñas no coinciden </p>
+                          <!--   <p v-if=" mensaje === true" class="text-center"> contraseñas no coinciden </p> -->
 
 		  				</div>
 
@@ -337,21 +337,21 @@ import Swal from 'sweetalert2'
 
                 update(id){
 
-                    console.log(this.fillusuario)
-      //        axios.put('user/'+id, this.fillusuario).
-      //        then(response =>{
+                console.log(this.fillusuario)
+             axios.put('user/'+id, this.fillusuario).
+             then(response =>{
+                console.log(response.data.mensaje)
+                    this.traerencargados()
 
-      //       this.listado(this.paginate.current_page);
+             Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: ' se ah actualizado con exito',
+                showConfirmButton: false,
+                timer: 1500
+            })
 
-      //        Swal.fire({
-      //           position: 'center',
-      //           icon: 'success',
-      //           title: ' se ah actualizado con exito',
-      //           showConfirmButton: false,
-      //           timer: 1500
-      //       })
-
-      // })
+      })
 
     },
 

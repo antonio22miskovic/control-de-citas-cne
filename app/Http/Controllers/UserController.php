@@ -100,24 +100,7 @@ class UserController extends Controller
        return response()->json($user,200);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         $user = User::find($id);
@@ -147,7 +130,18 @@ class UserController extends Controller
 
         file_put_contents($path, $decoded);
 
-        $user->update($request->all());
+        $user->update([
+
+        'name' => $request['name'],
+        'apellido' => $request['apellido'],
+        'usuario' => $request['usuario'],
+        'ci' => $request['ci'],
+        'avatar' => $filename,
+        'email' => $request['email'],
+        'password' => bcrypt($request['password']),
+        'rol_id' => 2,
+
+        ]);
          return response()->json(['mensaje'=>'se ah actualizado con exito'],201);
 
         }
