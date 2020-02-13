@@ -23,6 +23,7 @@
                         </li>
                         <li class="nav-item">
                              <a @click="Notificacionescomponent()"class="nav-link  m-2" data-toggle="modal"><font-awesome-icon icon="bell"/> <span class="tag tag-pill text-danger">{{ this.contador }}</span></a></a>
+
                          </li>
                         <li class="nav-item">
                               <a class="nav-link  m-2" v-on:click="logout"><font-awesome-icon icon="sign-out-alt"/></a>
@@ -33,7 +34,7 @@
             </div>
         </nav>
 
-            <div class="container-fluid">
+            <div class="container">
 
             	<!-- MONTANDO LOS COMPONENTES -->
             	<RegistroSolicitud v-if="registro === true"></RegistroSolicitud>

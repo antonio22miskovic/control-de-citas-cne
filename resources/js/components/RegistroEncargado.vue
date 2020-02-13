@@ -46,7 +46,7 @@
 		  				<div class="form-group col-md-6">
 		  					<label >confirmar contaseña</label>
 		  					<input type="password" class="form-control" placeholder="confirmar la contraseña" v-model="confpassword">
-		  					<p v-if=" mensaje === true" class="text-center"> contraseñas no coinciden</p>
+		  					<p v-if=" mensaje === true" class="text-center"> contraseñas no coinciden </p>
 
 		  				</div>
 		  				<div class=" container text-center">

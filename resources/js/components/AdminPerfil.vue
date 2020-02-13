@@ -7,6 +7,7 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-12 col-lg-8 col-md-6">
+                            <h5 class="text-center"> administrador </h5>
                             <h3 class="mb-0 text-truncated">Perfil de: {{ this.dataperfil.usuario  }}</h3>
 
                             <p class="lead">Nombre: {{ this.dataperfil.name }}</p>
@@ -16,7 +17,7 @@
 
                         </div>
                         <div class="col-12 col-lg-4 col-md-6 text-center">
-                            <img src="https://robohash.org/68.186.255.198.png" alt="" class="mx-auto rounded-circle img-fluid">
+                            <img :src="'/img/' + this.dataperfil.avatar" alt="" class="mx-auto rounded-circle img-fluid">
                             <br>
 
                         </div>
@@ -48,7 +49,8 @@
 
 		data(){
 			return{
-				dataperfil: []
+				dataperfil: [],
+                ruta:'/img/',
 
 			}
 		},

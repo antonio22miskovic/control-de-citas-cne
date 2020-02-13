@@ -12,12 +12,12 @@
                             </button>
                         </div>
 
-                        <div class="modal-body">
-                            <div class="container text-center">
-        <table class="table table-sm table-dark m-3">
+                        <div class="modal-body-sm">
+                            <div class="container">
+        <table class=" table-sm table-dark">
         <thead>
           <tr>
-			<th scope="col" class="text-center">Solicitud</th>
+			<th scope="col" class="text-center">solicitud</th>
 			<th scope="col" class="text-center">enero</th>
 			<th scope="col" class="text-center">febrero</th>
 			<th scope="col" class="text-center">marzo</th>
@@ -36,7 +36,7 @@
         <tbody>
 
           <tr>
-            <th scope="row">cantidad por mes:</th>
+            <th scope="row">cantidad:</th>
             <td class="text-center">{{ this.usertotal.userenero }}</td>
             <td class="text-center">{{ this.usertotal.userfebrero }}</td>
             <td class="text-center">{{ this.usertotal.usermarzo }}</td>
@@ -52,7 +52,7 @@
             <td class="text-center">{{ this.usertotal.useryear }}</td>
           </tr>
           <tr>
-            <th scope="row">atendidas:</th>
+            <th scope="row">atendida:</th>
             <td class="text-center">{{ this.useratendidos.useratendidoenero }}</td>
             <td class="text-center">{{ this.useratendidos.useratendidofebrero }}</td>
             <td class="text-center">{{ this.useratendidos.useratendidomarzo }}</td>
@@ -69,7 +69,7 @@
 
           </tr>
         <tr>
-            <th scope="row">pendientes:</th>
+            <th scope="row">pendiente:</th>
             <td class="text-center">{{ this.userpendientes.userpendienteenero }}</td>
             <td class="text-center">{{ this.userpendientes.userpendientefebrero }}</td>
             <td class="text-center">{{ this.userpendientes.userpendientemarzo }}</td>
@@ -170,11 +170,11 @@
       </table>
 
 <h4 class="text-center m-2 ">estadisticas de usuarios </h4>
-<div class="container ">
-<div class="row-30 ">
+<div class="container m-4">
+        <div class="col justify-content-center">
     <div class=" container m-4" v-for ="encargado of usuarios" :key="encargado.id">
     <div class="row">
-        <div class="col-6">
+        <div class="col-30">
             <div class="card">
                 <div class="card-body">
                     <div class="row">
@@ -188,12 +188,12 @@
 
                         </div>
                         <div class="col-12 col-lg-4 col-md-6 text-center">
-                            <img src="https://robohash.org/68.186.255.198.png" alt="" class="mx-auto rounded-circle img-fluid">
+                            <img :src="'/img/' + encargado.avatar" alt="" class="mx-auto rounded-circle img-fluid">
                             <br>
 
                         </div>
 
-                       <button class="btn btn-outline-warning text-center" data-toggle="modal" data-target=".bd-example-modal-xl" @click.prevent="detalles(encargado.id)">
+                    <button class="btn btn-outline-warning text-center p-4" data-toggle="modal" data-target=".bd-example-modal-xl" @click.prevent="detalles(encargado.id)">
                         <font-awesome-icon icon="eye"/>
                     </button>
 

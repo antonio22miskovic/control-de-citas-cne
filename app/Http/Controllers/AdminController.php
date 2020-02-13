@@ -15,7 +15,7 @@ class AdminController extends Controller
   	}
 
   	public function filtroporusuario($id){
-
+        // dd($id);
   		   $solicitud = Solicitud::orderBy('id', 'desc')->where('user_id',$id)->paginate(5);
 
         return [

@@ -16,7 +16,7 @@
 
                         </div>
                         <div class="col-12 col-lg-4 col-md-6 text-center">
-                            <img :src="this.ruta + this.dataperfil.avatar" alt="" class="mx-auto rounded-circle img-fluid">
+                            <img :src="'/img/' + this.dataperfil.avatar" alt="" class="mx-auto rounded-circle img-fluid">
                             <br>
 
                         </div>

@@ -15,7 +15,7 @@ class SolicitudController extends Controller
     {
         $user = Auth::user();
 
-       $solicitud = Solicitud::orderBy('id', 'desc')->where('user_id',$user->rol_id)->paginate(5);
+       $solicitud = Solicitud::orderBy('id', 'desc')->where('user_id',$user->id)->paginate(5);
 
         return [
 

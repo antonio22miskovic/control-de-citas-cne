@@ -65,16 +65,19 @@
 		  				<div class="form-group col-md-6">
 		  					<label>usuario</label>
 		  					<input type="text" class="form-control" placeholder="usuario" v-model="fillusuario.usuario">
+                            <p v-if="mesanjeuser === true" class="text-center text-danger"> usuario no disponible</p>
 		  				</div>
 
 		  				<div class="form-group col-md-6">
 		  					<label>cedula</label>
 		  					<input type="text" class="form-control" placeholder="cedula" v-model="fillusuario.ci">
+                            <p v-if="mesanjeci === true" class="text-center text-danger"> cedula no disponible</p>
 		  				</div>
 
 		  				<div class="form-group col-md-6">
 		  					<label >email</label>
 		  					<input type="email" class="form-control" placeholder="email" v-model="fillusuario.email">
+                            <p v-if="mesanjeemail === true" class="text-center text-danger"> email no disponible</p>
 		  				</div>
 
 		  				<div class="form-group col-md-6">
@@ -91,6 +94,8 @@
 		  				<div class="form-group col-md-6">
 		  					<label >confirmar contaseña</label>
 		  					<input type="password" class="form-control" placeholder="confirmar la contraseña" v-model="passwordconfirmar">
+                            <p v-if=" mensaje === true" class="text-center"> contraseñas no coinciden </p>
+
 		  				</div>
 
 		  				<div class="">
@@ -108,11 +113,11 @@
                 </div>
             </div>
         </div>
-<div class="container">
- <div class="col justify-content-center">
+<div class="container m-4">
+    <div class="col justify-content-center">
  <div class=" container m-4" v-if="tabla === false" v-for ="encargado of encargados" :key="encargado.id">
     <div class="row">
-        <div class="col-6">
+        <div class="col-30">
             <div class="card">
                 <div class="card-body">
                     <div class="row">
@@ -126,7 +131,7 @@
 
                         </div>
                         <div class="col-12 col-lg-4 col-md-6 text-center">
-                            <img  alt="" class="mx-auto rounded-circle img-fluid">
+                            <img :src="'/img/' + encargado.avatar" alt="" class="mx-auto rounded-circle img-fluid">
                             <br>
 
                         </div>
@@ -141,11 +146,10 @@
                             <font-awesome-icon icon="user-slash"/>
                     </button>
 
-                        <!--/col-->
                     </div>
-                    <!--/row-->
+
                 </div>
-                <!--/card-block-->
+
             </div>
         </div>
     </div>
@@ -153,25 +157,6 @@
 </div>
 </div>
 
-		<!-- <div v-if="tabla === false" v-for ="encargado of encargados" :key="encargado.id" class="card" style="width: 18rem;">
- 			 <img src="" class="card-img-top" alt="">
-  			 <div class="card-body">
-    			<h5 class="card-title">usuario:{{ encargado.usuario }}</h5>
-    				<p class="card-text">nombre: {{ encargado.name }}</p>
-    				<p class="card-text">apellido: {{ encargado.apellido }}</p>
-    				<p class="card-text">email: {{ encargado.email }}</p>
-    				<p class="card-text">contraseña asignada: </p>
-    				<button class="btn btn-outline-warning text-center" data-toggle="modal" data-target="#actualizar" @click.prevent="editar(encargado)">
-                        <font-awesome-icon icon="marker"/>
-                    </button>
-    				<button class="btn btn-outline-primary text-center" @click="buscar(encargado.id)">
-                            <font-awesome-icon icon="eye"/>
-                    </button>
-                    <button class="btn btn-outline-danger  text-center" @click="eliminar(encargado.id)">
-                            <font-awesome-icon icon="trash"/>
-                    </button>
- 	 		 </div>
-		</div> -->
 
 			<div class="container" v-if =" tabla === true ">
 
@@ -258,7 +243,7 @@ import Swal from 'sweetalert2'
 
 		data(){
 			return{
-
+                 ruta:'/img/',
 				encargados:[],
 
 				fillusuario:{
@@ -325,7 +310,7 @@ import Swal from 'sweetalert2'
 			obtenerimagen(e){
                 let file = e.target.files[0];
                 console.log(file)
-                this.fillusuario.avatar = file;
+                // this.fillusuario.avatar = file;
                 this.cargarimagen(file);
             },
 
@@ -352,20 +337,21 @@ import Swal from 'sweetalert2'
 
                 update(id){
 
-             axios.put('user/'+id, this.fillusuario).
-             then(response =>{
+                    console.log(this.fillusuario)
+      //        axios.put('user/'+id, this.fillusuario).
+      //        then(response =>{
 
-            this.listado(this.paginate.current_page);
+      //       this.listado(this.paginate.current_page);
 
-             Swal.fire({
-                position: 'center',
-                icon: 'success',
-                title: ' se ah actualizado con exito',
-                showConfirmButton: false,
-                timer: 1500
-            })
+      //        Swal.fire({
+      //           position: 'center',
+      //           icon: 'success',
+      //           title: ' se ah actualizado con exito',
+      //           showConfirmButton: false,
+      //           timer: 1500
+      //       })
 
-      })
+      // })
 
     },
 

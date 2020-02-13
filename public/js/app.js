@@ -11701,6 +11701,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Perfil',
   mounted: function mounted() {
@@ -11708,7 +11709,8 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      dataperfil: []
+      dataperfil: [],
+      ruta: '/img/'
     };
   },
   methods: {
@@ -12103,21 +12105,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'ControlUsuarios',
@@ -12126,6 +12113,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
+      ruta: '/img/',
       encargados: [],
       fillusuario: {
         'id': '',
@@ -12173,8 +12161,8 @@ __webpack_require__.r(__webpack_exports__);
     },
     obtenerimagen: function obtenerimagen(e) {
       var file = e.target.files[0];
-      console.log(file);
-      this.fillusuario.avatar = file;
+      console.log(file); // this.fillusuario.avatar = file;
+
       this.cargarimagen(file);
     },
     cargarimagen: function cargarimagen(file) {
@@ -12198,35 +12186,33 @@ __webpack_require__.r(__webpack_exports__);
       this.fillusuario.ci = encargado.ci;
     },
     update: function update(id) {
-      var _this3 = this;
-
-      axios.put('user/' + id, this.fillusuario).then(function (response) {
-        _this3.listado(_this3.paginate.current_page);
-
-        sweetalert2__WEBPACK_IMPORTED_MODULE_0___default.a.fire({
-          position: 'center',
-          icon: 'success',
-          title: ' se ah actualizado con exito',
-          showConfirmButton: false,
-          timer: 1500
-        });
-      });
+      console.log(this.fillusuario); //        axios.put('user/'+id, this.fillusuario).
+      //        then(response =>{
+      //       this.listado(this.paginate.current_page);
+      //        Swal.fire({
+      //           position: 'center',
+      //           icon: 'success',
+      //           title: ' se ah actualizado con exito',
+      //           showConfirmButton: false,
+      //           timer: 1500
+      //       })
+      // })
     },
     Chagepage: function Chagepage(page) {
       this.paginate.current_page = page;
       this.listado(page);
     },
     listado: function listado(page) {
-      var _this4 = this;
+      var _this3 = this;
 
       var url = '/admin/' + this.datobuscar + '?page=' + page;
       axios.get(url).then(function (res) {
-        _this4.solicitudes = res.data.solicitud.data;
-        _this4.paginate = res.data.paginate;
+        _this3.solicitudes = res.data.solicitud.data;
+        _this3.paginate = res.data.paginate;
       });
     },
     eliminar: function eliminar(id) {
-      var _this5 = this;
+      var _this4 = this;
 
       sweetalert2__WEBPACK_IMPORTED_MODULE_0___default.a.fire({
         title: 'estas seguro?',
@@ -12239,24 +12225,24 @@ __webpack_require__.r(__webpack_exports__);
       }).then(function (result) {
         if (result.value) {
           axios["delete"]('user/' + id).then(function (res) {
-            _this5.traerencargados();
+            _this4.traerencargados();
           });
           sweetalert2__WEBPACK_IMPORTED_MODULE_0___default.a.fire('eliminado', 'se ah eliminado con exito.', 'success');
         }
       });
     },
     detalles: function detalles(solicitud) {
-      var _this6 = this;
+      var _this5 = this;
 
       axios.get('solicitud/' + solicitud.id).then(function (res) {
-        _this6.detallesolicitud = res.data.solicitud;
-        _this6.tramite = res.data.solicitud.tramite;
-        _this6.cliente = res.data.cliente;
-        _this6.user = res.data.solicitud.user;
+        _this5.detallesolicitud = res.data.solicitud;
+        _this5.tramite = res.data.solicitud.tramite;
+        _this5.cliente = res.data.cliente;
+        _this5.user = res.data.solicitud.user;
       });
     },
     borrar: function borrar(id) {
-      var _this7 = this;
+      var _this6 = this;
 
       sweetalert2__WEBPACK_IMPORTED_MODULE_0___default.a.fire({
         title: 'estas seguro?',
@@ -12269,7 +12255,7 @@ __webpack_require__.r(__webpack_exports__);
       }).then(function (result) {
         if (result.value) {
           axios["delete"]('solicitud/' + id).then(function (res) {
-            _this7.listado(_this7.paginate.current_page);
+            _this6.listado(_this6.paginate.current_page);
           });
           sweetalert2__WEBPACK_IMPORTED_MODULE_0___default.a.fire('eliminado', 'se ah eliminado con exito.', 'success');
         }
@@ -13536,6 +13522,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_Notificaciones_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/Notificaciones.vue */ "./resources/js/components/Notificaciones.vue");
 /* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
 /* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_5__);
+//
 //
 //
 //
@@ -52141,6 +52128,10 @@ var render = function() {
             _c("div", { staticClass: "card-body" }, [
               _c("div", { staticClass: "row" }, [
                 _c("div", { staticClass: "col-12 col-lg-8 col-md-6" }, [
+                  _c("h5", { staticClass: "text-center" }, [
+                    _vm._v(" administrador ")
+                  ]),
+                  _vm._v(" "),
                   _c("h3", { staticClass: "mb-0 text-truncated" }, [
                     _vm._v("Perfil de: " + _vm._s(this.dataperfil.usuario))
                   ]),
@@ -52162,7 +52153,18 @@ var render = function() {
                   ])
                 ]),
                 _vm._v(" "),
-                _vm._m(0)
+                _c(
+                  "div",
+                  { staticClass: "col-12 col-lg-4 col-md-6 text-center" },
+                  [
+                    _c("img", {
+                      staticClass: "mx-auto rounded-circle img-fluid",
+                      attrs: { src: "/img/" + this.dataperfil.avatar, alt: "" }
+                    }),
+                    _vm._v(" "),
+                    _c("br")
+                  ]
+                )
               ])
             ])
           ])
@@ -52171,21 +52173,7 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-12 col-lg-4 col-md-6 text-center" }, [
-      _c("img", {
-        staticClass: "mx-auto rounded-circle img-fluid",
-        attrs: { src: "https://robohash.org/68.186.255.198.png", alt: "" }
-      }),
-      _vm._v(" "),
-      _c("br")
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -52681,7 +52669,15 @@ var render = function() {
                                   )
                                 }
                               }
-                            })
+                            }),
+                            _vm._v(" "),
+                            _vm.mesanjeuser === true
+                              ? _c(
+                                  "p",
+                                  { staticClass: "text-center text-danger" },
+                                  [_vm._v(" usuario no disponible")]
+                                )
+                              : _vm._e()
                           ]),
                           _vm._v(" "),
                           _c("div", { staticClass: "form-group col-md-6" }, [
@@ -52711,7 +52707,15 @@ var render = function() {
                                   )
                                 }
                               }
-                            })
+                            }),
+                            _vm._v(" "),
+                            _vm.mesanjeci === true
+                              ? _c(
+                                  "p",
+                                  { staticClass: "text-center text-danger" },
+                                  [_vm._v(" cedula no disponible")]
+                                )
+                              : _vm._e()
                           ]),
                           _vm._v(" "),
                           _c("div", { staticClass: "form-group col-md-6" }, [
@@ -52741,7 +52745,15 @@ var render = function() {
                                   )
                                 }
                               }
-                            })
+                            }),
+                            _vm._v(" "),
+                            _vm.mesanjeemail === true
+                              ? _c(
+                                  "p",
+                                  { staticClass: "text-center text-danger" },
+                                  [_vm._v(" email no disponible")]
+                                )
+                              : _vm._e()
                           ]),
                           _vm._v(" "),
                           _c("div", { staticClass: "form-group col-md-6" }, [
@@ -52812,7 +52824,13 @@ var render = function() {
                                   _vm.passwordconfirmar = $event.target.value
                                 }
                               }
-                            })
+                            }),
+                            _vm._v(" "),
+                            _vm.mensaje === true
+                              ? _c("p", { staticClass: "text-center" }, [
+                                  _vm._v(" contraseñas no coinciden ")
+                                ])
+                              : _vm._e()
                           ]),
                           _vm._v(" "),
                           _vm._m(3)
@@ -52830,7 +52848,7 @@ var render = function() {
       )
     ]),
     _vm._v(" "),
-    _c("div", { staticClass: "container" }, [
+    _c("div", { staticClass: "container m-4" }, [
       _c(
         "div",
         { staticClass: "col justify-content-center" },
@@ -52838,7 +52856,7 @@ var render = function() {
           return _vm.tabla === false
             ? _c("div", { key: encargado.id, staticClass: " container m-4" }, [
                 _c("div", { staticClass: "row" }, [
-                  _c("div", { staticClass: "col-6" }, [
+                  _c("div", { staticClass: "col-30" }, [
                     _c("div", { staticClass: "card" }, [
                       _c("div", { staticClass: "card-body" }, [
                         _c("div", { staticClass: "row" }, [
@@ -52866,7 +52884,24 @@ var render = function() {
                             ]
                           ),
                           _vm._v(" "),
-                          _vm._m(5, true),
+                          _c(
+                            "div",
+                            {
+                              staticClass:
+                                "col-12 col-lg-4 col-md-6 text-center"
+                            },
+                            [
+                              _c("img", {
+                                staticClass: "mx-auto rounded-circle img-fluid",
+                                attrs: {
+                                  src: "/img/" + encargado.avatar,
+                                  alt: ""
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("br")
+                            ]
+                          ),
                           _vm._v(" "),
                           _c(
                             "button",
@@ -52956,7 +52991,7 @@ var render = function() {
           _vm._v(" "),
           _c("div", { staticClass: "row justify-content-center" }, [
             _c("table", { staticClass: "table table-striped mt-4 p-4" }, [
-              _vm._m(6),
+              _vm._m(5),
               _vm._v(" "),
               _c(
                 "tbody",
@@ -53201,19 +53236,6 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-12 col-lg-4 col-md-6 text-center" }, [
-      _c("img", {
-        staticClass: "mx-auto rounded-circle img-fluid",
-        attrs: { alt: "" }
-      }),
-      _vm._v(" "),
-      _c("br")
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
     return _c("thead", { staticClass: "thead-dark" }, [
       _c("tr", [
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Solicitud")]),
@@ -53269,15 +53291,15 @@ var render = function() {
           _c("div", { staticClass: "modal-content" }, [
             _vm._m(0),
             _vm._v(" "),
-            _c("div", { staticClass: "modal-body" }, [
-              _c("div", { staticClass: "container text-center" }, [
-                _c("table", { staticClass: "table table-sm table-dark m-3" }, [
+            _c("div", { staticClass: "modal-body-sm" }, [
+              _c("div", { staticClass: "container" }, [
+                _c("table", { staticClass: " table-sm table-dark" }, [
                   _vm._m(1),
                   _vm._v(" "),
                   _c("tbody", [
                     _c("tr", [
                       _c("th", { attrs: { scope: "row" } }, [
-                        _vm._v("cantidad por mes:")
+                        _vm._v("cantidad:")
                       ]),
                       _vm._v(" "),
                       _c("td", { staticClass: "text-center" }, [
@@ -53335,7 +53357,7 @@ var render = function() {
                     _vm._v(" "),
                     _c("tr", [
                       _c("th", { attrs: { scope: "row" } }, [
-                        _vm._v("atendidas:")
+                        _vm._v("atendida:")
                       ]),
                       _vm._v(" "),
                       _c("td", { staticClass: "text-center" }, [
@@ -53399,7 +53421,7 @@ var render = function() {
                     _vm._v(" "),
                     _c("tr", [
                       _c("th", { attrs: { scope: "row" } }, [
-                        _vm._v("pendientes:")
+                        _vm._v("pendiente:")
                       ]),
                       _vm._v(" "),
                       _c("td", { staticClass: "text-center" }, [
@@ -53657,17 +53679,17 @@ var render = function() {
       _vm._v("estadisticas de usuarios ")
     ]),
     _vm._v(" "),
-    _c("div", { staticClass: "container " }, [
+    _c("div", { staticClass: "container m-4" }, [
       _c(
         "div",
-        { staticClass: "row-30 " },
+        { staticClass: "col justify-content-center" },
         _vm._l(_vm.usuarios, function(encargado) {
           return _c(
             "div",
             { key: encargado.id, staticClass: " container m-4" },
             [
               _c("div", { staticClass: "row" }, [
-                _c("div", { staticClass: "col-6" }, [
+                _c("div", { staticClass: "col-30" }, [
                   _c("div", { staticClass: "card" }, [
                     _c("div", { staticClass: "card-body" }, [
                       _c("div", { staticClass: "row" }, [
@@ -53689,12 +53711,29 @@ var render = function() {
                           ])
                         ]),
                         _vm._v(" "),
-                        _vm._m(4, true),
+                        _c(
+                          "div",
+                          {
+                            staticClass: "col-12 col-lg-4 col-md-6 text-center"
+                          },
+                          [
+                            _c("img", {
+                              staticClass: "mx-auto rounded-circle img-fluid",
+                              attrs: {
+                                src: "/img/" + encargado.avatar,
+                                alt: ""
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("br")
+                          ]
+                        ),
                         _vm._v(" "),
                         _c(
                           "button",
                           {
-                            staticClass: "btn btn-outline-warning text-center",
+                            staticClass:
+                              "btn btn-outline-warning text-center p-4",
                             attrs: {
                               "data-toggle": "modal",
                               "data-target": ".bd-example-modal-xl"
@@ -53758,7 +53797,7 @@ var staticRenderFns = [
     return _c("thead", [
       _c("tr", [
         _c("th", { staticClass: "text-center", attrs: { scope: "col" } }, [
-          _vm._v("Solicitud")
+          _vm._v("solicitud")
         ]),
         _vm._v(" "),
         _c("th", { staticClass: "text-center", attrs: { scope: "col" } }, [
@@ -53892,19 +53931,6 @@ var staticRenderFns = [
           _vm._v("Total")
         ])
       ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-12 col-lg-4 col-md-6 text-center" }, [
-      _c("img", {
-        staticClass: "mx-auto rounded-circle img-fluid",
-        attrs: { src: "https://robohash.org/68.186.255.198.png", alt: "" }
-      }),
-      _vm._v(" "),
-      _c("br")
     ])
   }
 ]
@@ -54307,7 +54333,7 @@ var render = function() {
                 [
                   _c("img", {
                     staticClass: "mx-auto rounded-circle img-fluid",
-                    attrs: { src: this.ruta + this.dataperfil.avatar, alt: "" }
+                    attrs: { src: "/img/" + this.dataperfil.avatar, alt: "" }
                   }),
                   _vm._v(" "),
                   _c("br")
@@ -54575,7 +54601,7 @@ var render = function() {
               _vm._v(" "),
               _vm.mensaje === true
                 ? _c("p", { staticClass: "text-center" }, [
-                    _vm._v(" contraseñas no coinciden")
+                    _vm._v(" contraseñas no coinciden ")
                   ])
                 : _vm._e()
             ]),
@@ -55439,7 +55465,7 @@ var render = function() {
     _vm._v(" "),
     _c(
       "div",
-      { staticClass: "container-fluid" },
+      { staticClass: "container" },
       [
         _vm.registro === true ? _c("RegistroSolicitud") : _vm._e(),
         _vm._v(" "),
