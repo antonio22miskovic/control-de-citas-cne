@@ -12160,8 +12160,8 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     obtenerimagen: function obtenerimagen(e) {
-      var file = e.target.files[0];
-      console.log(file); // this.fillusuario.avatar = file;
+      var file = e.target.files[0]; // console.log(file)
+      // this.fillusuario.avatar = file;
 
       this.cargarimagen(file);
     },
@@ -12184,6 +12184,7 @@ __webpack_require__.r(__webpack_exports__);
       this.fillusuario.email = encargado.email;
       this.fillusuario.avatar = encargado.avatar;
       this.fillusuario.ci = encargado.ci;
+      this.fillusuario.password = null;
     },
     update: function update(id) {
       var _this3 = this;
@@ -53188,7 +53189,7 @@ var staticRenderFns = [
     return _c("div", {}, [
       _c("input", {
         staticClass: "btn btn-primary",
-        attrs: { type: "submit", value: "registrar" }
+        attrs: { type: "submit", value: "actualizar" }
       })
     ])
   },

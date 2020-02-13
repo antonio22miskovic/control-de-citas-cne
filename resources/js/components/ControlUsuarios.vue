@@ -99,7 +99,7 @@
 		  				</div>
 
 		  				<div class="">
-		  						<input type="submit" value="registrar" class="btn btn-primary">
+		  						<input type="submit" value="actualizar" class="btn btn-primary">
 		  				</div>
 
 		  			</div>
@@ -247,6 +247,7 @@ import Swal from 'sweetalert2'
 				encargados:[],
 
 				fillusuario:{
+
                     'id':'',
 					'name':'',
 					'usuario':'',
@@ -309,7 +310,7 @@ import Swal from 'sweetalert2'
 
 			obtenerimagen(e){
                 let file = e.target.files[0];
-                console.log(file)
+                // console.log(file)
                 // this.fillusuario.avatar = file;
                 this.cargarimagen(file);
             },
@@ -325,6 +326,7 @@ import Swal from 'sweetalert2'
             },
 
 			editar(encargado){
+
                 this.fillusuario.id = encargado.id
 				this.fillusuario.name = encargado.name
 				this.fillusuario.apellido = encargado.apellido
@@ -332,14 +334,15 @@ import Swal from 'sweetalert2'
 				this.fillusuario.email = encargado.email
 				this.fillusuario.avatar = encargado.avatar
 				this.fillusuario.ci = encargado.ci
+                this.fillusuario.password = null
 
 			},
 
                 update(id){
 
                 console.log(this.fillusuario)
-             axios.put('user/'+id, this.fillusuario).
-             then(response =>{
+                 axios.put('user/'+id, this.fillusuario).
+                then(response =>{
                 console.log(response.data.mensaje)
                     this.traerencargados()
 

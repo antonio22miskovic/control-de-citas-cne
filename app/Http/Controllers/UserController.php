@@ -111,41 +111,124 @@ class UserController extends Controller
 
         }else{
 
-              $exploded = explode(',', $request->avatar);
-             $decoded =base64_decode($exploded[1]);
+                // se introcude el mismo avatar y no se cambia la contraseña
+            if ($request['avatar'] === $user->avatar && $request['password'] === 0 ) {
 
-            if (str_contains($exploded[0], 'jpeg')) {
+                $user->update([
 
-                 $extension = 'jpg';
+                    'name' => $request['name'],
+                    'apellido' => $request['apellido'],
+                    'usuario' => $request['usuario'],
+                    'ci' => $request['ci'],
+                    'avatar' => $request['avatar'],
+                    'email' => $request['email'],
+                    // 'password' => bcrypt($request['password']),
+                    'rol_id' => 2,
 
-             }else{
+                ]);
 
-                $extension = 'png';
+                    return response()->json(['mensaje'=>'se ah actualizado con exito'],201);
 
-            }
+            }else{
 
-        $filename = str_random().'.'.$extension;
+                //ahora se cambio la contraseña pero el avatar es el mismo
+                if ($request['avatar'] === $user->avatar) {
 
-        $path = public_path().'/img/'.$filename;
+                    $user->update([
 
-        file_put_contents($path, $decoded);
+                        'name' => $request['name'],
+                        'apellido' => $request['apellido'],
+                        'usuario' => $request['usuario'],
+                        'ci' => $request['ci'],
+                        'avatar' => $request['avatar'],
+                        'email' => $request['email'],
+                        'password' => bcrypt($request['password']),
+                        'rol_id' => 2,
 
-        $user->update([
+                    ]);
 
-        'name' => $request['name'],
-        'apellido' => $request['apellido'],
-        'usuario' => $request['usuario'],
-        'ci' => $request['ci'],
-        'avatar' => $filename,
-        'email' => $request['email'],
-        'password' => bcrypt($request['password']),
-        'rol_id' => 2,
+                    return response()->json(['mensaje'=>'se ah actualizado con exito'],201);
 
-        ]);
-         return response()->json(['mensaje'=>'se ah actualizado con exito'],201);
+                }else{
+
+                    //
+                    if ($request['avatar'] != $user->avatar && $request['password'] != 0 ) {
+
+                     $exploded = explode(',', $request->avatar);
+                     $decoded =base64_decode($exploded[1]);
+
+                        if (str_contains($exploded[0], 'jpeg')) {
+
+                                  $extension = 'jpg';
+
+                        }else{
+
+                                 $extension = 'png';
+
+                        }
+
+                        $filename = str_random().'.'.$extension;
+
+                        $path = public_path().'/img/'.$filename;
+
+                        file_put_contents($path, $decoded);
+
+                        $user->update([
+
+                            'name' => $request['name'],
+                            'apellido' => $request['apellido'],
+                            'usuario' => $request['usuario'],
+                            'ci' => $request['ci'],
+                            'avatar' => $filename,
+                            'email' => $request['email'],
+                            'password' => bcrypt($request['password']),
+                            'rol_id' => 2,
+
+                        ]);
+                        return response()->json(['mensaje'=>'se ah actualizado con exito'],201);
+
+            }else{
+
+                     $exploded = explode(',', $request->avatar);
+                     $decoded =base64_decode($exploded[1]);
+
+                        if (str_contains($exploded[0], 'jpeg')) {
+
+                                  $extension = 'jpg';
+
+                        }else{
+
+                                 $extension = 'png';
+
+                        }
+
+                        $filename = str_random().'.'.$extension;
+
+                        $path = public_path().'/img/'.$filename;
+
+                        file_put_contents($path, $decoded);
+
+                        $user->update([
+
+                            'name' => $request['name'],
+                            'apellido' => $request['apellido'],
+                            'usuario' => $request['usuario'],
+                            'ci' => $request['ci'],
+                            'avatar' => $filename,
+                            'email' => $request['email'],
+                            // 'password' => bcrypt($request['password']),
+                            'rol_id' => 2,
+
+                        ]);
+                        return response()->json(['mensaje'=>'se ah actualizado con exito'],201);
 
         }
+         }
+
+
     }
+}
+}
 
     /**
      * Remove the specified resource from storage.
