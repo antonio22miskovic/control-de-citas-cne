@@ -48,7 +48,7 @@
 		data(){
 			return{
 				dataperfil: [],
-                ruta:'/public/img/',
+                ruta:'/img/',
 			}
 		},
 

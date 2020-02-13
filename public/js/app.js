@@ -12864,7 +12864,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       dataperfil: [],
-      ruta: '/public/img/'
+      ruta: '/img/'
     };
   },
   methods: {
