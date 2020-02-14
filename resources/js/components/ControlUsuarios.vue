@@ -79,7 +79,7 @@
 		  				<div class="form-group col-md-6">
 		  					<label >email</label>
 		  					<input type="email" class="form-control" placeholder="email" v-model="fillusuario.email">
-                           <!--  <p v-if="mesanjeemail === true" class="text-center text-danger"> email no disponible</p> -->
+
 		  				</div>
 
 		  				<div class="form-group col-md-6">
@@ -96,6 +96,7 @@
 		  				<div class="form-group col-md-6">
 		  					<label >confirmar contaseña</label>
 		  					<input type="password" class="form-control" placeholder="confirmar la contraseña" v-model="passwordconfirmar">
+                              <p v-if="mesanjeconf === true" class="text-center text-danger">contraseña no coninciden</p>
 
 		  				</div>
 
@@ -281,6 +282,7 @@ import Swal from 'sweetalert2'
                 user:'',
                 cliente:'',
                 tramite:'',
+                mesanjeconf:false,
 
 
 			}
@@ -341,7 +343,8 @@ import Swal from 'sweetalert2'
 			},
 
             update(id){
-
+                if ( this.fillusuario.password === this.passwordconfirmar) {
+                      this.mesanjeconf = false
                  axios.put('user/'+id, this.fillusuario).
                 then(response =>{
                this.validacion =  response.data.mensaje
@@ -359,7 +362,12 @@ import Swal from 'sweetalert2'
          }
 
       })
+    }else{
 
+        this.mesanjeconf = true
+        this.passwordconfirmar = null
+
+    }
     },
 
 

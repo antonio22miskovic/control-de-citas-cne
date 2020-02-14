@@ -12106,6 +12106,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'ControlUsuarios',
@@ -12142,7 +12143,8 @@ __webpack_require__.r(__webpack_exports__);
       detallesolicitud: '',
       user: '',
       cliente: '',
-      tramite: ''
+      tramite: '',
+      mesanjeconf: false
     };
   },
   methods: {
@@ -12191,24 +12193,30 @@ __webpack_require__.r(__webpack_exports__);
     update: function update(id) {
       var _this3 = this;
 
-      axios.put('user/' + id, this.fillusuario).then(function (response) {
-        _this3.validacion = response.data.mensaje;
+      if (this.fillusuario.password === this.passwordconfirmar) {
+        this.mesanjeconf = false;
+        axios.put('user/' + id, this.fillusuario).then(function (response) {
+          _this3.validacion = response.data.mensaje;
 
-        _this3.traerencargados();
+          _this3.traerencargados();
 
-        var v = response.data.e;
+          var v = response.data.e;
 
-        if (v === 1) {
-          _this3.validacion = null;
-          sweetalert2__WEBPACK_IMPORTED_MODULE_0___default.a.fire({
-            position: 'center',
-            icon: 'success',
-            title: ' se ah actualizado con exito',
-            showConfirmButton: false,
-            timer: 1500
-          });
-        }
-      });
+          if (v === 1) {
+            _this3.validacion = null;
+            sweetalert2__WEBPACK_IMPORTED_MODULE_0___default.a.fire({
+              position: 'center',
+              icon: 'success',
+              title: ' se ah actualizado con exito',
+              showConfirmButton: false,
+              timer: 1500
+            });
+          }
+        });
+      } else {
+        this.mesanjeconf = true;
+        this.passwordconfirmar = null;
+      }
     },
     Chagepage: function Chagepage(page) {
       this.paginate.current_page = page;
@@ -52816,7 +52824,15 @@ var render = function() {
                                   _vm.passwordconfirmar = $event.target.value
                                 }
                               }
-                            })
+                            }),
+                            _vm._v(" "),
+                            _vm.mesanjeconf === true
+                              ? _c(
+                                  "p",
+                                  { staticClass: "text-center text-danger" },
+                                  [_vm._v("contraseña no coninciden")]
+                                )
+                              : _vm._e()
                           ]),
                           _vm._v(" "),
                           _vm._m(3)
