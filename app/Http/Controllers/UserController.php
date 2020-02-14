@@ -90,7 +90,7 @@ class UserController extends Controller
 
         if (is_null($user)) {
 
-            response()->json(['mensaje'=>'el usuario no se encuentra registrado'],404);
+          return  response()->json(['mensaje'=>'el usuario no se encuentra registrado'],404);
 
         }
 
@@ -107,11 +107,66 @@ class UserController extends Controller
 
         if (is_null($user)) {
 
-            response()->json(['mensaje'=>'el usuario no se encuentra registrado'],404);
+          return  response()->json(['mensaje'=>'el usuario no se encuentra registrado'],404);
 
         }else{
 
-                // se introcude el mismo avatar y no se cambia la contraseña
+             $validaruser = User::where( 'usuario' , $request['usuario'] )->first();
+
+            if (is_null($validaruser)) {
+
+            }else{
+
+                 if ($validaruser->usuario === $user->usuario){
+
+
+                 }else{
+
+                    return response()->json(['mensaje' => 'usuario no disponible','e' => 2]);
+
+                 }
+
+              }
+
+
+              $validarci = User::where( 'ci' , $request['ci'] )->first();
+
+            if (is_null($validarci)) {
+
+            }else{
+
+                 if ($validarci->ci === $user->ci){
+
+
+                 }else{
+
+                    return response()->json(['mensaje' => 'cedula no disponible','e' => 2]);
+
+                 }
+
+              }
+
+
+               $validaremail = User::where( 'email' , $request['email'] )->first();
+
+            if (is_null($validaremail)) {
+
+            }else{
+
+                 if ($validaremail->email === $user->email){
+
+
+                 }else{
+
+                    return response()->json(['mensaje' => 'email no disponible','e' => 2]);
+
+                 }
+
+              }
+
+
+
+            // se introcude el mismo avatar y no se cambia la contraseña
             if ($request['avatar'] === $user->avatar && $request['password'] === 0 ) {
 
                 $user->update([
@@ -127,7 +182,7 @@ class UserController extends Controller
 
                 ]);
 
-                    return response()->json(['mensaje'=>'se ah actualizado con exito'],201);
+                    return response()->json(['mensaje'=>'se ah actualizado con exito', 'e' => 1]);
 
             }else{
 
@@ -147,7 +202,7 @@ class UserController extends Controller
 
                     ]);
 
-                    return response()->json(['mensaje'=>'se ah actualizado con exito'],201);
+                    return response()->json(['mensaje'=>'se ah actualizado con exito', 'e' => 1]);
 
                 }else{
 
@@ -185,7 +240,7 @@ class UserController extends Controller
                             'rol_id' => 2,
 
                         ]);
-                        return response()->json(['mensaje'=>'se ah actualizado con exito'],201);
+                        return response()->json(['mensaje'=>'se ah actualizado con exito', 'e' => 1]);
 
             }else{
 
@@ -220,15 +275,14 @@ class UserController extends Controller
                             'rol_id' => 2,
 
                         ]);
-                        return response()->json(['mensaje'=>'se ah actualizado con exito'],201);
+                        return response()->json(['mensaje'=>'se ah actualizado con exito', 'e' => 1]);
 
+                    }
+                }
+            }
         }
-         }
-
 
     }
-}
-}
 
     /**
      * Remove the specified resource from storage.

@@ -51,6 +51,8 @@
                         <div class="modal-body">
                             <div>
                             	<form @submit.prevent="update(fillusuario.id)" enctype="multipart/form-data">
+                     <p  class="text-center text-danger" > {{ this.validacion }} </p>
+
 		  			<div class="form-row">
 		  				<div class="form-group col-md-6">
 		  					<label>nombre</label>
@@ -94,7 +96,6 @@
 		  				<div class="form-group col-md-6">
 		  					<label >confirmar contaseña</label>
 		  					<input type="password" class="form-control" placeholder="confirmar la contraseña" v-model="passwordconfirmar">
-                          <!--   <p v-if=" mensaje === true" class="text-center"> contraseñas no coinciden </p> -->
 
 		  				</div>
 
@@ -263,6 +264,7 @@ import Swal from 'sweetalert2'
 				tabla:false,
 				solicitudes:[],
 				datobuscar:'',
+                validacion:'',
 				 paginate:{
 
                     'tota': 0,
@@ -338,21 +340,23 @@ import Swal from 'sweetalert2'
 
 			},
 
-                update(id){
+            update(id){
 
-                console.log(this.fillusuario)
                  axios.put('user/'+id, this.fillusuario).
                 then(response =>{
-                console.log(response.data.mensaje)
+               this.validacion =  response.data.mensaje
                     this.traerencargados()
-
-             Swal.fire({
-                position: 'center',
-                icon: 'success',
-                title: ' se ah actualizado con exito',
-                showConfirmButton: false,
-                timer: 1500
-            })
+                    let v = response.data.e
+                if (v === 1) {
+                    this.validacion = null
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: ' se ah actualizado con exito',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+         }
 
       })
 
