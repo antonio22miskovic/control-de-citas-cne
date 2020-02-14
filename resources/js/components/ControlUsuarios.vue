@@ -276,7 +276,7 @@ import Swal from 'sweetalert2'
                     'to' : 0,
 
                 },
-				passwordconfirmar:'',
+				passwordconfirmar: null,
 
 				detallesolicitud:'',
                 user:'',
@@ -343,6 +343,7 @@ import Swal from 'sweetalert2'
 			},
 
             update(id){
+
                 if ( this.fillusuario.password === this.passwordconfirmar) {
                       this.mesanjeconf = false
                  axios.put('user/'+id, this.fillusuario).
@@ -352,6 +353,8 @@ import Swal from 'sweetalert2'
                     let v = response.data.e
                 if (v === 1) {
                     this.validacion = null
+                    this.passwordconfirmar = null
+                    this.fillusuario.password = null
                 Swal.fire({
                     position: 'center',
                     icon: 'success',
@@ -363,7 +366,8 @@ import Swal from 'sweetalert2'
 
       })
     }else{
-
+        this.passwordconfirmar = null
+        this.fillusuario.password = null
         this.mesanjeconf = true
         this.passwordconfirmar = null
 

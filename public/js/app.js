@@ -12139,7 +12139,7 @@ __webpack_require__.r(__webpack_exports__);
         'from': 0,
         'to': 0
       },
-      passwordconfirmar: '',
+      passwordconfirmar: null,
       detallesolicitud: '',
       user: '',
       cliente: '',
@@ -12204,6 +12204,8 @@ __webpack_require__.r(__webpack_exports__);
 
           if (v === 1) {
             _this3.validacion = null;
+            _this3.passwordconfirmar = null;
+            _this3.fillusuario.password = null;
             sweetalert2__WEBPACK_IMPORTED_MODULE_0___default.a.fire({
               position: 'center',
               icon: 'success',
@@ -12214,6 +12216,8 @@ __webpack_require__.r(__webpack_exports__);
           }
         });
       } else {
+        this.passwordconfirmar = null;
+        this.fillusuario.password = null;
         this.mesanjeconf = true;
         this.passwordconfirmar = null;
       }
