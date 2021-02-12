@@ -13597,6 +13597,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 // importando los componentes
 
 
@@ -54056,51 +54058,63 @@ var render = function() {
       )
     ]),
     _vm._v(" "),
-    _c("div", { staticClass: "row justify-content-center" }, [
-      _c("table", { staticClass: "table table-striped mt-4 p-4" }, [
-        _vm._m(2),
-        _vm._v(" "),
-        _c(
-          "tbody",
-          [
-            _vm.solicitudes.length === 0
-              ? _c("h4", { staticClass: "text-center" }, [
-                  _vm._v("No tiene solicitudes.")
-                ])
-              : _vm._e(),
-            _vm._v(" "),
-            _vm._l(_vm.solicitudes, function(solicitud) {
-              return _c("tr", { key: solicitud.id }, [
-                _c("td", [_vm._v(_vm._s(solicitud.solicitud))]),
-                _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(solicitud.respuesta))]),
-                _vm._v(" "),
-                _c("td", { staticClass: "text-center" }, [
+    _c("div", { staticClass: "container" }, [
+      _c(
+        "table",
+        { staticClass: "table  table-responsiv table-striped mt-4 p-4" },
+        [
+          _vm._m(2),
+          _vm._v(" "),
+          _c(
+            "tbody",
+            [
+              _vm.solicitudes.length === 0
+                ? _c("h4", { staticClass: "text-center" }, [
+                    _vm._v("No tiene solicitudes.")
+                  ])
+                : _vm._e(),
+              _vm._v(" "),
+              _vm._l(_vm.solicitudes, function(solicitud) {
+                return _c("tr", { key: solicitud.id }, [
                   _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-outline-primary text-center",
-                      attrs: {
-                        "data-toggle": "modal",
-                        "data-target": "#detallesmodalcenter"
-                      },
-                      on: {
-                        click: function($event) {
-                          $event.preventDefault()
-                          return _vm.detalles(solicitud)
+                    "td",
+                    { staticClass: "text-center", attrs: { sscope: "row" } },
+                    [_vm._v(_vm._s(solicitud.solicitud))]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "td",
+                    { staticClass: "text-center", attrs: { scope: "row" } },
+                    [_vm._v(_vm._s(solicitud.respuesta))]
+                  ),
+                  _vm._v(" "),
+                  _c("td", { staticClass: "text-center" }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-outline-primary text-center",
+                        attrs: {
+                          "data-toggle": "modal",
+                          "data-target": "#detallesmodalcenter"
+                        },
+                        on: {
+                          click: function($event) {
+                            $event.preventDefault()
+                            return _vm.detalles(solicitud)
+                          }
                         }
-                      }
-                    },
-                    [_c("font-awesome-icon", { attrs: { icon: "eye" } })],
-                    1
-                  )
+                      },
+                      [_c("font-awesome-icon", { attrs: { icon: "eye" } })],
+                      1
+                    )
+                  ])
                 ])
-              ])
-            })
-          ],
-          2
-        )
-      ]),
+              })
+            ],
+            2
+          )
+        ]
+      ),
       _vm._v(" "),
       _c("nav", { attrs: { "aria-label": "Page navigation example" } }, [
         _c(
@@ -54224,9 +54238,13 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("thead", { staticClass: "thead-dark" }, [
       _c("tr", [
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Solicitud")]),
+        _c("th", { staticClass: "text-center", attrs: { scope: "col" } }, [
+          _vm._v("Solicitud")
+        ]),
         _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Respuesta")]),
+        _c("th", { staticClass: "text-center", attrs: { scope: "col" } }, [
+          _vm._v("Respuesta")
+        ]),
         _vm._v(" "),
         _c("th", { staticClass: "text-center", attrs: { scope: "col" } }, [
           _vm._v("Ver Solicitud")
@@ -55152,7 +55170,10 @@ var render = function() {
         _c("div", { staticClass: "container" }, [
           _c(
             "a",
-            { staticClass: "navbar-brand", attrs: { href: "/home" } },
+            {
+              staticClass: "navbar-brand",
+              attrs: { href: "/home", "data-toggle": "tooltip", title: "Home" }
+            },
             [_c("font-awesome-icon", { attrs: { icon: "home" } })],
             1
           ),
@@ -55167,105 +55188,156 @@ var render = function() {
             },
             [
               _c("ul", { staticClass: "navbar-nav ml-auto" }, [
-                _c("li", { staticClass: "nav-item" }, [
-                  _c(
-                    "a",
-                    {
-                      staticClass: "nav-link  m-2",
-                      on: {
-                        click: function($event) {
-                          return _vm.estadisticacomponent()
+                _c(
+                  "li",
+                  {
+                    staticClass: "nav-item",
+                    attrs: { "data-toggle": "tooltip", title: "Estadisticas" }
+                  },
+                  [
+                    _c(
+                      "a",
+                      {
+                        staticClass: "nav-link  m-2",
+                        on: {
+                          click: function($event) {
+                            return _vm.estadisticacomponent()
+                          }
                         }
-                      }
-                    },
-                    [
-                      _c("font-awesome-icon", { attrs: { icon: "chart-line" } })
-                    ],
-                    1
-                  )
-                ]),
+                      },
+                      [
+                        _c("font-awesome-icon", {
+                          attrs: { icon: "chart-line" }
+                        })
+                      ],
+                      1
+                    )
+                  ]
+                ),
                 _vm._v(" "),
-                _c("li", { staticClass: "nav-item" }, [
-                  _c(
-                    "a",
-                    {
-                      staticClass: "nav-link  m-2",
-                      on: {
-                        click: function($event) {
-                          return _vm.listadocomponent()
+                _c(
+                  "li",
+                  {
+                    staticClass: "nav-item",
+                    attrs: { "data-toggle": "tooltip", title: "Listado" }
+                  },
+                  [
+                    _c(
+                      "a",
+                      {
+                        staticClass: "nav-link  m-2",
+                        on: {
+                          click: function($event) {
+                            return _vm.listadocomponent()
+                          }
                         }
-                      }
-                    },
-                    [_c("font-awesome-icon", { attrs: { icon: "users" } })],
-                    1
-                  )
-                ]),
+                      },
+                      [_c("font-awesome-icon", { attrs: { icon: "users" } })],
+                      1
+                    )
+                  ]
+                ),
                 _vm._v(" "),
-                _c("li", [
-                  _c(
-                    "a",
-                    {
-                      staticClass: "nav-link m-2 ",
-                      on: {
-                        click: function($event) {
-                          return _vm.registrocomponent()
+                _c(
+                  "li",
+                  {
+                    staticClass: "nav-item",
+                    attrs: { "data-toggle": "tooltip", title: "Registro" }
+                  },
+                  [
+                    _c(
+                      "a",
+                      {
+                        staticClass: "nav-link m-2 ",
+                        on: {
+                          click: function($event) {
+                            return _vm.registrocomponent()
+                          }
                         }
-                      }
-                    },
-                    [_c("font-awesome-icon", { attrs: { icon: "user-plus" } })],
-                    1
-                  )
-                ]),
+                      },
+                      [
+                        _c("font-awesome-icon", {
+                          attrs: { icon: "user-plus" }
+                        })
+                      ],
+                      1
+                    )
+                  ]
+                ),
                 _vm._v(" "),
-                _c("li", { staticClass: "nav-item" }, [
-                  _c(
-                    "a",
-                    {
-                      staticClass: "nav-link  m-2",
-                      on: {
-                        click: function($event) {
-                          return _vm.perfilcomponent()
+                _c(
+                  "li",
+                  {
+                    staticClass: "nav-item",
+                    attrs: { "data-toggle": "tooltip", title: "Perfil" }
+                  },
+                  [
+                    _c(
+                      "a",
+                      {
+                        staticClass: "nav-link  m-2",
+                        on: {
+                          click: function($event) {
+                            return _vm.perfilcomponent()
+                          }
                         }
-                      }
-                    },
-                    [
-                      _c("font-awesome-icon", {
-                        attrs: { icon: "user-circle" }
-                      })
-                    ],
-                    1
-                  )
-                ]),
+                      },
+                      [
+                        _c("font-awesome-icon", {
+                          attrs: { icon: "user-circle" }
+                        })
+                      ],
+                      1
+                    )
+                  ]
+                ),
                 _vm._v(" "),
-                _c("li", { staticClass: "nav-item" }, [
-                  _c(
-                    "a",
-                    {
-                      staticClass: "nav-link  m-2",
-                      attrs: { "data-toggle": "modal" },
-                      on: {
-                        click: function($event) {
-                          return _vm.Notificacionescomponent()
+                _c(
+                  "li",
+                  {
+                    staticClass: "nav-item",
+                    attrs: { "data-toggle": "tooltip", title: "Notificacion" }
+                  },
+                  [
+                    _c(
+                      "a",
+                      {
+                        staticClass: "nav-link  m-2",
+                        attrs: { "data-toggle": "modal" },
+                        on: {
+                          click: function($event) {
+                            return _vm.Notificacionescomponent()
+                          }
                         }
-                      }
-                    },
-                    [_c("font-awesome-icon", { attrs: { icon: "bell" } })],
-                    1
-                  )
-                ]),
+                      },
+                      [_c("font-awesome-icon", { attrs: { icon: "bell" } })],
+                      1
+                    )
+                  ]
+                ),
                 _vm._v(" "),
-                _c("li", { staticClass: "nav-item" }, [
-                  _c(
-                    "a",
-                    { staticClass: "nav-link  m-2", on: { click: _vm.logout } },
-                    [
-                      _c("font-awesome-icon", {
-                        attrs: { icon: "sign-out-alt" }
-                      })
-                    ],
-                    1
-                  )
-                ])
+                _c(
+                  "li",
+                  {
+                    staticClass: "nav-item",
+                    attrs: { "data-toggle": "tooltip", title: "Logout" }
+                  },
+                  [
+                    _c(
+                      "a",
+                      {
+                        staticClass: "nav-link  m-2",
+                        on: { click: _vm.logout }
+                      },
+                      [
+                        _c("font-awesome-icon", {
+                          attrs: { icon: "sign-out-alt" }
+                        })
+                      ],
+                      1
+                    )
+                  ]
+                )
               ])
             ]
           )
@@ -55342,7 +55414,10 @@ var render = function() {
         _c("div", { staticClass: "container" }, [
           _c(
             "a",
-            { staticClass: "navbar-brand", attrs: { href: "/home" } },
+            {
+              staticClass: "navbar-brand",
+              attrs: { href: "/home", "data-toggle": "tooltip", title: "Home" }
+            },
             [_c("font-awesome-icon", { attrs: { icon: "home" } })],
             1
           ),
@@ -55357,111 +55432,167 @@ var render = function() {
             },
             [
               _c("ul", { staticClass: "navbar-nav ml-auto" }, [
-                _c("li", { staticClass: "nav-item" }, [
-                  _c(
-                    "a",
-                    {
-                      staticClass: "nav-link  m-2",
-                      on: {
-                        click: function($event) {
-                          return _vm.estadisticacomponent()
+                _c(
+                  "li",
+                  {
+                    staticClass: "nav-item",
+                    attrs: { "data-toggle": "tooltip", title: "Estadisticas" }
+                  },
+                  [
+                    _c(
+                      "a",
+                      {
+                        staticClass: "nav-link  m-2",
+                        on: {
+                          click: function($event) {
+                            return _vm.estadisticacomponent()
+                          }
                         }
-                      }
-                    },
-                    [
-                      _c("font-awesome-icon", { attrs: { icon: "chart-line" } })
-                    ],
-                    1
-                  )
-                ]),
+                      },
+                      [
+                        _c("font-awesome-icon", {
+                          attrs: { icon: "chart-line" }
+                        })
+                      ],
+                      1
+                    )
+                  ]
+                ),
                 _vm._v(" "),
-                _c("li", { staticClass: "nav-item" }, [
-                  _c(
-                    "a",
-                    {
-                      staticClass: "nav-link  m-2",
-                      on: {
-                        click: function($event) {
-                          return _vm.listadocomponent()
+                _c(
+                  "li",
+                  {
+                    staticClass: "nav-item",
+                    attrs: { "data-toggle": "tooltip", title: "Listado" }
+                  },
+                  [
+                    _c(
+                      "a",
+                      {
+                        staticClass: "nav-link  m-2",
+                        on: {
+                          click: function($event) {
+                            return _vm.listadocomponent()
+                          }
                         }
-                      }
-                    },
-                    [_c("font-awesome-icon", { attrs: { icon: "list" } })],
-                    1
-                  )
-                ]),
+                      },
+                      [_c("font-awesome-icon", { attrs: { icon: "list" } })],
+                      1
+                    )
+                  ]
+                ),
                 _vm._v(" "),
-                _c("li", [
-                  _c(
-                    "a",
-                    {
-                      staticClass: "nav-link m-2 ",
-                      on: {
-                        click: function($event) {
-                          return _vm.registrocomponent()
+                _c(
+                  "li",
+                  {
+                    staticClass: "nav-item",
+                    attrs: {
+                      "data-toggle": "tooltip",
+                      title: "Registro de Solicitud"
+                    }
+                  },
+                  [
+                    _c(
+                      "a",
+                      {
+                        staticClass: "nav-link m-2 ",
+                        on: {
+                          click: function($event) {
+                            return _vm.registrocomponent()
+                          }
                         }
-                      }
-                    },
-                    [_c("font-awesome-icon", { attrs: { icon: "user-plus" } })],
-                    1
-                  )
-                ]),
+                      },
+                      [
+                        _c("font-awesome-icon", {
+                          attrs: { icon: "user-plus" }
+                        })
+                      ],
+                      1
+                    )
+                  ]
+                ),
                 _vm._v(" "),
-                _c("li", { staticClass: "nav-item" }, [
-                  _c(
-                    "a",
-                    {
-                      staticClass: "nav-link  m-2",
-                      on: {
-                        click: function($event) {
-                          return _vm.perfilcomponent()
+                _c(
+                  "li",
+                  {
+                    staticClass: "nav-item",
+                    attrs: { "data-toggle": "tooltip", title: "Perfil" }
+                  },
+                  [
+                    _c(
+                      "a",
+                      {
+                        staticClass: "nav-link  m-2",
+                        on: {
+                          click: function($event) {
+                            return _vm.perfilcomponent()
+                          }
                         }
-                      }
-                    },
-                    [
-                      _c("font-awesome-icon", {
-                        attrs: { icon: "user-circle" }
-                      })
-                    ],
-                    1
-                  )
-                ]),
+                      },
+                      [
+                        _c("font-awesome-icon", {
+                          attrs: { icon: "user-circle" }
+                        })
+                      ],
+                      1
+                    )
+                  ]
+                ),
                 _vm._v(" "),
-                _c("li", { staticClass: "nav-item" }, [
-                  _c(
-                    "a",
-                    {
-                      staticClass: "nav-link  m-2",
-                      attrs: { "data-toggle": "modal" },
-                      on: {
-                        click: function($event) {
-                          return _vm.Notificacionescomponent()
+                _c(
+                  "li",
+                  {
+                    staticClass: "nav-item",
+                    attrs: { "data-toggle": "tooltip", title: "Notificaciones" }
+                  },
+                  [
+                    _c(
+                      "a",
+                      {
+                        staticClass: "nav-link  m-2",
+                        attrs: { "data-toggle": "modal" },
+                        on: {
+                          click: function($event) {
+                            return _vm.Notificacionescomponent()
+                          }
                         }
-                      }
-                    },
-                    [
-                      _c("font-awesome-icon", { attrs: { icon: "bell" } }),
-                      _vm._v(" "),
-                      _c("span", { staticClass: "tag tag-pill text-danger" }, [
-                        _vm._v(_vm._s(this.contador))
-                      ])
-                    ],
-                    1
-                  )
-                ]),
+                      },
+                      [
+                        _c("font-awesome-icon", { attrs: { icon: "bell" } }),
+                        _vm._v(" "),
+                        _c(
+                          "span",
+                          { staticClass: "tag tag-pill text-danger" },
+                          [_vm._v(_vm._s(this.contador))]
+                        )
+                      ],
+                      1
+                    )
+                  ]
+                ),
                 _vm._v(" "),
-                _c("li", { staticClass: "nav-item" }, [
-                  _c(
-                    "a",
-                    { staticClass: "nav-link  m-2", on: { click: _vm.logout } },
-                    [
-                      _c("font-awesome-icon", {
-                        attrs: { icon: "sign-out-alt" }
-                      })
-                    ],
-                    1
-                  )
-                ])
+                _c(
+                  "li",
+                  {
+                    staticClass: "nav-item",
+                    attrs: { "data-toggle": "tooltip", title: "Cerrar Seción" }
+                  },
+                  [
+                    _c(
+                      "a",
+                      {
+                        staticClass: "nav-link  m-2",
+                        on: { click: _vm.logout }
+                      },
+                      [
+                        _c("font-awesome-icon", {
+                          attrs: { icon: "sign-out-alt" }
+                        })
+                      ],
+                      1
+                    )
+                  ]
+                )
               ])
             ]
           )
@@ -68529,8 +68660,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/heavy/app/pasantia/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/heavy/app/pasantia/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/heavy/project/control-de-citas-cne/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/heavy/project/control-de-citas-cne/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

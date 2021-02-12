@@ -4,7 +4,7 @@
         <div class='containner'>
             <div class="background">
                 <div class="head_containner">
-                    <h3> CNE </h3>
+                    <h3> Control y Atención </h3>
                 </div>
                 <form class='form_containner' method="POST" action="{{ route('login') }}">
 

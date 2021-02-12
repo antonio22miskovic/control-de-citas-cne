@@ -38,12 +38,12 @@
         </div>
 
 
-        <div class="row justify-content-center">
-            <table class="table table-striped mt-4 p-4">
+        <div class="container">
+            <table class="table  table-responsiv table-striped mt-4 p-4">
                 <thead class="thead-dark">
                     <tr>
-                        <th scope="col">Solicitud</th>
-                        <th scope="col">Respuesta</th>
+                        <th scope="col" class="text-center">Solicitud</th>
+                        <th scope="col" class="text-center">Respuesta</th>
                         <th scope="col" class="text-center">Ver Solicitud</th>
                     </tr>
                 </thead>
@@ -52,8 +52,8 @@
                     <h4 v-if="solicitudes.length === 0" class="text-center">No tiene solicitudes.</h4>
                     <tr v-for="solicitud of solicitudes" :key="solicitud.id">
 
-                        <td>{{ solicitud.solicitud }}</td>
-                        <td>{{ solicitud.respuesta }}</td>
+                        <td sscope="row" class="text-center" >{{ solicitud.solicitud }}</td>
+                        <td scope="row" class="text-center">{{ solicitud.respuesta }}</td>
 
 
                         <td class="text-center">

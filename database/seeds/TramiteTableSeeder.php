@@ -14,25 +14,25 @@ class TramiteTableSeeder extends Seeder
     {
         Tramite::create([
 
-        	'tramite' => 'tramite1'
+        	'tramite' => 'Pasaporte'
 
         ]);
 
          Tramite::create([
 
-        	'tramite' => 'tramite2'
+        	'tramite' => 'Documentos Legales'
 
         ]);
 
           Tramite::create([
 
-        	'tramite' => 'tramite3'
+        	'tramite' => 'Tramite de Legalización'
 
         ]);
 
           Tramite::create([
 
-        	'tramite' => 'tramite4'
+        	'tramite' => 'Soliciut de Documentos'
 
         ]);
     }

@@ -14,25 +14,25 @@ class EstadoTableSeeder extends Seeder
     {
        	Estado::create([
 
-       		'estado' => 'activo'
+       		'estado' => 'Activo'
 
        	]);
 
        	Estado::create([
 
-       		'estado' => 'desabilitado'
+       		'estado' => 'Desabilitado'
 
        	]);
 
        	Estado::create([
 
-       		'estado' => 'en espera'
+       		'estado' => 'En espera'
 
        	]);
 
        		Estado::create([
 
-       		'estado' => 'urgencia'
+       		'estado' => 'Urgencia'
 
        	]);
 

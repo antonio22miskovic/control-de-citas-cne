@@ -245,7 +245,6 @@
 						this.total = response.data.total
 						this.atendidos = response.data.atendidos
 						this.pendientes = response.data.pendientes
-
         		});
 			},
 

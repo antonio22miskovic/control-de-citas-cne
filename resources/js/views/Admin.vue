@@ -3,28 +3,28 @@
 
 		  <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
              <div class="container">
-                <a class="navbar-brand" href="/home">  <font-awesome-icon icon="home" /> </a>
+                <a class="navbar-brand" href="/home" data-toggle="tooltip" title="Home">  <font-awesome-icon icon="home" /> </a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ml-auto">
-                        <li class="nav-item">
+                        <li class="nav-item" data-toggle="tooltip" title="Estadisticas">
                             <a @click="estadisticacomponent()"class="nav-link  m-2"><font-awesome-icon icon="chart-line"/></a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item" data-toggle="tooltip" title="Listado">
                             <a @click="listadocomponent()"class="nav-link  m-2"><font-awesome-icon icon="users"/></a>
                         </li>
-                        <li>
+                        <li class="nav-item" data-toggle="tooltip" title="Registro">
                             <a @click="registrocomponent()"class="nav-link m-2 "><font-awesome-icon icon="user-plus"/></a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item" data-toggle="tooltip" title="Perfil">
                             <a @click="perfilcomponent()" class="nav-link  m-2"> <font-awesome-icon icon="user-circle"/></a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item" data-toggle="tooltip" title="Notificacion">
                              <a @click="Notificacionescomponent()"class="nav-link  m-2" data-toggle="modal"><font-awesome-icon icon="bell"/></a>
                          </li>
-                        <li class="nav-item">
+                        <li class="nav-item" data-toggle="tooltip" title="Logout">
                               <a class="nav-link  m-2" v-on:click="logout"><font-awesome-icon icon="sign-out-alt"/></a>
 
                         </li>
